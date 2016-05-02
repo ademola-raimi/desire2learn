@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Desire2Learn\Events;
 
 abstract class Event
 {

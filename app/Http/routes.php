@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Application Routes- index
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for an application.
@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'as' => 'home',
+]);

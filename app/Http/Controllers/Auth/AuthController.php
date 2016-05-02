@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Desire2Learn\Http\Controllers\Auth;
 
-use App\User;
+use Desire2Learn\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Desire2Learn\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
