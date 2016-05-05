@@ -1,0 +1,22 @@
+#overlay-image {
+	margin: -3%;
+}
+
+.logo {
+    margin: auto;
+    padding: 15px;
+}
+
+.navbar-default {
+	background-color: #fff;
+}
+
+.sidenav {
+	margin: 5% auto auto -2%;
+}
+
+footer {
+      background-color: #ecf0f1;
+      color: black;
+      padding: 15px;
+}
