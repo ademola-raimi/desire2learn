@@ -40,16 +40,21 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    public function getRegister()
+    {
+        return view('auth.register');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(Request $request)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -61,12 +66,18 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    protected function postRegister(Request $request)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'username' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
         ]);
+
+        return redirect()
+            ->route('index')
+            ->withInfo('Your account has been created and you can now sign in');
     }
 }
