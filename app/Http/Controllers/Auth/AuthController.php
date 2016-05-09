@@ -2,9 +2,13 @@
 
 namespace Desire2Learn\Http\Controllers\Auth;
 
-use Desire2Learn\User;
+use Auth;
 use Validator;
+use Socialite;
+use Desire2Learn\User;
+use Illuminate\Http\Request;
 use Desire2Learn\Http\Controllers\Controller;
+use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -46,21 +50,6 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(Request $request)
-    {
-        return Validator::make($data, [
-            'username' => 'required|max:255|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -68,12 +57,19 @@ class AuthController extends Controller
      */
     protected function postRegister(Request $request)
     {
+        $this->validate($request, [
+            'username' => 'required|max:255|unique:users,username',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
         return User::create([
-            'username' => $request['name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
+            'username'   => $request['username'],
+            'last_name'  => $request['last_name'],
             'first_name' => $request['first_name'],
-            'last_name' => $request['last_name'],
+            'email'      => $request['email'],
+            'password'   => bcrypt($request['password']),
+            'avatar_url'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200', 
         ]);
 
         return redirect()
