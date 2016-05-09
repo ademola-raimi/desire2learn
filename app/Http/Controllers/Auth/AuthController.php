@@ -2,9 +2,13 @@
 
 namespace Desire2Learn\Http\Controllers\Auth;
 
-use Desire2Learn\User;
+use Auth;
 use Validator;
+use Socialite;
+use Desire2Learn\User;
+use Illuminate\Http\Request;
 use Desire2Learn\Http\Controllers\Controller;
+use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -94,7 +98,7 @@ class AuthController extends Controller
             return redirect()->back()->with('info', 'Invalid Email or Password');
         }
 
-        return redirect()->route('index')->with('info', 'You are now signed in');
+        return redirect()->route('home')->with('info', 'You are now signed in');
     }
 
     /**
