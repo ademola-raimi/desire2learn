@@ -10,8 +10,8 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3 card">
             <h3>Register with Us, or <a href="{{ url('/login') }}">Log In</a></h3>
-            <form class="form" role="form" method="POST" action="{{ url('/signup') }}">
-                {!! csrf_field() !!}
+            <form class="form" role="form" method="POST" action="{{ route('auth.create-new-user') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                     <label for="username">Username</label>
@@ -23,12 +23,22 @@
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                    @if ($errors->has('name'))
+                <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                    <label for="first_name">Last Name</label>
+                    <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
+                    @if ($errors->has('first_name'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('name') }}</strong>
+                            <strong>{{ $errors->first('first_name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                    <label for="last_name">First Name</label>
+                    <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+                    @if ($errors->has('last_name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('last_name') }}</strong>
                         </span>
                     @endif
                 </div>

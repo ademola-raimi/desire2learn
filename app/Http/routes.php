@@ -21,7 +21,16 @@ Route::get('/signup', [
     'as'   => 'auth.register',
 ]);
 
+Route::post('signup/new', [
+	'uses' => 'Auth\AuthController@postRegister',
+	'as'   => 'auth.create-new-user',
+]);
+
 Route::get('/login', [
 	'uses' => 'Auth\AuthController@getLogin',
-    'as'   => 'auth.register',
+    'as'   => 'auth.login',
+
+Route::post('signup/new', [
+	'uses' => 'Auth\AuthController@postRegister',
+	'as'   => 'auth.login-user',
 ]);
