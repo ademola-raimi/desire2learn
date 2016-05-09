@@ -13,7 +13,7 @@
 
 Route::get('/', [
     'uses' => 'HomeController@index',
-    'as'   => 'home',
+    'as'   => 'index',
 ]);
 
 Route::get('/signup', [
@@ -29,8 +29,14 @@ Route::post('signup/new', [
 Route::get('/login', [
 	'uses' => 'Auth\AuthController@getLogin',
     'as'   => 'auth.login',
+]);
 
-Route::post('signup/new', [
-	'uses' => 'Auth\AuthController@postRegister',
-	'as'   => 'auth.login-user',
+Route::post('/login/user', [
+	'uses' => 'Auth\AuthController@postLogin',
+    'as'   => 'auth.post-login',
+]);
+
+Route::get('/logout', [
+    'uses' => 'Auth\AuthController@logOut',
+    'as'   => 'auth.logout'
 ]);

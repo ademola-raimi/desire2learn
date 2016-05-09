@@ -47,7 +47,7 @@ class AuthController extends Controller
     /**
      * This method displays the signup page.
      *
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return signup page
      */
     public function getRegister()
     {
@@ -57,7 +57,7 @@ class AuthController extends Controller
     /**
      * This method displays the login page.
      *
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return login page
      */
     public function getLogin()
     {
@@ -83,7 +83,7 @@ class AuthController extends Controller
             return redirect()->back()->with('info', 'Invalid Email or Password');
         }
 
-        return redirect()->route('login')->with('info', 'You are now signed in');
+        return redirect()->route('index')->with('info', 'You are now signed in');
     }
 
     /**
@@ -109,8 +109,18 @@ class AuthController extends Controller
             'avatar_url'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200', 
         ]);
 
-        return redirect()
-            ->route('index')
-            ->withInfo('Your account has been created and you can now sign in');
+        return redirect()->route('index')->withInfo('Your account has been created and you can now sign in');
+    }
+
+    /**
+     * logs user out.
+     *
+     * @return home
+     */
+    public function logOut()
+    {
+        Auth::logout();
+        dd('I am logged out');
+        return redirect()->route('index');
     }
 }
