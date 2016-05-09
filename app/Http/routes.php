@@ -22,6 +22,6 @@ Route::get('/signup', [
 ]);
 
 Route::get('/login', [
-	'uses' => 'Auth\AuthController@getRegister',
+	'uses' => 'Auth\AuthController@getLogin',
     'as'   => 'auth.register',
 ]);

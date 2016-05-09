@@ -40,15 +40,30 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    /**
+     * This method displays the signup page.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     public function getRegister()
     {
         return view('auth.register');
     }
 
     /**
+     * This method displays the login page.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  Request  $request
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(Request $request)
@@ -60,10 +75,32 @@ class AuthController extends Controller
         ]);
     }
 
+     /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  Request  $request
+     * @return User
+     */
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $authStatus = Auth::attempt($request->only(['email', 'password']), $request->has('remember'));
+
+        if (!$authStatus) {
+            return redirect()->back()->with('info', 'Invalid Email or Password');
+        }
+
+        return redirect()->route('index')->with('info', 'You are now signed in');
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  Request  $request
      * @return User
      */
     protected function postRegister(Request $request)

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3 card">
             <h3>Register with Us, or <a href="{{ url('/login') }}">Log In</a></h3>
-            <form class="form" role="form" method="POST" action="{{ url('/register') }}">
+            <form class="form" role="form" method="POST" action="{{ url('/signup') }}">
                 {!! csrf_field() !!}
 
                 <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
