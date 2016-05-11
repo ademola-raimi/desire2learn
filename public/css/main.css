@@ -20,3 +20,18 @@ footer {
       color: black;
       padding: 15px;
 }
+
+/*
+# topnavbar Styles
+===============================================
+*/
+#menu-signup {
+   background-color: #E87511;
+    margin: 15px 20px;
+
+}
+
+#menu-login {
+    background-color: #E87511;
+    margin: 15px 20px;
+}
