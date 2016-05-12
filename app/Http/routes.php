@@ -48,4 +48,14 @@ Route::group(['prefix' => 'dashboar'], function () {
         'as'   => 'dashboard.index',
     ]);
 
+    Route::get('/video/create', [
+        'uses' => 'VideoController@createVideo',
+        'as'   => 'create.video',
+    ]);
+
+    Route::post('/video/create', [
+        'uses' => 'VideoController@postVideo',
+        'as'   => 'post.video',
+    ]);
+
 });
