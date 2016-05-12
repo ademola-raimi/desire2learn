@@ -4,11 +4,6 @@
 |--------------------------------------------------------------------------
 | Application Routes- index
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
 
 Route::get('/', [
@@ -40,3 +35,17 @@ Route::get('/logout', [
     'uses' => 'Auth\AuthController@logOut',
     'as'   => 'auth.logout'
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard Routes- index
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'dashboar'], function () {
+
+    Route::get('/', [
+        'uses' => 'DashboardController@index',
+        'as'   => 'dashboard.index',
+    ]);
+
+});
