@@ -24,9 +24,13 @@
         </div>
         <!-- End Header Section -->
         
-    <div class="container-fluid">  
-    	@include('layout.partials.side-nav-bar')
-    </div>
+ <div class="container">
+	<div class="col-sm-3 sidenav">@include('layout.partials.side-nav-bar') </div>
+
+	<div class="col-sm-9">
+
+	</div>
+</div>
         
         <!-- Start Call to Action Section -->
     <!-- <section class="call-to-action">
