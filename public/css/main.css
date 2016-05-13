@@ -1,0 +1,37 @@
+#overlay-image {
+	margin: -3%;
+}
+
+.logo {
+    margin: auto;
+    padding: 15px;
+}
+
+.navbar-default {
+	background-color: #fff;
+}
+
+.sidenav {
+	margin: 5% auto auto -2%;
+}
+
+footer {
+      background-color: #111;
+      color: black;
+      padding: 15px;
+}
+
+/*
+# topnavbar Styles
+===============================================
+*/
+#menu-signup {
+   background-color: #E87511;
+    margin: 15px 20px;
+
+}
+
+#menu-login {
+    background-color: #E87511;
+    margin: 15px 20px;
+}

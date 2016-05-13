@@ -1,29 +1,70 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>@yield('title')</title>
-        <!-- View port-->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-        <meta name="_token" content="{{ csrf_token() }}" />
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts and style rules -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" href="{{ load_asset('/images/favicon.ico') }}">
+    <link href="{{ URL::asset('images/logo.png') }}" rel="stylesheet">
 
-        <!-- Font Awesome-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link href="{!! load_asset('/library/sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
-        <link href="{!! load_asset('/css/materialize.css') !!}" rel='stylesheet' type="text/css">
+    <link rel="shortcut icon" href="{{ URL::asset('/images/favicon.ico') }}">
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+        .fa-btn {
+            margin-right: 6px;
+        }
+    </style>
 
-        <!-- Custom style rules -->
-        <link href="{!! load_asset('/css/styles.css') !!}" rel='stylesheet' type="text/css">
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/main.css') }}" rel="stylesheet">
 
-    </head>
+    <!-- Bootstrap CSS  -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
 
-    <body>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}">
 
-    </body>
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.transitions.css') }}">
+    
+    <!-- Css3 Transitions Styles  -->
+    <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('css/lightbox.css') }}">
 
-    </html>
+    <!-- Sulfur CSS Styles  -->
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+
+    <!-- Responsive CSS Style -->
+    <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
+
+    <link rel="stylesheet" href="{{ URL::asset('js/modernizrr.js') }}">
+</head>
+<body>
+
+    @yield('content')
+    
+   
+    <script src="{{ URL::asset('js/jquery-2.1.3.min.js') }}"></script>
+    <script src="{{ URL::asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
+    <script src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ URL::asset('js/jquery.appear.js') }}"></script>
+    <script src="{{ URL::asset('js/jquery.fitvids.js') }}"></script>
+    <script src="{{ URL::asset('js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ URL::asset('js/lightbox.min.js') }}"></script>
+    <script src="{{ URL::asset('js/count-to.js') }}"></script>
+    <script src="{{ URL::asset('js/styleswitcher.js') }}"></script>
+    <script src="{{ URL::asset('js/map.js') }}"></script>
+    <script src="{{ URL::asset('js/map.js') }}"></script>
+    
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="assets/js/script.js"></script> 
+        
+</body>
+</html>
 

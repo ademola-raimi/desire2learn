@@ -2,9 +2,13 @@
 
 namespace Desire2Learn\Http\Controllers\Auth;
 
-use Desire2Learn\User;
+use Auth;
 use Validator;
+use Socialite;
+use Desire2Learn\User;
+use Illuminate\Http\Request;
 use Desire2Learn\Http\Controllers\Controller;
+use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -41,32 +45,82 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * This method displays the signup page.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return signup page
      */
-    protected function validator(array $data)
+    public function getRegister()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+        return view('auth.register');
+    }
+
+    /**
+     * This method displays the login page.
+     *
+     * @return login page
+     */
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+
+     /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  Request  $request
+     * @return User
+     */
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
         ]);
+
+        $authStatus = Auth::attempt($request->only(['email', 'password']), $request->has('remember'));
+
+        if (!$authStatus) {
+            return redirect()->back()->with('info', 'Invalid Email or Password');
+        }
+
+        return redirect()->route('index')->with('info', 'You are now signed in');
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  Request  $request
      * @return User
      */
-    protected function create(array $data)
+    protected function postRegister(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $this->validate($request, [
+            'username' => 'required|max:255|unique:users,username',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|min:6|confirmed',
         ]);
+
+        return User::create([
+            'username'   => $request['username'],
+            'last_name'  => $request['last_name'],
+            'first_name' => $request['first_name'],
+            'email'      => $request['email'],
+            'password'   => bcrypt($request['password']),
+            'avatar_url'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200', 
+        ]);
+
+        return redirect()->route('index')->withInfo('Your account has been created and you can now sign in');
+    }
+
+    /**
+     * logs user out.
+     *
+     * @return home
+     */
+    public function logOut()
+    {
+        Auth::logout();
+        dd('I am logged out');
+        return redirect()->route('index');
     }
 }
