@@ -21,7 +21,8 @@
     <link href="{{ URL::asset('css/main.css') }}" rel="stylesheet">
 
     <!-- Bootstrap CSS  -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('bootstrap-4/css/bootstrap.min.css') }}" type="text/css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}">

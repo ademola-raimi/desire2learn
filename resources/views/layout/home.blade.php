@@ -27,21 +27,119 @@
  <div class="container">
 	<div class="col-sm-3 sidenav">@include('layout.partials.side-nav-bar') </div>
 
-	<div class="col-sm-9">
+	<div class="col-sm-9 sidebar">
+		<div class="card-deck-wrapper">
+
+		  <div class="card-deck sidebar-inner">
+		    <div class="card">
+		      <img class="card-img-top" data-src=".." alt="Card image cap">
+
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="card-deck-wrapper">
+		  <div class="card-deck sidebar-inner">
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+<div class="card-deck-wrapper">
+		  <div class="card-deck sidebar-inner">
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		    <div class="card">
+		      <img class="card-img-top" data-src="..." alt="Card image cap">
+		      <div class="card-block">
+		        <h4 class="card-title">Card title</h4>
+		        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+
 
 	</div>
+
 </div>
+
+	
+
+
         
         <!-- Start Call to Action Section -->
-    <!-- <section class="call-to-action">
+    <section class="call-to-action">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 wow zoomIn" data-wow-duration="2s" data-wow-delay="300ms">
-                    <p>Awesome Aires Template is ready for <br> Business, Agency, Landing or Creative Portfolio<br>Aires is Responsive and help you to grow your business</p>
+                    <p>Knowledge is our passport to the future, for tomorrow belongs to the people who prepare for it today</p>
+                    <p>- Malcolm X -</p>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
         
 
 <footer class="container-fluid">

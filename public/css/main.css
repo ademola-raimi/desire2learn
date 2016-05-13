@@ -1,3 +1,7 @@
+/*
+# homepage Styles
+===============================================
+*/
 #overlay-image {
 	margin: -3%;
 }
@@ -13,6 +17,14 @@
 
 .sidenav {
 	margin: 5% auto auto -2%;
+}
+
+.sidebar {
+  margin: 5% auto 5% -2%;
+}
+
+.sidebar-inner {
+  margin-bottom: 2%;
 }
 
 footer {
