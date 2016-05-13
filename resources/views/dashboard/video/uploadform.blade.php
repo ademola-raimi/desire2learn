@@ -41,16 +41,6 @@
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                    <label for="category">Video Category</label>
-                    <input type="text" class="form-control" name="category" value="{{ old('category') }}">
-                    @if ($errors->has('category'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('category') }}</strong>
-                        </span>
-                    @endif
-                </div>
-
                 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                     <label for="description">Video Description</label>
                     <textarea type="description" class="form-control" name="description" value="{{ old('description') }}"></textarea>
@@ -60,6 +50,29 @@
                         </span>
                     @endif
                 </div>
+
+                <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
+                    <fieldset>
+                      <legend>Select Category</legend>
+                      
+                         <label for="category">Video Category</label>
+                         <select class = "form-control" name="category" type="text" value="{{ old('category') }}">
+                           <option value = "1">PHP</option>
+                           <option value = "2">LARAVEL</option>
+                           <option value = "3">JAVASCRIPT</option>
+                           <option value = "4">JAVA</option>
+                         </select>
+                
+                   </fieldset>
+                    @if ($errors->has('category'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('category') }}</strong>
+                        </span>
+                    @endif
+                </div>
+               
+            
+                
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">

@@ -11,8 +11,8 @@ class VideoController extends Controller
 {
     public function createVideo()
     {
-    	$category = Category::
-    	return view('dashboard.video.uploadform');
+    	$categories = Category::all();
+    	return view('dashboard.video.uploadform', compact('categories'));
     }
 
     public function postVideo(Request $request)
