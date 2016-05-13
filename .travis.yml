@@ -16,7 +16,6 @@ matrix:
 install: travis_retry composer install --no-interaction --prefer-source
 
 before_script:
-  - cp .env.travis .env
   - mysql -e "create database IF NOT EXISTS desire2learn;"
   - composer self-update
   - composer install --no-interaction
