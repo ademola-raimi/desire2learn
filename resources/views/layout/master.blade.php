@@ -26,6 +26,7 @@
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}">
+    <link href="{!! load_asset('/sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
 
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
