@@ -6,20 +6,37 @@
 @section('content')
 
 @include('layout.partials.top-nav-bar')
-
-
-        
         
         <!-- Start Header Section -->
         <div class="banner">
             <div class="overlay">
                 <div class="container">
-                    <div class="intro-text">
+                @if(session()->has('info'))
+                
+                    <script>
+                        swal({
+                            title: 'status',
+                            text: '{!! session()->get("info") !!}',
+                            timer: 2000,
+                            showConfirmButton: false
+                        })
+                    </script>
+            	@endif
+
+            	 
+                 <div class="intro-text">
                         <h1>Welcome To The <span>Desire2Learn</span></h1>
                         <p>Learning is not attained by chance, It must be sought for with ardor and attended with deligence <br> Dive in to get started</p>
-                        <a href="{{ route('auth.register') }}" class="page-scroll btn btn-primary">Register</a>
+                        @if (! Auth::check())
+                        <a href="{{ route('register') }}" class="page-scroll btn btn-primary">Register</a>
+                        @else 
+                        <a href="{{ route('dashboard.index') }}" class="page-scroll btn btn-primary">Dashboard</a>
                     </div>
+                  @endif
+
+                 
                 </div>
+
             </div>
         </div>
         <!-- End Header Section -->

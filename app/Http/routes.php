@@ -13,27 +13,31 @@ Route::get('/', [
 
 Route::get('/signup', [
 	'uses' => 'Auth\AuthController@getRegister',
-    'as'   => 'auth.register',
+    'as'   => 'register',
+    'middleware' => ['guest']
 ]);
 
 Route::post('signup/new', [
 	'uses' => 'Auth\AuthController@postRegister',
-	'as'   => 'auth.create-new-user',
+	'as'   => 'create-new-user',
+    'middleware' => ['guest']
 ]);
 
 Route::get('/login', [
 	'uses' => 'Auth\AuthController@getLogin',
-    'as'   => 'auth.login',
+    'as'   => 'login',
+    'middleware' => ['guest']
 ]);
 
 Route::post('/login/user', [
 	'uses' => 'Auth\AuthController@postLogin',
-    'as'   => 'auth.post-login',
+    'as'   => 'post-login',
+    'middleware' => ['guest']
 ]);
 
 Route::get('/logout', [
     'uses' => 'Auth\AuthController@logOut',
-    'as'   => 'auth.logout'
+    'as'   => 'logout'
 ]);
 
 /*

@@ -7,6 +7,7 @@ use Validator;
 use Socialite;
 use Desire2Learn\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailer as Mail;
 use Desire2Learn\Http\Controllers\Controller;
 use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -27,22 +28,10 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
+    protected $mail;
+    protected $loginPath    = '/login';
+    protected $registerPath = '/register';
     protected $redirectTo = '/';
-
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-    }
 
     /**
      * This method displays the signup page.
@@ -83,7 +72,7 @@ class AuthController extends Controller
             return redirect()->back()->with('info', 'Invalid Email or Password');
         }
 
-        return redirect()->route('index')->with('info', 'You are now signed in');
+        return redirect()->intended('/')->with('info', 'You are now signed in');
     }
 
     /**
@@ -100,7 +89,7 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        return User::create([
+        User::create([
             'username'   => $request['username'],
             'last_name'  => $request['last_name'],
             'first_name' => $request['first_name'],
@@ -109,7 +98,9 @@ class AuthController extends Controller
             'avatar_url'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200', 
         ]);
 
-        return redirect()->route('index')->withInfo('Your account has been created and you can now sign in');
+        dd(Auth::user());
+
+        return redirect()->route('index')->with('Info', 'Your account has been created and you can now sign in');
     }
 
     /**
@@ -120,7 +111,7 @@ class AuthController extends Controller
     public function logOut()
     {
         Auth::logout();
-        dd('I am logged out');
-        return redirect()->route('index');
+
+        return redirect()->route('index')->with('Info', 'You have successully log out from your account');
     }
 }

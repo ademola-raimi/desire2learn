@@ -9,8 +9,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3 card">
-            <h3>Log In, or <a href="{{ route('auth.register') }}">Sign Up</a></h3>
-            <form role="form" method="POST" action="{{ route('auth.post-login') }}">
+            <h3>Log In, or <a href="{{ route('register') }}">Sign Up</a></h3>
+            <form role="form" method="POST" action="{{ route('post-login') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email">Email</label>

@@ -53,7 +53,7 @@
                 </div><!-- .row -->
             </div><!-- .container -->
             <!-- End Top Bar -->
-        
+        @if (! Auth::check())
             <!-- Start  Logo & Naviagtion  -->
             <div class="navbar navbar-default navbar-top">
                 <div class="container">
@@ -76,10 +76,10 @@
                                 <a href="#">About Us</a>
                             </li>
                             <li>
-                                <a href="{{ route('auth.register') }}">Sign Up</a>
+                                <a href="{{ route('register') }}">Sign Up</a>
                             </li>
                             <li>
-                                <a href="{{ route('auth.login') }}">Login</a>
+                                <a href="{{ route('login') }}">Login</a>
                             </li>
                            
                             <li><a href="#">Contact</a>
@@ -89,6 +89,46 @@
                     </div>
                 </div>
             </div>
+            @endif
+
+            @if ( Auth::check())
+            <div class="navbar navbar-default navbar-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <!-- Stat Toggle Nav Link For Mobiles -->
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <!-- End Toggle Nav Link For Mobiles -->
+                       <a href="/"><img src="{{ URL::asset('images/logo.png') }}" class="img-responsive logo" /></a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        
+                        <!-- Start Navigation List -->
+                        <ul class="nav navbar-nav navbar-right">
+                             <li id="user-avatar" style="margin-left:20px;">
+                                <a href="#"><img src="{{ Auth::user()->avatar_url }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
+                            </li>
+                           
+                        
+                            <li id="dropdown">
+                            <a href="#" id="dropdown-toggle" data-toggle="dropdown" role="dropdownMenu2" aria-expanded="false">
+                                {{ Auth::user()->username }} <span class="caret"></span>
+                            </a>
+
+                            <ul id="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-btn fa-sign-out"></i>Dashboard</a></li>
+                            </ul>
+                        </li>
+                           
+                
+                        </ul>
+                        <!-- End Navigation List -->
+                    </div>
+                </div>
+            </div>
+            @endif
             <!-- End Header Logo & Naviagtion -->
             
         </header>

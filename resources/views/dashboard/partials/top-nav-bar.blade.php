@@ -26,10 +26,10 @@
                                 <a href="#">About Us</a>
                             </li>
                             <li>
-                                <a href="{{ route('auth.register') }}">Sign Up</a>
+                                <a href="{{ route('register') }}">Sign Up</a>
                             </li>
                             <li>
-                                <a href="{{ route('auth.login') }}">Login</a>
+                                <a href="{{ route('login') }}">Login</a>
                             </li>
                            
                             <li><a href="#">Contact</a>
