@@ -13,7 +13,7 @@
                             <i class="fa fa-bars"></i>
                         </button>
                         <!-- End Toggle Nav Link For Mobiles -->
-                       <a href="/"><img src="{{ URL::asset('images/logo.png') }}" class="img-responsive logo" /></a>
+                       <a href="/"><img src="{!! load_asset('images/logo.png') !!}" class="img-responsive logo" /></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         
