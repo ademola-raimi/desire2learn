@@ -16,7 +16,7 @@
             margin-right: 6px;
         }
     </style>
-
+    
     <link href="{!! load_asset('css/app.css') !!}" rel="stylesheet">
     <link href="{!! load_asset('css/main.css') !!}" rel="stylesheet">
 
@@ -67,7 +67,6 @@
     
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="assets/js/script.js"></script> 
-        
+
 </body>
 </html>
-

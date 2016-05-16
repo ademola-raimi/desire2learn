@@ -22,7 +22,6 @@
                         })
                     </script>
             	@endif
-
             	 
                  <div class="intro-text">
                         <h1>Welcome To The <span>Desire2Learn</span></h1>
