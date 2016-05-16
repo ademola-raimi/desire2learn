@@ -25,6 +25,15 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the avatar from gravatar.
+     * @return string
+     */
+    private function getAvatarFromGravatar()
+    {
+        return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim(env('GRAVAR_EMAIL')))).'?d=mm&s=500';
+    }
+
+    /**
      * Get avatar from the model.
      * @return string
      */

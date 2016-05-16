@@ -40,15 +40,15 @@ class ProfileController extends Controller
     {
         $this->validate($request, [
             'username'  => 'required|max:255|unique:users,username,'. Auth::user()->id,
-            'first_name' => 'required|max:255|unique:users,first_name,'. Auth::user()->id,
-            'last_name'  => 'required|max:255|unique:users,last_name,'. Auth::user()->id,
+            'first_name' => 'required|max:255',
+            'last_name'  => 'required|max:255',
             'email'     => 'required|max:255|unique:users,email,'. Auth::user()->id,
         ]);
 
         $updateUser = User::where('id', Auth::user()->id)->update([
         	'username'  => $request->username,
-        	'firstname' => $request->firstname,
-        	'lastname'  => $request->lastname,
+        	'first_name' => $request->first_name,
+        	'last_name'  => $request->last_name,
         	'email'     => $request->email,
         ]);
 
@@ -60,7 +60,13 @@ class ProfileController extends Controller
      */
     public function postAvatarSetting(Request $request)
     {
-        $img = $request->file('avatar_url');
+        $this->validate($request, [
+            'avatar' => 'required',
+        ]);
+        
+
+        $img = $request->file('avatar');
+        
         Cloudder::upload($img, null);
         $imgurl = Cloudder::getResult()['url'];
 
