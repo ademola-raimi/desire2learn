@@ -21,9 +21,6 @@
  <link href="{!! load_asset('css/main.css') !!}" rel="stylesheet">
 </head>
 <body>
-
     @yield('content')
-    
 </body>
 </html>
-

@@ -13,7 +13,6 @@
 			<img src="{!! load_asset('images/hero-image.jpg') !!}" class="img-responsive" alt="Responsive image">
 		</div>
 	</div>
-
 </div>
 
 <div class="container">
