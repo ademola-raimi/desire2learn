@@ -23,6 +23,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get avatar from the model.
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return (! is_null($this->avatar)) ? $this->avatar : $this->getAvatarFromGravatar();
+    }
+
+    //upload custom avatar
+    public function updateAvatar($img)
+    {
+        $this->avatar = $img;
+        $this->save();
+    }
 }
 
 

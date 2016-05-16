@@ -20,7 +20,7 @@ Route::get('/signup', [
 Route::post('signup/new', [
 	'uses' => 'Auth\AuthController@postRegister',
 	'as'   => 'create-new-user',
-    'middleware' => ['guest']
+    'middleware' => ['auth']
 ]);
 
 Route::get('/login', [
@@ -63,3 +63,36 @@ Route::group(['prefix' => 'dashboar'], function () {
     ]);
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| profile Routes- index
+|--------------------------------------------------------------------------
+*/
+Route::get('/profile/edit', [
+    'uses'       => 'ProfileController@getProfileSettings',
+    'as'         => 'edit-profile',
+    'middleware' => ['auth'],
+]);
+
+Route::post('/profile/edit', [
+    'uses' => 'ProfileController@updateProfileSettings',
+    'as'   => 'post-profile',
+]);
+
+Route::post('/avatar/setting', [
+    'uses'       => 'ProfileController@postAvatarSetting',
+    'as'         => 'post-avatar',
+    'middleware' => ['auth'],
+]);
+
+Route::get('/profile/changepassword', [
+    'uses'       => 'ProfileController@getChangePassword',
+    'as'         => 'changepassword',
+    'middleware' => ['auth'],
+]);
+
+Route::post('/profile/changepassword', [
+    'uses' => 'ProfileController@postChangePassword',
+    'as'   => 'post-changepassword',
+]);

@@ -89,9 +89,9 @@
                     </div>
                 </div>
             </div>
-            @endif
+            @else
 
-            @if ( Auth::check())
+            
             <div class="navbar navbar-default navbar-top">
                 <div class="container">
                     <div class="navbar-header">
