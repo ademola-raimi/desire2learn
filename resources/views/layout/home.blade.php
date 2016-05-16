@@ -10,7 +10,7 @@
 <div class="container">
 	<div class="full-size-container-content  bottom-space  ">
 		<div id="overlay-image">
-			<img src="{{ URL::asset('images/hero-image.jpg') }}" class="img-responsive" alt="Responsive image">
+			<img src="{!! load_asset('images/hero-image.jpg') !!}" class="img-responsive" alt="Responsive image">
 		</div>
 	</div>
 

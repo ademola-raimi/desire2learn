@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <a href="/"><img src="{{ URL::asset('images/logo.png') }}" class="img-responsive logo" /></a>
+      <a href="/"><img src="{!! load_asset('images/logo.png') !!}" class="img-responsive logo" /></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
