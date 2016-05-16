@@ -14,19 +14,17 @@ Route::get('/', [
 Route::get('/signup', [
 	'uses' => 'Auth\AuthController@getRegister',
     'as'   => 'register',
-    'middleware' => ['guest']
 ]);
 
 Route::post('signup/new', [
 	'uses' => 'Auth\AuthController@postRegister',
 	'as'   => 'create-new-user',
-    'middleware' => ['auth']
+    'middleware' => ['guest']
 ]);
 
 Route::get('/login', [
 	'uses' => 'Auth\AuthController@getLogin',
     'as'   => 'login',
-    'middleware' => ['guest']
 ]);
 
 Route::post('/login/user', [

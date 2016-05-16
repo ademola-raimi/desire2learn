@@ -107,7 +107,7 @@
                         <!-- Start Navigation List -->
                         <ul class="nav navbar-nav navbar-right">
                              <li id="user-avatar" style="margin-left:20px;">
-                                <a href="#"><img src="{{ Auth::user()->avatar_url }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
+                                <a href="#"><img src="{{ Auth::user()->avatar }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
                             </li>
                            
                         
