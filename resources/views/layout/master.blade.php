@@ -27,7 +27,7 @@
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{!! load_asset('font-awesome/css/font-awesome.min.css') !!}">
-    <link href="{!! load_asset ('/sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
+    <link href="{!! load_asset ('sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
 
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="{!! load_asset('css/owl.carousel.css') !!}">
@@ -64,7 +64,11 @@
     <script src="{!! load_asset('js/styleswitcher.js') !!}"></script>
     <script src="{!! load_asset('js/map.js') !!}"></script>
     <script src="{!! load_asset('js/map.js') !!}"></script>
-    
+    <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
+
+   
+    @include('sweet::alert')
+
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="assets/js/script.js"></script> 
 

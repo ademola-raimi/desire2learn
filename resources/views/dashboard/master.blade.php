@@ -83,6 +83,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="{!! load_asset('js/styleswitcher.js') !!}"></script>
     <script src="{!! load_asset('js/map.js') !!}"></script>
     <script src="{!! load_asset('js/map.js') !!}"></script>
+    <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
+   
+    @include('sweet::alert')
     
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="assets/js/script.js"></script> 

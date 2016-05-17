@@ -17,7 +17,8 @@
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "sendgrid/sendgrid": "~4.0",
-        "laravel/socialite": "~2.0"
+        "laravel/socialite": "~2.0",
+        "uxweb/sweet-alert": "~1.1"
     },
     "autoload": {
         "classmap": [

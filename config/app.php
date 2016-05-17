@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -206,6 +207,7 @@ return [
 
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
     ],
 
 ];

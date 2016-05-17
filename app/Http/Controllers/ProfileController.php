@@ -52,7 +52,16 @@ class ProfileController extends Controller
         	'email'     => $request->email,
         ]);
 
-        return redirect()->route('edit-profile')->with('status', 'You have successfully updated your profile.');
+        if ($updateUser) {
+
+            alert()->success('You have successfully updated your profile', 'Success');
+
+            return redirect()->route('edit-profile');
+        } else {
+            alert()->error('Something went wrong', 'Error');
+
+            return redirect()->route('edit-profile');
+        }    
     }
 
     /**
@@ -70,9 +79,17 @@ class ProfileController extends Controller
         Cloudder::upload($img, null);
         $imgurl = Cloudder::getResult()['url'];
 
-        $this->userRepository->findUser(Auth::user()->id)->updateAvatar($imgurl);
+        $updateAvatar = $this->userRepository->findUser(Auth::user()->id)->updateAvatar($imgurl);
 
-        return redirect()->route('edit-profile')->with('status', 'Avatar updated successfully.');
+        if ($updateAvatar) {
+            alert()->success('Avatar updated successfully', 'Success');
+
+            return redirect()->route('edit-profile');
+        } else {
+            alert()->error('Something went wrong', 'Error');
+
+            return redirect()->route('edit-profile');
+        }
     }
 
     public function getChangePassword()

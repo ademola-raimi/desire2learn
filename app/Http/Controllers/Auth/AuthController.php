@@ -3,6 +3,7 @@
 namespace Desire2Learn\Http\Controllers\Auth;
 
 use Auth;
+use Alert;
 use Validator;
 use Socialite;
 use Desire2Learn\User;
@@ -62,17 +63,19 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required',
+            'email'    => 'required',
             'password' => 'required'
         ]);
 
         $authStatus = Auth::attempt($request->only(['email', 'password']), $request->has('remember'));
 
         if (!$authStatus) {
-            return redirect()->back()->with('info', 'Invalid Email or Password');
+            Alert::error('Invalid email or Password', 'Error');
+            return redirect()->back();
         }
 
-        return redirect()->intended('/')->with('info', 'You are now signed in');
+        alert()->success('You are now signed in', 'Success');
+        return redirect()->intended('/');
     }
 
     /**
@@ -98,9 +101,9 @@ class AuthController extends Controller
             'avatar' => null
         ]);
 
-        dd(Auth::user());
+        alert()->success('Your account has been created and you can now sign in', 'sUccess');
 
-        return redirect()->route('index')->with('Info', 'Your account has been created and you can now sign in');
+        return redirect()->route('index');
     }
 
     /**
@@ -111,7 +114,8 @@ class AuthController extends Controller
     public function logOut()
     {
         Auth::logout();
+        alert()->success('You have successully log out from your account', 'Good bye!');
 
-        return redirect()->route('index')->with('Info', 'You have successully log out from your account');
+        return redirect()->route('index');
     }
 }

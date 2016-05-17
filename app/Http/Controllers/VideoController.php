@@ -6,9 +6,15 @@ use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
+use Desire2Learn\Http\Repository\VideoRepository;
 
 class VideoController extends Controller
 {
+    public function __construct()
+    {
+        $this->userRepository = new VideoRepository();
+    }
+
     public function createVideo()
     {
     	$categories = Category::all();
@@ -32,10 +38,13 @@ class VideoController extends Controller
         ]);
 
         if ($videoUpload) {
-        	return redirect()->route('dashboard.index')->withInfo('Video uploaded successfully');
+            alert()->success('Video uploaded successfully', 'success');
+
+        	return redirect()->route('dashboard.index');
     	}
     	else {
-    		return redirect()->back()->withInfo('Video upload failed');
+            alert()->success('Video upload failed', 'success');
+    		return redirect()->back();
     	}
     }
 }
