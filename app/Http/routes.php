@@ -11,7 +11,7 @@ Route::get('/', [
     'as'   => 'index',
 ]);
 
-Route::get('/signup', [
+Route::get('signup', [
 	'uses' => 'Auth\AuthController@getRegister',
     'as'   => 'register',
 ]);
@@ -22,18 +22,18 @@ Route::post('signup/new', [
     'middleware' => ['guest']
 ]);
 
-Route::get('/login', [
+Route::get('login', [
 	'uses' => 'Auth\AuthController@getLogin',
     'as'   => 'login',
 ]);
 
-Route::post('/login/user', [
+Route::post('login/user', [
 	'uses' => 'Auth\AuthController@postLogin',
     'as'   => 'post-login',
     'middleware' => ['guest']
 ]);
 
-Route::get('/logout', [
+Route::get('logout', [
     'uses' => 'Auth\AuthController@logOut',
     'as'   => 'logout'
 ]);
@@ -50,14 +50,24 @@ Route::group(['prefix' => 'dashboar'], function () {
         'as'   => 'dashboard.index',
     ]);
 
-    Route::get('/video/create', [
+    Route::get('video/create', [
         'uses' => 'VideoController@createVideo',
         'as'   => 'create.video',
     ]);
 
-    Route::post('/video/create', [
+    Route::post('video/create', [
         'uses' => 'VideoController@postVideo',
         'as'   => 'post.video',
+    ]);
+
+    Route::get('category/create', [
+        'uses' => 'CategoryController@createCategory',
+        'as'   => 'create.category',
+    ]);
+
+    Route::post('category/create', [
+        'uses' => 'CategoryController@postCategory',
+        'as'   => 'post.category',
     ]);
 
 });
@@ -67,30 +77,33 @@ Route::group(['prefix' => 'dashboar'], function () {
 | profile Routes- index
 |--------------------------------------------------------------------------
 */
-Route::get('/profile/edit', [
-    'uses'       => 'ProfileController@getProfileSettings',
-    'as'         => 'edit-profile',
-    'middleware' => ['auth'],
-]);
+Route::group(['prefix' => 'profile'], function () {
+    
+    Route::get('edit', [
+        'uses'       => 'ProfileController@getProfileSettings',
+        'as'         => 'edit-profile',
+        'middleware' => ['auth'],
+    ]);
 
-Route::post('/profile/edit', [
-    'uses' => 'ProfileController@updateProfileSettings',
-    'as'   => 'post-profile',
-]);
+    Route::post('edit', [
+        'uses' => 'ProfileController@updateProfileSettings',
+        'as'   => 'post-profile',
+    ]);
 
-Route::post('/avatar/setting', [
-    'uses'       => 'ProfileController@postAvatarSetting',
-    'as'         => 'post-avatar',
-    'middleware' => ['auth'],
-]);
+    Route::post('/avatar/setting', [
+        'uses'       => 'ProfileController@postAvatarSetting',
+        'as'         => 'post-avatar',
+        'middleware' => ['auth'],
+    ]);
 
-Route::get('/profile/changepassword', [
-    'uses'       => 'ProfileController@getChangePassword',
-    'as'         => 'changepassword',
-    'middleware' => ['auth'],
-]);
+    Route::get('changepassword', [
+        'uses'       => 'ProfileController@getChangePassword',
+        'as'         => 'changepassword',
+        'middleware' => ['auth'],
+    ]);
 
-Route::post('/profile/changepassword', [
-    'uses' => 'ProfileController@postChangePassword',
-    'as'   => 'post-changepassword',
-]);
+    Route::post('changepassword', [
+        'uses' => 'ProfileController@postChangePassword',
+        'as'   => 'post-changepassword',
+    ]);
+});

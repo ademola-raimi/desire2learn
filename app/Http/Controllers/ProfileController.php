@@ -72,16 +72,15 @@ class ProfileController extends Controller
         $this->validate($request, [
             'avatar' => 'required',
         ]);
-        
 
         $img = $request->file('avatar');
         
         Cloudder::upload($img, null);
         $imgurl = Cloudder::getResult()['url'];
+       
+        $updateAvatar = User::where(Auth::user()->id)->updateAvatar($imgurl);
 
-        $updateAvatar = $this->userRepository->findUser(Auth::user()->id)->updateAvatar($imgurl);
-
-        if ($updateAvatar) {
+        if ($imgurl) {
             alert()->success('Avatar updated successfully', 'Success');
 
             return redirect()->route('edit-profile');
