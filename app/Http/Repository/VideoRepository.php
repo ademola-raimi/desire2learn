@@ -4,7 +4,7 @@ namespace desire2learn\Http\Repository;
 
 use desire2learn\User;
 
-class UserRepository
+class VideoRepository
 {
 
     /**

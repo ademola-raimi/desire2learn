@@ -56,11 +56,15 @@
                       <legend>Select Category</legend>
                       
                          <label for="category">Video Category</label>
-                         <select class = "form-control" name="category" type="text" value="{{ old('category') }}">
-                           <option value = "1">PHP</option>
-                           <option value = "2">LARAVEL</option>
-                           <option value = "3">JAVASCRIPT</option>
-                           <option value = "4">JAVA</option>
+                         @foreach($categories as $category)
+                         <select class = "form-control" name="category" value="{{ $category->id }}">
+                           <option value="" >Video Category</option>
+                            
+                         
+                           <option value="{{ $category->id }}">{{$category->icon}} {{ $category->name }}</option>
+                        
+                        @endforeach
+                    
                          </select>
                 
                    </fieldset>
