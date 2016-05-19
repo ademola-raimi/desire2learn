@@ -16,13 +16,13 @@ class CategoryController extends Controller
     public function postCategory(Request $request)
     {
     	$this->validate($request, [
-            'name'       => 'required|unique:categories,name',
-            'icon'         => 'required|unique:categories,icon',
+            'name' => 'required|unique:categories,name',
+            'icon' => 'required|unique:categories,icon',
         ]);
 
         $categoryUpload = Category::create([
-            'name'       => $request['name'],
-            'icon'         => $request['icon'],
+            'name' => $request['name'],
+            'icon' => $request['icon'],
         ]);
 
         if ($categoryUpload) {
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     	}
     	else {
             alert()->success('Category upload failed', 'success');
-            
+
     		return redirect()->back();
     	}
     }

@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'last_name', 'first_name', 'email', 'password', 'avatar_url'
+        'username', 'last_name', 'first_name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -24,29 +24,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
+     /**
      * Get the avatar from gravatar.
+     *
      * @return string
      */
     private function getAvatarFromGravatar()
     {
-        return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim(env('GRAVAR_EMAIL')))).'?d=mm&s=500';
+        return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mm&s=500';
     }
 
     /**
      * Get avatar from the model.
+     *
      * @return string
      */
     public function getAvatar()
     {
-        return (! is_null($this->avatar)) ? $this->avatar : $this->getAvatarFromGravatar();
-    }
-
-    //upload custom avatar
-    public function updateAvatar($img)
-    {
-        $this->avatar = $img;
-        $this->save();
+        return $this->getAvatarFromGravatar();
     }
 
     public function videos()

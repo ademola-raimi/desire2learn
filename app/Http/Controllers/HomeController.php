@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-    	$video = Video::all();
+    	$video = Video::paginate(9);
 
     	return view('layout.home', compact('video', 'user'));
     }

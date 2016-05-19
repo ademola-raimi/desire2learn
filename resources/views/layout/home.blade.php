@@ -34,9 +34,11 @@
 
 	<div class="col-sm-9 sidebar">
 		<div class="container">
-			<div class="row">
-				@foreach ($video as $videos)
-					<div class="col-sm-4">
+				@foreach ($video->chunk(3) as $chunk)
+				<div class="row">
+				@foreach ($chunk as $videos)
+				
+					<div class="col-sm-3">
 						<div class="card-deck-wrapper">
 							<div class="card-deck sidebar-inner">
 
@@ -57,9 +59,14 @@
 							</div>
 						</div>
 					</div>
+					@endforeach
+					</div>
+
 				@endforeach
 			</div>
-		</div>
+		<div class="button-details">
+                   {!! $video->render() !!}
+        </div> 
 	</div>
 </div>
 <!-- End Body Section -->

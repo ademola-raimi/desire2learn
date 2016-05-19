@@ -61,8 +61,6 @@
                          <option value="" >Video Category</option>
                             @foreach($categories as $category)
                            
-                            
-                         
                            <option value="{{ $category->id }}">{{$category->icon}} {{ $category->name }}</option>
                          @endforeach
                          </select>

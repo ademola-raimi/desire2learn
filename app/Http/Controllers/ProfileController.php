@@ -78,8 +78,6 @@ class ProfileController extends Controller
         Cloudder::upload($img, null);
         $imgurl = Cloudder::getResult()['url'];
        
-        $updateAvatar = User::where(Auth::user()->id)->updateAvatar($imgurl);
-
         if ($imgurl) {
             alert()->success('Avatar updated successfully', 'Success');
 

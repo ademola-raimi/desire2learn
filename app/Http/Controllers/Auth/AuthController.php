@@ -98,10 +98,12 @@ class AuthController extends Controller
             'first_name' => $request['first_name'],
             'email'      => $request['email'],
             'password'   => bcrypt($request['password']),
-            'avatar' => null
+            'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
         alert()->success('Your account has been created and you can now sign in', 'success');
+
+        Auth::attempt($request->only(['username', 'password']));
 
         return redirect()->route('index');
     }
