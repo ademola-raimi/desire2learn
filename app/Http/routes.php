@@ -107,3 +107,22 @@ Route::group(['prefix' => 'profile'], function () {
         'as'   => 'post-changepassword',
     ]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| video Routes- index
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'video'], function () {
+    Route::get('/', [
+        'uses' => 'VideoController@getAllVideos',
+        'as'   => 'all-videos',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::get('{id}', [
+        'uses' => 'VideoController@showVideo',
+        'as'   => 'show_video',
+        'middleware' => ['auth'],
+    ]);
+});

@@ -56,16 +56,17 @@
                       <legend>Select Category</legend>
                       
                          <label for="category">Video Category</label>
-                         @foreach($categories as $category)
-                         <select class = "form-control" name="category" value="{{ $category->id }}">
-                           <option value="" >Video Category</option>
+                         
+                         <select class = "form-control" name="category">
+                         <option value="" >Video Category</option>
+                            @foreach($categories as $category)
+                           
                             
                          
                            <option value="{{ $category->id }}">{{$category->icon}} {{ $category->name }}</option>
-                        
-                        @endforeach
-                    
+                         @endforeach
                          </select>
+
                 
                    </fieldset>
                     @if ($errors->has('category'))
@@ -74,7 +75,7 @@
                         </span>
                     @endif
                 </div>
-               
+                
             
                 
 

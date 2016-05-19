@@ -48,6 +48,11 @@ class User extends Authenticatable
         $this->avatar = $img;
         $this->save();
     }
+
+    public function videos()
+    {
+        return $this->hasMany('Desire2Learn\Video');
+    }
 }
 
 

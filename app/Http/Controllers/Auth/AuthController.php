@@ -101,7 +101,7 @@ class AuthController extends Controller
             'avatar' => null
         ]);
 
-        alert()->success('Your account has been created and you can now sign in', 'sUccess');
+        alert()->success('Your account has been created and you can now sign in', 'success');
 
         return redirect()->route('index');
     }

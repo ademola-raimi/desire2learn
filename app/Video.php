@@ -23,4 +23,14 @@ class Video extends Model
         return $this->belongsTo('Desire2Learn\User');
     }
 
+    /**
+     * A video belongs to many categories
+     *
+     * @return Object.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('Desire2Learn\Category')->withTimestamps();
+    }
+
 }

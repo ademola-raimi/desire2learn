@@ -32,6 +32,7 @@ class CategoryController extends Controller
     	}
     	else {
             alert()->success('Category upload failed', 'success');
+            
     		return redirect()->back();
     	}
     }

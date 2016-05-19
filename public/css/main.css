@@ -40,6 +40,15 @@ footer {
   vertical-align: middle;
 }
 
+/*.word-adjust {
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+*/
 /*
 # topnavbar Styles
 ===============================================
