@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = [
-        'name'
+        'name', 
+        'icon', 
+        'user_id',
     ];
     /**
      * A Category belongs to many videos

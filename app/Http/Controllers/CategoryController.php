@@ -21,8 +21,9 @@ class CategoryController extends Controller
         ]);
 
         $categoryUpload = Category::create([
-            'name' => $request['name'],
-            'icon' => $request['icon'],
+            'name'    => $request['name'],
+            'icon'    => $request['icon'],
+            'user_id' => auth()->user()->id,
         ]);
 
         if ($categoryUpload) {

@@ -12,7 +12,7 @@
     <div class="overlay">
         <div class="container">
 	        <div class="intro-text">
-                <h1>Welcome To The <span>Desire2Learn</span></h1>
+                <h1>Welcome To <span>Desire2Learn</span></h1>
                 <p>Learning is not attained by chance, It must be sought for with ardor and attended with deligence <br> Dive in to get started</p>
                 
                 @if (! Auth::check())
@@ -44,16 +44,16 @@
 
 							    <div class="card">
 								    
-								     <a href="{{ route('show_video', ['id' => $videos->id]) }}">
-						                     <img class="video-iframe" src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
+								    <a href="{{ route('show_video', ['id' => $videos->id]) }}">
+						                 <img class="video-iframe" src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 
-						             </a>
+						            </a>
 
-								      <div class="card-block">
+								    <div class="card-block">
 								        <a class="card-title" style="max-width: -2%; overflow: hidden; text-overflow: ellipsis;" href="{{ route('show_video', ['id' => $videos->id]) }}">{{ $videos->title }}</a>
 								        <p class="card-text">Creator: {{ $videos->user->first_name }} {{ $videos->user->last_name }} </p>
 								        <p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($videos->created_at))->diffForHumans() }}</p>
-								      </div>
+								    </div>
 								     
 							    </div>
 							</div>
@@ -65,7 +65,7 @@
 				@endforeach
 			</div>
 		<div class="button-details">
-                   {!! $video->render() !!}
+            {!! $video->render() !!}
         </div> 
 	</div>
 </div>

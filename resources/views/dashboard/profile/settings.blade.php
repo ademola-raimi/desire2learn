@@ -79,9 +79,9 @@
                     <div class="form-group">
                         <input id="avatar" type="file" class="validate" name="avatar">
                    </div>
-                   @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
+                   @if ($errors->has('avatar'))
+                        <span style="color: red;" class="help-block">
+                            <strong>{{ $errors->first('avatar') }}</strong>
                         </span>
                     @endif
                    <div class="form-group">

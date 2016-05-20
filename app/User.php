@@ -48,6 +48,16 @@ class User extends Authenticatable
     {
         return $this->hasMany('Desire2Learn\Video');
     }
+
+    /**
+     * Define roles table relationship
+     *
+     * @return object
+     */
+    public function role()
+    {
+        return $this->belongsTo('Desire2Learn\Role');
+    }
 }
 
 
