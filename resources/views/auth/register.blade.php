@@ -86,17 +86,17 @@
           </div>
           <div class="row">
                 <div class="col-xs-12 col-md-4">
-                    <a href="{{ url('/auth/facebook') }}" class="btn btn-md btn-primary btn-block btn-social btn-facebook">
+                    <a href="{{ url('/facebook') }}" class="btn btn-md btn-primary btn-block btn-social btn-facebook">
                         <i class="fa fa-facebook"></i> Facebook
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <a href="{{ url('/auth/twitter') }}" class="btn btn-md btn-block btn-social btn-twitter">
+                    <a href="{{ url('/twitter') }}" class="btn btn-md btn-block btn-social btn-twitter">
                         <i class="fa fa-twitter"></i> Twitter
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                  <a href="{{ url('/auth/github') }}" class="btn btn-md btn-block btn-social btn-github">
+                  <a href="{{ url('/github') }}" class="btn btn-md btn-block btn-social btn-github">
                         <i class="fa fa-github"></i> Github
                   </a>
                 </div>

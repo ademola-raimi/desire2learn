@@ -3,6 +3,7 @@
 namespace desire2learn\Http\Repository;
 
 use desire2learn\User;
+use Auth;
 
 class UserRepository
 {

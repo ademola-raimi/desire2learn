@@ -126,3 +126,13 @@ Route::group(['prefix' => 'video'], function () {
         'middleware' => ['auth'],
     ]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| social login 
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => '/{provider}', 'middleware' => ['web']], function () {
+    Route::get('/', 'Auth\OauthController@redirectToProvider');
+    Route::get('/callback', 'Auth\OauthController@handleProviderCallback');
+});
