@@ -21,9 +21,6 @@
     <link href="{!! load_asset('css/main.css') !!}" rel="stylesheet">
 
     <!-- Bootstrap CSS  -->
-    <!-- <link rel="stylesheet" href="{!! load_asset('bootstrap-4/dist/css/bootstrap.min.css') !!}" rel="stylesheet" type="type/css">
-    <link rel="stylesheet" href="{!! load_asset('bootstrap-4/dist/js/bootstrap.min.js') !!}" rel="stylesheet" type="type/js"> -->
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" /> -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 

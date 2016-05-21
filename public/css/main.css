@@ -40,15 +40,6 @@ footer {
   vertical-align: middle;
 }
 
-/*.word-adjust {
-  float: left;
-  height: 50px;
-  line-height: 50px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-*/
 /*
 # topnavbar Styles
 ===============================================
@@ -62,4 +53,15 @@ footer {
 #menu-login {
     background-color: #E87511;
     margin: 15px 20px;
+}
+
+.top-search form input[type="submit"] {
+    background: url(../dashboard/images/9.png) no-repeat 0px 0px !important;
+    width: 18px !important;
+    height: 18px !important;
+    border: none !important;
+    position: absolute !important;
+    outline: none !important;
+    top: 16px;
+    right: 10px;
 }

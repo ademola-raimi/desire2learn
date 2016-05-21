@@ -43,7 +43,7 @@ Route::get('logout', [
 | Dashboard Routes- index
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'dashboar'], function () {
+Route::group(['prefix' => 'dashboar', 'middleware' => ['auth']], function () {
 
     Route::get('/', [
         'uses' => 'DashboardController@index',

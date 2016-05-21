@@ -33,6 +33,7 @@ body {
 .sidebar {
   display: none;
 }
+
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
@@ -103,3 +104,65 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.font-tang {
+  font-family: tangerineRegular;
+  color: #21DEEF;
+  font-size:400%;
+}
+
+@font-face {
+  font-family: tangerineRegular;
+  src: url("../fonts/tangerine/Tangerine_Bold.ttf");
+}
+
+.display-1 {
+    font-size: 6rem;
+    font-weight: 300;
+}
+
+.text-uppercase {
+    text-transform: uppercase!important;
+}
+
+.bg-success {
+    color: #fff!important;
+    background-color: #ff432e!important;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card-success {
+    background-color: #ff432e;
+    border-color: #5cb85c;
+}
+
+.card {
+    position: relative;
+    display: block;
+    margin-bottom: .75rem;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: .25rem;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.card-block .rotate {
+    z-index: 8;
+    float: right;
+}
+
+.card-block .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+}    

@@ -68,6 +68,12 @@
                     
                      <ul class="nav navbar-nav navbar-right">
                      @if (! Auth::check())
+                     <li class="top-search">
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="submit" value=" ">
+                </form>
+            </li>
                         <li>
                             <a class="active" href="/">Home</a>
                         </li>
@@ -83,28 +89,20 @@
                     @else
                      
                     <!-- End Navigation List -->
-                        <li id="user-avatar" style="margin-left:20px;">
-                            <a href="#"><img src="{{ Auth::user()->avatar }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
-
+                    <li class="top-search">
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="submit" value=" ">
+                </form>
+            </li>
+                        <li>
+                            {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
                         </li>
-
-                        <li id="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ route('edit-profile') }}">
-                                        <i class="fa fa-btn fa-user"></i> {{ Auth::user()->username }}'{{ substr(Auth::user()->username, -1) == 's' ? '' : 's' }} profile
-                                    </a>
-                                </li>
-                                <li role="separator" id="divider"></li>   
-                                <li><a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-btn fa-sign-out"></i>Dashboard</a></li> 
-                                
-                            </ul>
-                        </li>   
+                        <li></li>  
+                        <li><a class="btn" href="{{ route('logout') }}">Logout</a>
+                        <li><a class="btn" href="{{ route('dashboard.index') }}">Dashboard</a>
+                        
+                    
                         </ul>     
                     @endif
              
