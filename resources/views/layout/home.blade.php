@@ -14,7 +14,7 @@
 				@if (! Auth::check())
 				<a href="{{ route('register') }}" class="page-scroll btn btn-primary">Register</a>
 				@else
-				<a href="{{ route('dashboard.index') }}" class="page-scroll btn btn-primary">Dashboard</a>
+				<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary">Dashboard</a>
 				@endif
 			</div>
 			
@@ -43,8 +43,8 @@
 									<img class="video-iframe" src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 								</a>
 								<div class="card-block">
-									<a class="card-title" style="max-width: -2%; overflow: hidden; text-overflow: ellipsis;" href="{{ route('show_video', ['id' => $videos->id]) }}">{{ $videos->title }}</a>
-									<p class="card-text">Creator: {{ $videos->user->first_name }} {{ $videos->user->last_name }} </p>
+									<a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="{{ route('show_video', ['id' => $videos->id]) }}">{{ $videos->title }}</a>
+									<p class="card-text">Creator: {{ $videos->user->username }}</p>
 									<p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($videos->created_at))->diffForHumans() }}</p>
 								</div>
 								

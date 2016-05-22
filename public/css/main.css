@@ -65,3 +65,17 @@ footer {
     top: 16px;
     right: 10px;
 }
+
+a:hover { 
+    background-color: white; !important;
+}
+
+/*
+# show-video Styles
+===============================================
+*/
+.video-detail {
+  background-color: #F3F4F5;
+  color:#F3F4F5;
+  padding:5px;
+}

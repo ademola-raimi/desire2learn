@@ -165,4 +165,10 @@ body {
     right: -10px;
     bottom: 0;
     display: block;
-}    
+}
+
+.img-circle {
+    border-radius: 50%;
+    height: 150;
+    width: 30%;
+}

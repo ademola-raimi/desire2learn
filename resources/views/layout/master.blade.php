@@ -51,7 +51,8 @@
 
     @yield('content')
     
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
     <script src="{!! load_asset('js/jquery-2.1.3.min.js') !!}"></script>
     <script src="{!! load_asset('js/jquery-migrate-1.2.1.min.js') !!}"></script>
     <script src="{!! load_asset('bootstrap/js/bootstrap.min.js') !!}"></script>
@@ -74,11 +75,15 @@
     <script src="assets/js/script.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function(){
-             $('.dropdown-toggle').dropdown()
-        });
+        $('.dropdown').dropdown('toggle')
        
     </script> 
+    <script type="text/javascript">
+    // $('.dropdown').click(function(event){
+    //     $('.dropdown').removeClass('close');
+    //     $('.dropdown').addClass('open');
+    // });
+</script>
 
 </body>
 </html>

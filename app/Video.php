@@ -33,4 +33,14 @@ class Video extends Model
         return $this->belongsToMany('Desire2Learn\Category')->withTimestamps();
     }
 
+    /**
+     * Each episode has many likes
+     *
+     * @return object
+     */
+    public function likes()
+    {
+        return $this->hasMany('Desire2Learn\Like');
+    }
+
 }

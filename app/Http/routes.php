@@ -43,11 +43,11 @@ Route::get('logout', [
 | Dashboard Routes- index
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'dashboar', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
-    Route::get('/', [
+    Route::get('index', [
         'uses' => 'DashboardController@index',
-        'as'   => 'dashboard.index',
+        'as'   => 'dashboard.home',
     ]);
 
     Route::get('video/create', [
@@ -64,6 +64,11 @@ Route::group(['prefix' => 'dashboar', 'middleware' => ['auth']], function () {
         'uses' => 'CategoryController@createCategory',
         'as'   => 'create.category',
     ]);
+
+    // Route::post('category/icon', [
+    //     'uses' => 'CategoryController@postIcon',
+    //     'as'   => 'post.icon',
+    // ]);
 
     Route::post('category/create', [
         'uses' => 'CategoryController@postCategory',
@@ -136,3 +141,13 @@ Route::group(['prefix' => '/{provider}', 'middleware' => ['web']], function () {
     Route::get('/', 'Auth\OauthController@redirectToProvider');
     Route::get('/callback', 'Auth\OauthController@handleProviderCallback');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Like  
+|--------------------------------------------------------------------------
+*/
+Route::post('/like', [
+    'uses' => 'LikeController@postLikePost',
+    'as' => 'like'
+]);

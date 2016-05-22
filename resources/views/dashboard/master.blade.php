@@ -31,7 +31,7 @@
 
     
     <!-- Custom Theme files -->
-    <link href="{!! load_asset('sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
+   <link href="{!! load_asset ('sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
     <!--start-smoth-scrolling-->
     <!-- fonts -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -80,6 +80,8 @@
    
     @include('sweet::alert')
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="assets/js/script.js"></script> 
 

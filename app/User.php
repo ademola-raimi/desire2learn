@@ -41,7 +41,22 @@ class User extends Authenticatable
      */
     public function getAvatar()
     {
-        return $this->getAvatarFromGravatar();
+        if (!is_null($this->avatar)) { 
+            return $this->avatar;
+        } else {
+            return $this->getAvatarFromGravatar();
+        }
+    }
+
+    /**
+     * Update user avatar
+     *
+     * return void
+     */
+    public function updateAvatar($url)
+    {
+        $this->avatar = $url;
+        $this->save();
     }
 
     public function videos()
@@ -57,6 +72,16 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo('Desire2Learn\Role');
+    }
+
+     /**
+     * Define likes table relationship
+     *
+     * @return object
+     */
+     public function likes()
+    {
+        return $this->hasMany('Desire2Learn\Like');
     }
 }
 

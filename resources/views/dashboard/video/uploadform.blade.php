@@ -61,7 +61,10 @@
                          <option value="" >Video Category</option>
                             @foreach($categories as $category)
                            
-                           <option value="{{ $category->id }}">{{$category->icon}} {{ $category->name }}</option>
+                           <option value="{{ $category->id }}"> 
+                                <img src="$category->icon">
+                               {{ $category->name }}
+                           </option>
                          @endforeach
                          </select>
 

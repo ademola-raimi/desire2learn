@@ -4,19 +4,14 @@ namespace Desire2Learn\Http\Controllers;
 
 use Auth;
 use Hash;
+use Alert;
 use Cloudder;
 use Desire2Learn\User;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
-use Desire2Learn\Http\Repository\UserRepository;
 
 class ProfileController extends Controller
 {
-	public function __construct()
-	{
-		$this->userRepository = new UserRepository();
-	}
-
     /**
      * Gets profile update page.
      *
@@ -54,7 +49,7 @@ class ProfileController extends Controller
 
         if ($updateUser) {
 
-            alert()->success('You have successfully updated your profile', 'Success');
+            Alert::success('You have successfully updated your profile', 'Success');
 
             return redirect()->route('edit-profile');
         } else {
@@ -77,8 +72,9 @@ class ProfileController extends Controller
         
         Cloudder::upload($img, null);
         $imgurl = Cloudder::getResult()['url'];
-       
-        if ($imgurl) {
+
+        $updateImgurl = User::find(Auth::user()->id)->updateAvatar($imgurl);
+        if ($updateImgurl) {
             alert()->success('Avatar updated successfully', 'Success');
 
             return redirect()->route('edit-profile');

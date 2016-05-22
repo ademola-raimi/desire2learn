@@ -49,7 +49,7 @@ class VideoController extends Controller
 
         alert()->success('Video uploaded successfully', 'success');
 
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.home');
             
     }
 
