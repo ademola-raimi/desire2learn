@@ -2,37 +2,40 @@
 
 namespace Desire2Learn\Http\Controllers;
 
+use Auth;
 use Desire2Learn\Like;
 use Desire2Learn\Video;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
+// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LikeController extends Controller
 {
-	public function postLikePost(Request $request)
+	public function postLikeVideo(Request $request, $video_id)
     {
-        $video_id = $request['VideoId'];
-        $is_like = $request['isLike'] === 'true';
+        $videoId = $video_id;
+        $isLike = $request['isLike'] === 'true';
         $update = false;
-        $post = Post::find($video_id);
-        if (!$post) {
+        $video = Video::find($videoId);
+        if (!$video) {
             return null;
         }
         $user = Auth::user();
-        $like = $user->likes()->where('video_id', $video_id)->first();
+        $like = $user->likes()->where('video_id', $videoId)->first();
         if ($like) {
-            $already_like = $like->like;
+            $alreadyLike = $like->like;
             $update = true;
-            if ($already_like == $is_like) {
+            if ($alreadyLike == $isLike) {
                 $like->delete();
                 return null;
             }
         } else {
             $like = new Like();
         }
-        $like->like = $is_like;
+        $like->like = $isLike;
         $like->user_id = $user->id;
-        $like->video_id = $post->id;
+        $like->video_id = $video->id;
         if ($update) {
             $like->update();
         } else {

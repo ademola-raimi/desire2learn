@@ -21,30 +21,44 @@
 					<ul class="list-inline">
 						<li>
 							<a type="button" class="btn btn-primary btn-sm views">
-							<i class="fa fa-eye"> {{ $video->views }}  </i>
+								<i class="fa fa-eye"> {{ $video->views }}  </i>
 							</a>
 						</li>
 						<li><a type="button" class="btn btn-primary btn-sm comments"> <i class="fa fa-comment"> {{ count($video->comments) }}</i></a>
-						</li>
-						<li>
-							<a type="button" class="btn btn-primary btn-sm like" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}" data-fav="{{ $video->favourites }}">
+					</li>
+					@if (! Auth::check())
+					<li>
+						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}">
 							<i class="fa fa-thumbs-up"> {{ count($video->likes) }} </i>
-							</a>
-						</li>
-						<li>
-							<a type="button" class="btn btn-primary btn-sm like" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}" data-fav="{{ $video->favourites }}">
+						</a>
+					</li>
+					<li>
+						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}">
 							<i class="fa fa-thumbs-down"> {{ count($video->likes) }} </i>
-							</a>
-						</li>
-					</ul>
-					<hr>
-					<h6>Description</h6>
+						</a>
+					</li>
+					@else
 					
-					<p> {{ $video->description }} </p>
-				</div>
+					<li>
+						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}">
+							<i class="fa fa-thumbs-up"> {{ count($video->likes->where('like', 1)) }} </i>
+						</a>
+					</li>
+					<li>
+						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}">
+							<i class="fa fa-thumbs-down"> {{ count($video->likes->where('like', 0)) }} </i>
+						</a>
+					</li>
+					@endif
+				</ul>
+				<hr>
+				<h6>Description</h6>
+				
+				<p> {{ $video->description }} </p>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <!-- Start Footer Section -->

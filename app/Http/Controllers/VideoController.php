@@ -2,6 +2,7 @@
 
 namespace Desire2Learn\Http\Controllers;
 
+use Desire2Learn\Like;
 use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;

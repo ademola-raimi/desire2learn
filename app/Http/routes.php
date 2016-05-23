@@ -122,13 +122,11 @@ Route::group(['prefix' => 'video'], function () {
     Route::get('/', [
         'uses' => 'VideoController@getAllVideos',
         'as'   => 'all-videos',
-        'middleware' => ['auth'],
     ]);
 
     Route::get('{id}', [
         'uses' => 'VideoController@showVideo',
         'as'   => 'show_video',
-        'middleware' => ['auth'],
     ]);
 });
 
@@ -147,7 +145,7 @@ Route::group(['prefix' => '/{provider}', 'middleware' => ['web']], function () {
 | Like  
 |--------------------------------------------------------------------------
 */
-Route::post('/like', [
-    'uses' => 'LikeController@postLikePost',
+Route::post('/video/like/{id}', [
+    'uses' => 'LikeController@postLikeVideo',
     'as' => 'like'
 ]);
