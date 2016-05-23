@@ -74,7 +74,7 @@ class User extends Authenticatable
         return $this->belongsTo('Desire2Learn\Role');
     }
 
-     /**
+    /**
      * Define likes table relationship
      *
      * @return object
@@ -82,6 +82,16 @@ class User extends Authenticatable
      public function likes()
     {
         return $this->hasMany('Desire2Learn\Like');
+    }
+
+    /**
+     * Define comment table relationship
+     *
+     * @return object
+     */
+     public function comments()
+    {
+        return $this->hasMany('Desire2Learn\Comment');
     }
 }
 

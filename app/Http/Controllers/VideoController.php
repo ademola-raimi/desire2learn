@@ -4,6 +4,7 @@ namespace Desire2Learn\Http\Controllers;
 
 use Desire2Learn\Like;
 use Desire2Learn\Video;
+use Desire2Learn\Comment;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
@@ -64,7 +65,7 @@ class VideoController extends Controller
     public function showVideo($id)
     {
         $video = Video::find($id);
-    
+        
         return view('layout.video.show-video', compact('video'));
     }
 }

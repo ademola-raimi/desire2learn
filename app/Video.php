@@ -43,4 +43,14 @@ class Video extends Model
         return $this->hasMany('Desire2Learn\Like');
     }
 
+    /**
+     * Define comment table relationship
+     *
+     * @return object
+     */
+     public function comments()
+    {
+        return $this->hasMany('Desire2Learn\Comment');
+    }
+
 }

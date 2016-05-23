@@ -56,9 +56,33 @@
 				
 				<p> {{ $video->description }} </p>
 			</div>
+			</div>
+			<section id="comments">
+                    <h6 class="section-title"><span id="count">{{ count($video->comments) }}</span> Comments</h6>
+                    @if (count($video->comments) == 0)
+                        <p class="no-coments-message">No comments for this video</p>
+                    @endif
+                    <ol class="comments-list">
+                    @foreach ($comments as $comment)
+                        <li class="comment">
+                            <article>
+                                <img src="{{ $comment->user->getAvatar() }}" alt="avatar" class="avatar" width="50px" height="50px">
+                                <div class="comment-meta">
+                                    <h6 class="author">{{ $comment->user->name }}, {{ $comment->created_at->diffForHumans() }}</h6>
+                                </div>
+                                <!-- end .comment-meta -->
+                                <div class="comment-body">
+                                    <p>{{ $comment->comment }}</p>
+                                </div>
+                                <!-- end .comment-body -->
+                            </article>
+                        </li>
+                    @endforeach
+                    </ol>
+                    <!-- end .comment-body -->
+                </section>
 		</div>
 	</div>
-</div>
 </div>
 
 <!-- Start Footer Section -->
