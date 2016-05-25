@@ -68,7 +68,7 @@ $(document).ready(function() {
         var data = {
             parameter: {
                 _token: token,
-                episode_id: videoId,
+                video: videoId,
                 comment: comment
             }
         } 

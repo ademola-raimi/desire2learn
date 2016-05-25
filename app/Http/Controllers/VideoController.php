@@ -56,6 +56,21 @@ class VideoController extends Controller
         return redirect()->route('dashboard.home');     
     }
 
+    public function getAllVideos()
+    {
+        $videos = $this->videoRepository->getAllVideos();
+
+        return view('layout.video.videos', compact('videos'));
+    }
+
+    public function showVideo($id)
+    {
+        $video = Video::find($id);
+        $latestComments = $video->comments()->latest()->take(10)->get();
+
+        return view('layout.video.show-video', compact('video', 'latestComments'));
+    }
+
     /**
      * This method is for editing of the apps
      *
@@ -74,7 +89,7 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'title'       => 'required',
@@ -101,19 +116,23 @@ class VideoController extends Controller
         }
     }
 
-    public function getAllVideos()
+     /**
+     * This method delete videos created 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $videos = $this->videoRepository->getAllVideos();
+        $appDetails = AppDetail::where('id', $id)->delete();
 
-        return view('layout.video.videos', compact('videos'));
-    }
+        if ($appDetails) {
+            alert()->success('Video deleted succesfully', 'success');
 
-    public function showVideo($id)
-    {
-        $video = Video::find($id);
-        $latestComments = $video->comments()->latest()->take(10)->get();
-        //dd($latestComments);
+            return redirect()->route('dashboard.home'); 
+        } else {
+           alert()->error('Something went wrong', 'error');
 
-        return view('layout.video.show-video', compact('video', 'latestComments'));
+            return redirect()->back();
+        }
     }
 }

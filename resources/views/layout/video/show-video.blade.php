@@ -52,9 +52,20 @@
 					@endif
 				</ul>
 				<hr>
+                @if (! Auth::check())
+
 				<h6>Description</h6>
 				
 				<p> {{ $video->description }} </p>
+                @else 
+
+                <h6>Description</h6>
+                
+                <p> {{ $video->description }} </p>
+                <span class="pull-right" style="margin-top: -5%;"><a href="{{ route('delete-video', ['id' => $video->id]) }}" class="delete-video"><button class="btn btn-primary btn-flat">Delete</button></a></span>
+
+                <span class="pull-right" style="margin-right: 10%; margin-top: -5%;"><a href="/video/edit/{{ $video->id }}"><button class="btn btn-primary btn-flat">Edit</button></a></span>
+                @endif    
 			</div>
 			</div>
 			  

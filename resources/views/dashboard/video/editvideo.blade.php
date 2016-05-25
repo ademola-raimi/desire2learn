@@ -18,12 +18,12 @@
         <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
             <h3>Edit Video</h3>
             <hr>
-            <form class="form" role="form" method="POST" action="/video/edit/{{ $video->id }}">
+            <form class="form" role="form" method="POST" action="/edit/{{ $video->id }}">
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" name="title" value="{{ $video->url }}">
+                    <input type="text" class="form-control" name="title" value="{{ $video->title }}">
                     @if ($errors->has('title'))
                         <span class="help-block">
                             <strong>{{ $errors->first('title') }}</strong>

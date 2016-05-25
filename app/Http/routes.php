@@ -188,8 +188,13 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
         'as'   => 'edit-video'
     ]);
 
-    Route::put('/edit', [
+    Route::put('/edit/{id}', [
         'uses' => 'VideoController@update',
-        'as'   => 'edit-video'
+        'as'   => 'update-video'
+    ]);
+
+    Route::delete('/delete/{id}', [
+        'uses' => 'VideoController@destroy',
+        'as'   => 'delete-video'
     ]);
 });
