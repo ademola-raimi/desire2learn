@@ -176,3 +176,20 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'CommentController@deleteComment'
     ]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Video Routes   
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
+    Route::get('/edit/{id}', [
+        'uses' => 'VideoController@edit',
+        'as'   => 'edit-video'
+    ]);
+
+    Route::put('/edit', [
+        'uses' => 'VideoController@update',
+        'as'   => 'edit-video'
+    ]);
+});
