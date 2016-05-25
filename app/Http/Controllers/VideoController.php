@@ -65,7 +65,9 @@ class VideoController extends Controller
     public function showVideo($id)
     {
         $video = Video::find($id);
-        
-        return view('layout.video.show-video', compact('video'));
+        $latestComments = $video->comments()->latest()->take(10)->get();
+        //dd($latestComments);
+
+        return view('layout.video.show-video', compact('video', 'latestComments'));
     }
 }
