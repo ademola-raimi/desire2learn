@@ -62,7 +62,7 @@
                             @foreach($categories as $category)
                            
                            <option value="{{ $category->id }}"> 
-                                <img src="$category->icon">
+                                <img src={{ URL::asset('$category->icon') }}>
                                {{ $category->name }}
                            </option>
                          @endforeach

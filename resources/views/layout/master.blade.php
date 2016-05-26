@@ -24,7 +24,9 @@
     <!-- Bootstrap CSS  -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-
+    <!-- Devicons CSS  -->
+    <link href="//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css" rel="stylesheet">
+    <link href="{!! load_asset(devicons-master/css/devicons.min.css) !!}"
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{!! load_asset('font-awesome/css/font-awesome.min.css') !!}">
