@@ -89,7 +89,7 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updat(Request $request, $id)
     {
         $this->validate($request, [
             'title'       => 'required',
@@ -104,7 +104,7 @@ class VideoController extends Controller
             'category'    => $request->category,
             'description' => $request->description,
         ]);
-
+        dd($videos);
         if ($videos) {
             alert()->success('Video updated succesfully', 'success');
 

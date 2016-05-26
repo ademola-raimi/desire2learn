@@ -18,7 +18,7 @@
         <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
             <h3>Edit Video</h3>
             <hr>
-            <form class="form" role="form" method="POST" action="/edit/{{ $video->id }}">
+            <form class="form" role="form" action="/video/edit/{{ $video->id }}/" method="PUT" >
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -43,7 +43,7 @@
 
                 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                     <label for="description">Video Description</label>
-                    <textarea type="description" class="form-control" name="description" value="{{ $video->description }}"></textarea>
+                    <textarea type="description" class="form-control" name="description" value="">{{ $video->description }}</textarea>
                     @if ($errors->has('description'))
                         <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>
@@ -58,11 +58,11 @@
                          <label for="category">Video Category</label>
                          
                          <select class = "form-control" name="category">
-                         <option value="" >Video category</option>
+                         <option value="" > Video category</option>
                             @foreach($categories as $category)
                            
                            <option value="{{ $category->id }}"> 
-                                <img src="$category->icon">
+
                                {{ $category->name }}
                            </option>
                          @endforeach
