@@ -1,3 +1,7 @@
+/*
+# homepage Styles
+===============================================
+*/
 #overlay-image {
 	margin: -3%;
 }
@@ -15,8 +19,63 @@
 	margin: 5% auto auto -2%;
 }
 
-footer {
-      background-color: #ecf0f1;
-      color: black;
-      padding: 15px;
+.sidebar {
+  margin: 5% auto 5% -2%;
+}
+
+.sidebar-inner {
+  margin-bottom: 2%;
+}
+
+footer {    
+  background-color: #111;
+  color: black;
+  padding: 15px;
+}
+
+.img-circle {
+  width: 45px;
+  max-width: 1232px;
+  height: 45px;
+  vertical-align: middle;
+}
+
+/*
+# topnavbar Styles
+===============================================
+*/
+#menu-signup {
+   background-color: #E87511;
+    margin: 15px 20px;
+
+}
+
+#menu-login {
+    background-color: #E87511;
+    margin: 15px 20px;
+}
+
+.top-search form input[type="submit"] {
+    background: url(../dashboard/images/9.png) no-repeat 0px 0px !important;
+    width: 18px !important;
+    height: 18px !important;
+    border: none !important;
+    position: absolute !important;
+    outline: none !important;
+    top: 16px;
+    right: 10px;
+}
+
+a:hover { 
+    background-color: white; !important;
+}
+
+/*
+# show-video Styles
+===============================================
+*/
+.video-detail {
+  background-color: #F3F4F5;
+  color:#F3F4F5;
+  padding:5px;
 }

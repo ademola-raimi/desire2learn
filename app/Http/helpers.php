@@ -9,3 +9,4 @@ function domain_name()
 {
     return Request::root();
 }
+

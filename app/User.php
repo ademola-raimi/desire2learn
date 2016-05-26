@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'last_name', 'first_name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -23,4 +23,76 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+     /**
+     * Get the avatar from gravatar.
+     *
+     * @return string
+     */
+    private function getAvatarFromGravatar()
+    {
+        return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mm&s=500';
+    }
+
+    /**
+     * Get avatar from the model.
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        if (!is_null($this->avatar)) { 
+            return $this->avatar;
+        } else {
+            return $this->getAvatarFromGravatar();
+        }
+    }
+
+    /**
+     * Update user avatar
+     *
+     * return void
+     */
+    public function updateAvatar($url)
+    {
+        $this->avatar = $url;
+        $this->save();
+    }
+
+    public function videos()
+    {
+        return $this->hasMany('Desire2Learn\Video');
+    }
+
+    /**
+     * Define roles table relationship
+     *
+     * @return object
+     */
+    public function role()
+    {
+        return $this->belongsTo('Desire2Learn\Role');
+    }
+
+    /**
+     * Define likes table relationship
+     *
+     * @return object
+     */
+     public function likes()
+    {
+        return $this->hasMany('Desire2Learn\Like');
+    }
+
+    /**
+     * Define comment table relationship
+     *
+     * @return object
+     */
+     public function comments()
+    {
+        return $this->hasMany('Desire2Learn\Comment');
+    }
 }
+
+
