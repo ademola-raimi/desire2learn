@@ -21,7 +21,8 @@
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "sendgrid/sendgrid": "~4.0",
         "laravel/socialite": "~2.0",
-        "uxweb/sweet-alert": "~1.1"
+        "uxweb/sweet-alert": "~1.1",
+        "kryptonit3/counter": "5.2.*"
     },
     "autoload": {
         "classmap": [

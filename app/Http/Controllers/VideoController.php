@@ -1,7 +1,7 @@
 <?php
 
 namespace Desire2Learn\Http\Controllers;
-
+use Counter;
 use Desire2Learn\Like;
 use Desire2Learn\Video;
 use Desire2Learn\Comment;
@@ -65,6 +65,9 @@ class VideoController extends Controller
     public function showVideo($id)
     {
         $video = Video::find($id);
+
+        Counter::showAndCount('show-video');
+        //Event::fire('video.view', $video);
         
         return view('layout.video.show-video', compact('video'));
     }
