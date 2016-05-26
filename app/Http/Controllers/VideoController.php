@@ -123,9 +123,9 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        $appDetails = AppDetail::where('id', $id)->delete();
+        $video = Video::where('id', $id)->delete();
 
-        if ($appDetails) {
+        if ($video) {
             alert()->success('Video deleted succesfully', 'success');
 
             return redirect()->route('dashboard.home'); 

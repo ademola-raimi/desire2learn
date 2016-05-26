@@ -18,7 +18,7 @@
         <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
             <h3>Edit Video</h3>
             <hr>
-            <form class="form" role="form" action="/video/edit/{{ $video->id }}/" method="POST" >
+            <form class="form" role="form" action="/video/edit/{{ $video->id }}/update" method="POST" >
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-btn fa-user"></i> Edit Video
+                        <i class="fa fa-btn fa-user"></i> update Video
                     </button>
                 </div>
             </form>

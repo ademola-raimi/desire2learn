@@ -189,13 +189,36 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
         'as'   => 'edit-video'
     ]);
 
-    Route::get('/edit/{id}', [
+    Route::post('/edit/{id}/update', [
         'uses' => 'VideoController@update',
         'as'   => 'update-video'
     ]);
 
-    Route::delete('/delete/{id}', [
+    Route::get('/delete/{id}', [
         'uses' => 'VideoController@destroy',
+        'as'   => 'delete-video'
+    ]);
+});
+
+/*
+|--------------------------------------------------------------------------
+| category Routes   
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => '/category', 'middleware' => 'auth'], function () {
+
+    Route::get('/edit/{id}', [
+        'uses' => 'CategoryController@edit',
+        'as'   => 'edit-video'
+    ]);
+
+    Route::post('/edit/{id}/update', [
+        'uses' => 'CategoryController@update',
+        'as'   => 'update-video'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'CategoryController@destroy',
         'as'   => 'delete-video'
     ]);
 });

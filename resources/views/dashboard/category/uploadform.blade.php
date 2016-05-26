@@ -1,5 +1,5 @@
 @extends('dashboard.master')
-@section('title', 'Admin Page')
+@section('title', 'category upload')
 @section('content')
 <div class="row">
     @include('dashboard.partials.top-nav-bar')
@@ -24,20 +24,16 @@
                     @endif
                 </div>
 
-                  <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
-           
-                <legend>upload icon</legend>
-                
-        
-                    <div class="form-group">
-                        <input id="icon" type="file" class="validate" name="icon">
-                    </div>
-                    @if ($errors->has('icon'))
-                    <span style="color: red;" class="help-block">
-                        <strong>{{ $errors->first('icon') }}</strong>
+                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                    <label for="description">Description</label>
+                    <textarea type="text" class="form-control" description="description" value="{{ old('description') }}"> </textarea>
+                    @if ($errors->has('description'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('description') }}</strong>
                     </span>
-                    @endif      
-            </div>
+                    @endif
+                </div>
+                  
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
