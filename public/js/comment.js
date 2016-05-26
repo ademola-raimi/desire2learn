@@ -12,7 +12,7 @@ $(document).ready(function() {
                 type:'GET',
                 data:{
                      offset: numOfComments.size(),
-                     episode_id: videoId
+                     video_id: videoId
             },
             success: function(data) {
                 for (i = 0 ; i < data.comments.length; i++) {
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     $('.comment-submit').on('click', function() {
 
-        var comments = $('#new-comment-field').val();
+        var comment = $('#new-comment-field').val();
         var avatar = $(this).data('avatar');
         var commentCount = parseInt($(this).data('comment-count')) + 1;
         var token = $(this).data('token');
@@ -68,7 +68,7 @@ $(document).ready(function() {
         var data = {
             parameter: {
                 _token: token,
-                video: videoId,
+                video_id: videoId,
                 comment: comment
             }
         } 
@@ -81,17 +81,17 @@ $(document).ready(function() {
                 data: data.parameter,
 
                 success: function(response) {
-                   console.log(response)
+
                     switch (response.status_code) {
                         case 200:
 
-                            var newComment = '<div id="show_comment" class="collection-item avatar show_comment">';
+                            var newComment = '<div id="show_comment" class="list-group img-circle">';
                             newComment += '<div class="row">';
-                            newComment += '<div class="col s2">';
-                            newComment += '<img src="' + avatar + '" alt="" class="circle">';
+                            newComment += '<div class="col-sm-2">';
+                            newComment += '<img src="' + avatar + '" alt="" class="img-circle">';
                             newComment += '</div>';
-                            newComment += '<div class="col s10">';
-                            newComment += '<div class="textarea-wrapper" ';
+                            newComment += '<div class="col-sm-10">';
+                            newComment += '<div class="jumbotron" ';
                             newComment += 'data-comment-id="' + response.commentId + '">';
                             newComment += '<span>' + comment + '</span>';
                             newComment += '<div class="update-actions pull-right">';
@@ -120,9 +120,7 @@ $(document).ready(function() {
 
                         default:
                             return false;
-                    } console.log(error) 
-
-                        console.log(response);
+                    } 
                 }
             });
         }

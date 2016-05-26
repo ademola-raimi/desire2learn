@@ -7,7 +7,7 @@
 
 @include('layout.partials.top-nav-bar')
 
-<div class="container" style="margin-bottom: 3%; margin-top: 3%;">
+<div class="container" style="margin-bottom: 6%; margin-top: 3%;">
 	<div class="row">
 		<h2>{{ $video->title }}</h2>
 		<div class="card">
@@ -82,12 +82,12 @@
                                     <h6 style="padding: 10px; font-weight:400; margin-left: -2%;">No comments to display for this video</h6>
                                 @else
                                     @foreach ( $latestComments as $comment )
-                                      <div id="show_comment" class="collection-item avatar show_comment">
+                                      <div id="show_comment" class="list-group img-circle show_comment">
                                             <div class="row">
-                                                <div class="col s2">
+                                                <div class="col-sm-2">
                                                     <img src="{{ $comment->user->getAvatar() }}" alt="" class="circle" onerror="this.src='http://www.gravatar.com/avatar/\'.md5(strtolower(trim($comment->user->email))).\'?d=mm&s=500'">
                                                 </div>
-                                                <div class="col s10">
+                                                <div class="col-sm-10">
                                                     <div class="textarea-wrapper" data-comment-id="{{ $comment->id }}" data-token="{{ csrf_token() }}">
                                                         <span>
                                                             {{$comment->comments}}
@@ -124,27 +124,26 @@
                                                     </div>
                                                 </li>
                                             @endif
-                                    <li class="collection-item avatar">
+                                    <li class="list-group img-circle">
                                     
-                                        <div class="row">
-                                    
-
-
-                                            <div class="img-circle">
-                                                <img src="{{ Auth::user()->getAvatar() }}" alt="avatar" class="avatar" width="50px" height="50px" style="border-radius:25px;">
+                                        <div class="container">
+                                            <div class="col-sm-2" style="margin-left: -4%; margin-top: 2%;">
+                                                <img src="{{ Auth::user()->getAvatar() }}" alt="avatar" class="img-circle" width="50px" height="50px" style="border-radius:25px;">
                                             </div>
-
-                                            <form id="submit-comment"  method="POST">
-                                                <div class="">
-                                                    <input hidden="true" type="text" name="_token" id="_token" value="{{ csrf_token() }}">
-                                                    <input hidden="true" type="text" name="video_id" id="video_id" value="{{ $video->id }}">
-                                                    <input hidden="true" type="text" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
-                                                    <div class="">
+                                            <div class="col-sm-10">
+                                                <form id="submit-comment"  method="POST">
+                                                    <div class="row" style="margin-left: -15%;">
+                                                        <input hidden="true" type="text" name="_token" id="_token" value="{{ csrf_token() }}">
+                                                        <input hidden="true" type="text" name="video_id" id="video_id" value="{{ $video->id }}">
+                                                        <input hidden="true" type="text" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+                                                        
                                                         <textarea name="comment" id="new-comment-field" class="validate" type="text" style="margin-top: 2%; width: 60%" required="true"> </textarea>
                                                     </div>
-                                                    <button type="submit" data-token="{{ csrf_token() }}" data-comment-count="{{ $video->comments()->count() }}" data-avatar="{{ Auth::user()->getAvatar() }}" id="submit" class="btn btn-primary comment-submit" style=""><i class="fa fa-paper-plane-o"></i></button>
-                                                </div>
-                                            </form>
+                                                </form> 
+                                            </div>
+                                            
+                                            <button type="submit" data-token="{{ csrf_token() }}" data-comment-count="{{ $video->comments()->count() }}" data-avatar="{{ Auth::user()->getAvatar() }}" id="submit" class="btn btn-primary comment-submit" style="margin-left: 54%;"><i class="fa fa-paper-plane-o"></i></button>
+                                        
                                         </div>
                                     </li>
                                 @else
