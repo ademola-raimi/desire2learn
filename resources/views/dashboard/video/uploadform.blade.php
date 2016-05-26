@@ -62,7 +62,6 @@
                             @foreach($categories as $category)
                            
                            <option value="{{ $category->id }}"> 
-                                <img src={!! load_asset('images/$category->icon') !!} />
                                {{ $category->name }}
                            </option>
                          @endforeach

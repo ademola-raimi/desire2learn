@@ -183,12 +183,13 @@ Route::group(['middleware' => 'auth'], function () {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
+
     Route::get('/edit/{id}', [
         'uses' => 'VideoController@edit',
         'as'   => 'edit-video'
     ]);
 
-    Route::put('/edit/{id}', [
+    Route::get('/edit/{id}', [
         'uses' => 'VideoController@update',
         'as'   => 'update-video'
     ]);

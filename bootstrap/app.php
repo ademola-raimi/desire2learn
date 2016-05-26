@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -10,11 +9,9 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
-
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
-
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
@@ -25,22 +22,18 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
-
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    Desire2Learn\Http\Kernel::class
+    Desire2learn\Http\Kernel::class
 );
-
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Desire2Learn\Console\Kernel::class
+    Desire2learn\Console\Kernel::class
 );
-
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Desire2Learn\Exceptions\Debug\ExceptionHandler::class
+    Desire2learn\Exceptions\Handler::class
 );
-
 /*
 |--------------------------------------------------------------------------
 | Return The Application
@@ -51,5 +44,4 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
-
 return $app;
