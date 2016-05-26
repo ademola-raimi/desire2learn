@@ -29,6 +29,9 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{!! load_asset('font-awesome/css/font-awesome.min.css') !!}">
 
+    <!-- Devicons CSS  -->
+    <link href="//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css" rel="stylesheet">
+    <link href="{!! load_asset('devicons-master/css/devicons.min.css') !!}"
     
     <!-- Custom Theme files -->
    <link href="{!! load_asset ('sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
@@ -84,6 +87,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
    <!--  <script src="assets/js/script.js"></script> --> 
+
 
     <script>
         $( ".top-navigation" ).click(function() {
