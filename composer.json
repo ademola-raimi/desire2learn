@@ -60,6 +60,9 @@
     "config": {
         "preferred-install": "dist"
     },
+    "repositories": {
+        "packagist": { "url": "https://packagist.org", "type": "composer" }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
