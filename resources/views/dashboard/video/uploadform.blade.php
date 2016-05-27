@@ -1,6 +1,5 @@
 @extends('dashboard.master')
 
-
 @section('title', 'Admin Page')
 
 @section('content')
@@ -75,9 +74,6 @@
                         </span>
                     @endif
                 </div>
-                
-            
-                
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">

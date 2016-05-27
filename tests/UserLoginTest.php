@@ -53,8 +53,7 @@ class UserLoginTest extends TestCase
            ->visit('/logout')
            ->seePageIs('/')
            ->see('Register')
-           ->see('VIDEOS BY CATEGORY')
-           ->see('WELCOME TO DESIRE2LEARN');
+           ->see('VIDEOS BY CATEGORY');
     }
 
     public function testForUnSuccessfulLogin()

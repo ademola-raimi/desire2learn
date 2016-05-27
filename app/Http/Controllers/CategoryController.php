@@ -3,6 +3,7 @@
 namespace Desire2Learn\Http\Controllers;
 
 use Auth;
+use Alert;
 use Desire2Learn\User;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;

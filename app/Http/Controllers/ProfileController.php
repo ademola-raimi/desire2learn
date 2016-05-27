@@ -73,8 +73,9 @@ class ProfileController extends Controller
         Cloudder::upload($img, null);
         $imgurl = Cloudder::getResult()['url'];
 
-        $updateImgurl = User::find(Auth::user()->id)->updateAvatar($imgurl);
-        if ($updateImgurl) {
+        User::find(Auth::user()->id)->updateAvatar($imgurl);
+
+        if ($imgurl) {
             alert()->success('Avatar updated successfully', 'Success');
 
             return redirect()->route('edit-profile');
