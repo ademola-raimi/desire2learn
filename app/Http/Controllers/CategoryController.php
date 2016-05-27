@@ -40,6 +40,7 @@ class CategoryController extends Controller
     		return redirect()->back();
     	}
     }
+    
     /**
      * This method is for editing of the apps
      *
