@@ -43,7 +43,7 @@ Route::get('logout', [
 | Dashboard Routes- index
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
     Route::get('index', [
         'uses' => 'DashboardController@index',
@@ -119,6 +119,7 @@ Route::group(['prefix' => 'profile'], function () {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'video'], function () {
+
     Route::get('/', [
         'uses' => 'VideoController@getAllVideos',
         'as'   => 'all-videos',
@@ -136,6 +137,7 @@ Route::group(['prefix' => 'video'], function () {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => '/{provider}', 'middleware' => ['web']], function () {
+
     Route::get('/', 'Auth\OauthController@redirectToProvider');
     Route::get('/callback', 'Auth\OauthController@handleProviderCallback');
 });
@@ -149,3 +151,74 @@ Route::post('/video/like/{id}', [
     'uses' => 'LikeController@postLikeVideo',
     'as' => 'like'
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Comment  
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/comment', [
+        'uses' => 'CommentController@fetchComment'
+    ]);
+
+    Route::post('/comment', [
+        'uses' => 'CommentController@postComment',
+        'as' => 'comment',
+    ]);
+
+    Route::put('comment/{id}/edit', [
+        'uses' => 'CommentController@editComment'
+    ]);
+
+    Route::delete('comment/{commentId}', [
+        'uses' => 'CommentController@deleteComment'
+    ]);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Video Routes   
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
+
+    Route::get('/edit/{id}', [
+        'uses' => 'VideoController@edit',
+        'as'   => 'edit-video'
+    ]);
+
+    Route::post('/edit/{id}/update', [
+        'uses' => 'VideoController@update',
+        'as'   => 'update-video'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'VideoController@destroy',
+        'as'   => 'delete-video'
+    ]);
+});
+
+/*
+|--------------------------------------------------------------------------
+| category Routes   
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => '/category', 'middleware' => 'auth'], function () {
+
+    Route::get('/edit/{id}', [
+        'uses' => 'CategoryController@edit',
+        'as'   => 'edit-video'
+    ]);
+
+    Route::post('/edit/{id}/update', [
+        'uses' => 'CategoryController@update',
+        'as'   => 'update-video'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'CategoryController@destroy',
+        'as'   => 'delete-video'
+    ]);
+});

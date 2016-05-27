@@ -24,7 +24,9 @@
     <!-- Bootstrap CSS  -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-
+    <!-- Devicons CSS  -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+    <link href="{!! load_asset('devicons-master/css/devicons.min.css') !!}"
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{!! load_asset('font-awesome/css/font-awesome.min.css') !!}">
@@ -74,5 +76,6 @@
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="{!! load_asset('js/script.js') !!}"></script>
     <script src="{!! load_asset('js/main.js') !!}"></script>
+    <script src="{!! load_asset('js/comment.js') !!}"></script>
 </body>
 </html>

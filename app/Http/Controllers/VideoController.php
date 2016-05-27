@@ -1,6 +1,9 @@
 <?php
 
 namespace Desire2Learn\Http\Controllers;
+
+use Auth;
+use Alert;
 use Counter;
 use Desire2Learn\Like;
 use Desire2Learn\Video;
@@ -44,31 +47,102 @@ class VideoController extends Controller
         ]);
 
         if (is_null($videoUpload->id)) {
-            alert()->success('Video upload failed', 'success');
+            alert()->error('Video upload failed', 'error');
 
             return redirect()->back();
     	}
 
         alert()->success('Video uploaded successfully', 'success');
 
-        return redirect()->route('dashboard.home');
-            
+        return redirect()->route('dashboard.home');     
     }
 
-    public function getAllVideos()
+    public function getRelatedVideos($videos)
     {
-        $videos = $this->videoRepository->getAllVideos();
+        $videos = Video::where('category', $video->category)->get();
 
-        return view('layout.video.videos', compact('videos'));
+        return $videos;
     }
 
     public function showVideo($id)
     {
         $video = Video::find($id);
 
-        Counter::showAndCount('show-video');
-        //Event::fire('video.view', $video);
+        $relatedVideos = Video::where('category', $video->category)->get();
+        //$relatedVideo = $this->getRelatedVideos($videos);
+
+        $counter = Counter::showAndCount('show-video', $video->id);
+        if ($counter) {
+            $video->increment('views');
+        }
+
+        $latestComments = $video->comments()->latest()->take(10)->get();
+
+        return view('layout.video.show-video', compact('video', 'latestComments', 'relatedVideos'));
+    }
+
+    /**
+     * This method is for editing of the apps
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $video = video::where('id', $id)->first();
+        $categories = Category::all();
         
-        return view('layout.video.show-video', compact('video'));
+        return view('dashboard.video.editvideo', compact('video', 'categories'));
+    }
+
+    /**
+     * This method is for editing of the apps
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, Request $request)
+    {
+        $this->validate($request, [
+            'title'       => 'required',
+            'url'         => 'required|url|unique:videos,url,'.$request->id,
+            'category'    => 'required',
+            'description' => 'required',
+        ]);
+
+        $videos = Video::where('id', $request->id)->update([
+            'title'       => $request->title,
+            'url'         => $this->getYouTubeIdFromURL($request['url']),
+            'category'    => $request->category,
+            'description' => $request->description,
+        ]);
+        
+        if ($videos) {
+            alert()->success('Video updated succesfully', 'success');
+
+            return redirect()->route('dashboard.home'); 
+        } else {
+            alert()->error('Something went wrong', 'error');
+
+            return redirect()->back();
+        }
+    }
+
+     /**
+     * This method delete videos created 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $video = Video::where('id', $id)->delete();
+
+        if ($video) {
+            alert()->success('Video deleted succesfully', 'success');
+
+            return redirect()->route('dashboard.home'); 
+        } else {
+           alert()->error('Something went wrong', 'error');
+
+            return redirect()->back();
+        }
     }
 }

@@ -14,30 +14,41 @@ class LikeController extends Controller
 	public function postLikeVideo(Request $request, $video_id)
     {
         $videoId = $video_id;
-        $isLike = $request['isLike'] === 'true';
-        $update = false;
-        $video = Video::find($videoId);
+        $isLike  = $request['isLike'] === 'true';
+        $update  = false;
+        $video   = Video::find($videoId);
 
         if (!$video) {
-            return null;
+            return 'Something went wrong';
         }
 
+        return $this->updateLikeTable($videoId, $isLike, $update, $video);
+    }
+
+    public function updateLikeTable($videoId, $isLike, $update, $video)
+    {
         $user = Auth::user();
         $like = $user->likes()->where('video_id', $videoId)->first();
-
         if ($like) {
             $alreadyLike = $like->like;
+            dd($update);
             $update = true;
+            dd($update);
 
             if ($alreadyLike == $isLike) {
                 $like->delete();
 
-                return null;
+                return 'deleted the row';
             }
         } else {
             $like = new Like();
         }
 
+        $this->wrapUpUpdate($videoId, $isLike, $update, $video, $like, $user);
+    }
+
+    public function wrapUpUpdate($videoId, $isLike, $update, $video, $like, $user)
+    {
         $like->like = $isLike;
         $like->user_id = $user->id;
         $like->video_id = $video->id;
@@ -48,6 +59,6 @@ class LikeController extends Controller
             $like->save();
         }
 
-        return null;
+        return 'success';
     }
 }
