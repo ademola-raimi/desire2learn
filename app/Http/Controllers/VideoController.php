@@ -26,7 +26,7 @@ class VideoController extends Controller
       $urlString = parse_url($url, PHP_URL_QUERY);
       parse_str($urlString, $args);
 
-      return $args['v'];
+      return $args['v']; 
     }
 
     public function postVideo(Request $request)
@@ -40,7 +40,7 @@ class VideoController extends Controller
 
         $videoUpload = Video::create([
             'title'       => $request['title'],
-            'user_id'      => auth()->user()->id,
+            'user_id'     => auth()->user()->id,
             'url'         => $this->getYouTubeIdFromURL($request['url']),
             'category'    => $request['category'],
             'description' => $request['description'],

@@ -206,7 +206,7 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
         'as'   => 'create.category',
     ]);
 
-    Route::post('/create', [
+    Route::post('/create/', [
         'uses' => 'CategoryController@postCategory',
         'as'   => 'post.category',
     ]);

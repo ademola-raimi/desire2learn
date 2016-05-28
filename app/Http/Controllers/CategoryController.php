@@ -50,8 +50,12 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::where('id', $id)->first();
+        if ($category) {
+            return view('dashboard.category.editcategory', compact('category'));
+        }
         
-        return view('dashboard.category.editcategory', compact('category'));
+        alert()->error('Category does not exist', 'error');
+        return redirect()->route('dashboard.home');    
     }
 
     /**

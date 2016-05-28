@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-btn fa-user"></i> update Video
+                        <i class="fa fa-btn fa-user"></i> Update Video
                     </button>
                 </div>
             </form>

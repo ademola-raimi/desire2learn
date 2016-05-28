@@ -2,120 +2,137 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class VideoCategoryTest
+class VideoCategoryTest extends TestCase
 {
     use DatabaseTransactions;
 
-    // public function testVideoCategoryPageWasVisited()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
+    public function testVideoCategoryPageWasVisited()
+    {
+        $user = $this->createUserWithSuperAdminRole();
         
-    //     $this->actingAs($user)->visit('/dashboar/category/create')
-    //         ->see('NEW CATEGORY UPLOAD');
-    // }
+        $this->actingAs($user)->visit('/category/create')
+            ->see('NEW CATEGORY UPLOAD');
+    }
 
-    // public function testThatVideoCategoryAlreadyExist()
-    // {
-    //     $user     = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'     => 'Laravel',
-    //         'icon'     => 'L',
-    //         'user_id'  => $user->id,
-    //     ]);
+    public function testThatVideoCategoryAlreadyExist()
+    {
+        $user     = $this->createUserWithSuperAdminRole();
 
-    //     $this->actingAs($user)->visit('/dashboar/category/create')
-    //          ->type('Laravel', 'name')
-    //          ->type('L', 'icon')
-    //          ->press('Upload Category')
-    //          ->see('The name has already been taken.')
-    //          ->see('The icon has already been taken.');
-    // }
+        $category = factory('Desire2Learn\Category')->create([
+            'name'        => 'Laravel',
+            'description' => 'framework for artisan web',
+            'user_id'     => $user->id,
+        ]);
 
-    // public function testForSuccessfulVideoCategoryUpload()
-    // {
-    //     $user     = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'    => 'Laravel',
-    //         'icon'    => 'L',
-    //         'user_id' => $user->id,
-    //     ]);
+        $this->actingAs($user)->visit('/category/create')
+             ->type('Laravel', 'name')
+             ->type('framework for artisan web', 'description')
+             ->press('Upload Category')
+             ->see('The name has already been taken.');
+    }
 
-    //     $this->actingAs($user)->visit('/dashboar/category/create')
-    //          ->type('Laravel', 'name')
-    //          ->type('L', 'icon')
-    //          ->press('Upload Category')
-    //          ->see('Category uploaded successfully');
-    // }
+    public function testForSuccessfulVideoCategoryUpload()
+    {
+        // $user     = $this->createUserWithSuperAdminRole();
+        // $category = factory('Desire2Learn\Category')->create([
+        //     'name'        => 'Laravel',
+        //     'description' => 'framework for artisan web',
+        //     'user_id'     => $user->id,
+        // ]);
 
-    // public function testForMissingVideoCategoryNameField()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'    => 'Laravel',
-    //         'icon'    => 'L',
-    //         'user_id' => $user->id,
-    //     ]);
-    //     $this->actingAs($user)->visit('/dashboard/category/add')
-    //          ->type('L', 'icon')
-    //          ->press('Upload Category')
-    //          ->see('The name field is required.');
-    // }
+        // $this->actingAs($user)->visit('/category/create')
+        //      ->type('Laravel', 'name')
+        //      ->type('framework for artisan web', 'description')
+        //      ->press('Upload Category')
+        //      ->see('LIKES VIEW FAVOURITE');
 
-    // public function testForMissingVideoCategoryDescriptionField()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'    => 'Laravel',
-    //         'icon'    => 'L',
-    //         'user_id' => $user->id,
-    //     ]);
-    //     $this->actingAs($user)->visit('/dashboard/category/add')
-    //          ->type('Laravel', 'name')
-    //          ->press('Upload Category')
-    //          ->see('The icon field is required.');
-    // }
 
-    // public function testVideoCategoryWasSuccessfullyUpdated()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'    => 'Laravel',
-    //         'icon'    => 'L',
-    //         'user_id' => $user->id,
-    //     ]);
 
-    //     $this->actingAs($user)->visit('/dashboard/category/edit/'.$category->id)
-    //       ->type('Javascript 2.0', 'name')
-    //       ->type('It is the language of the Html', 'description')
-    //       ->press('Upload Category')
-    //       ->seePageIs('/dashboard/category/view')
-    //       ->see('Javascript');
-    // }
+        // $user     = $this->createUserWithSuperAdminRole();
+        // $response = $this->actingAs($user)
+        // ->call('POST', '/category/create', [
+        //     'name'        => 'Laravel',
+        //     'description' => 'framework for artisan web',
+        // ]);
 
-    // public function testThatASingleCategoryWasRetrived()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'        => 'Javascript',
-    //         'description' => 'It is the language of the web',
-    //         'user_id'     => $user->id,
-    //     ]);
-    //     $this->actingAs($user)->visit('/dashboard/category/edit/'.$category->id)
-    //      ->see($category->name);
-    // }
+        // $this->actingAs($user)
+        //    ->visit('/category/create/')
+        //    ->type('Laravel', 'name')
+        //    ->type('framework for artisan web', 'description')
+        //    ->press('Upload Category')
+        //    ->seePageIs('/dashboard/index')
+        //    ->see('LIKES VIEW FAVOURITE');
+    }
 
-    // public function testThatASingleCategoryWasNotRetrived()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'        => 'Javascript',
-    //         'description' => 'It is the language of the web',
-    //         'user_id'     => $user->id,
-    //     ]);
-    //     $this->actingAs($user)->visit('/dashboard/category/edit/100')
-    //      ->seePageIs('/dashboard/category/add')
-    //      ->see('Oops! unauthorized access to video category!');
-    // }
+    public function testForMissingVideoCategoryNameField()
+    {
+        $user = $this->createUserWithSuperAdminRole();
+        $category = factory('Desire2Learn\Category')->create([
+            'name'        => 'Laravel',
+            'description' => 'framework for artisan web',
+            'user_id'     => $user->id,
+        ]);
+        $this->actingAs($user)->visit('/category/create')
+             ->type('framework for artisan web', 'description')
+             ->press('Upload Category')
+             ->see('The name field is required.');
+    }
+
+    public function testForMissingVideoCategoryDescriptionField()
+    {
+        $user = $this->createUserWithSuperAdminRole();
+        $category = factory('Desire2Learn\Category')->create([
+            'name'        => 'Laravel',
+            'description' => 'framework for artisan web',
+            'user_id'     => $user->id,
+        ]);
+        $this->actingAs($user)->visit('/category/create')
+             ->type('Laravel', 'name')
+             ->press('Upload Category')
+             ->see('The description field is required.');
+    }
+
+    public function testVideoCategoryWasSuccessfullyUpdated()
+    {
+        $user = $this->createUserWithSuperAdminRole();
+
+        $category = factory('Desire2Learn\Category')->create([
+            'name'        => 'Laravel',
+            'description' => 'framework for artisan web',
+            'user_id'     => $user->id,
+        ]);
+
+        $this->actingAs($user)->visit('/category/edit/'.$category->id)
+          ->type('Javascipt', 'name')
+          ->type('It is the language of the Html', 'description')
+          ->press('Update Category')
+          ->seePageIs('/dashboard/index')
+          ->see('Likes');
+    }
+
+    public function testThatASingleCategoryWasRetrived()
+    {
+        $user = $this->createUserWithSuperAdminRole();
+        $category = factory('Desire2Learn\Category')->create([
+            'name'        => 'Javascript',
+            'description' => 'It is the language of the web',
+            'user_id'     => $user->id,
+        ]);
+        $this->actingAs($user)->visit('/category/edit/'.$category->id)
+         ->see('EDIT CATEGORY');
+    }
+
+    public function testThatASingleCategoryWasNotRetrived()
+    {
+        $user = $this->createUserWithSuperAdminRole();
+        $category = factory('Desire2Learn\Category')->create([
+            'name'        => 'Javascript',
+            'description' => 'It is the language of the web',
+            'user_id'     => $user->id,
+        ]);
+        $this->actingAs($user)->visit('/category/edit/100')
+         ->seePageIs('/dashboard/index');
+    }
 
     // public function testgetAllCategories()
     // {
@@ -131,18 +148,6 @@ class VideoCategoryTest
     //     $this->assertArrayHasKey('name', $categories->toArray());
     //     $this->assertArrayHasKey('description', $categories->toArray());
     //     $this->assertArrayHasKey('user_id', $categories->toArray());
-    // }
-
-    // public function testchangeCategoryStatus()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'name'        => 'Javascript',
-    //         'description' => 'It is the language of the web',
-    //         'user_id'     => $user->id,
-    //     ]);
-    //     $this->actingAs($user)->visit('/dashboard/category/delete/1')
-    //    ->see('Operation Successfully');
     // }
 
     public function createUserWithSuperAdminRole()
@@ -161,7 +166,7 @@ class VideoCategoryTest
         return $user;
     }
 
-    // public function testGetVideosByCategory()
+    // public function testRelatedVideos()
     // {
     //     $user = factory('Desire2Learn\User')->create();
     //     $category = factory('Desire2Learn\Category')->create();
@@ -177,7 +182,7 @@ class VideoCategoryTest
     //     ->see($category->name)
     //     ->see($video->title)
     //     ->see($video->description);
-    // }
+    //}
 
     // public function testThatVideosHasNotBeenUploadedForACategory()
     // {

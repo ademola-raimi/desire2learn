@@ -2,249 +2,256 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class Video 
+class Video extends TestCase
 {
-    // use DatabaseTransactions;
+    use DatabaseTransactions;
 
-    // public function testVideoWasVisited()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
+    public function testVideoWasVisited()
+    {
+        $user = factory('Desire2Learn\User')->create();
 
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->see('NEW VIDEO UPLOAD');
-    // }
+        $this->actingAs($user)->visit('dashboard/video/create')
+             ->see('NEW VIDEO UPLOAD');
+    }
 
-    // public function testThatVideoAlreadyExist()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $category = factory('Desire2Learn\Category')->Upload Video([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
+    public function testThatVideoAlreadyExist()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
 
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/Upload Video')
-    //          ->select($category->id, 'category')
-    //          ->type('Setting up Laravel 5.0', 'title')
-    //          ->type('https://www.youtube.com/watch?v=9vN2IdeALaI', 'url')
-    //          ->type('L Laravel', 'icon')
-    //          ->press('Upload Video')
-    //          ->see('Video uploaded successfully');
-    // }
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->select($category->id, 'category')
+             ->type('Setting up Laravel 5.2', 'title')
+             ->type('https://www.youtube.com/watch?v=9vN2IdeALaI', 'url')
+             ->type('Laravel', 'description')
+             ->press('Upload Video')
+             ->see('Views');
+    }
 
-    // public function testForSuccessfulVideoUpload()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
+    public function testForSuccessfulVideoUpload()
+    {
+        // $user = factory('Desire2Learn\User')->create();
+        // $category = factory('Desire2Learn\Category')->create([
+        //     'user_id'     => $user->id,
+        //     'name'        => 'Laravel',
+        //     'description' => 'framework of the artisan',
+        // ]);
 
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->select($category->id, 'category')
-    //          ->type('Using the cloud system available on laravel', 'title')
-    //          ->type('https://www.youtube.com/watch?v=9vN2IdeALaJ', 'url')
-    //          ->press('Upload Video')
-    //          ->see('Video uploaded successfully');
-    // }
+        // $video = $this->uploadVideo($user, $category);
+        // $response = $this->actingAs($user)->visit('/dashboard/video/create')
+        //      ->select($category->id, 'category')
+        //      ->type('Using the cloud system available on laravel', 'title')
+        //      ->type('https://www.youtube.com/watch?v=9vN2IdeALaJ', 'url')
+        //      ->press('Upload Video')
+        //      ->see('Likes');
+    }
 
-    // public function testThatAllFieldsAreMissingExceptIcon()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type('Laravel', 'icon')
-    //          ->press('Upload Video')
-    //          ->see('The title field is required.')
-    //          ->see('The category field is required.')
-    //          ->see('The url field is required.');
-    // }
-    // public function testThatAllFieldsAreMissingExceptTitle()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type('Writing an integration test in Laravel', 'title')
-    //          ->press('Upload Video')
-    //          ->see('The icon field is required.')
-    //          ->see('The category field is required.')
-    //          ->see('The url field is required.');
-    // }
-    // public function testThatAllFieldsAreMissingExceptUrl()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
-    //          ->press('Upload Video')
-    //          ->see('The title field is required.')
-    //          ->see('The category field is required.')
-    //          ->see('The icon field is required.');
-    // }
-    // public function testThatAllFieldsAreMissingExceptCategory()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id' => $user->id,
-    //         'name'    => 'Laravel',
-    //         'icon'    => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type($category->id, 'category')
-    //          ->press('Upload Video')
-    //          ->see('The title field is required.')
-    //          ->see('The url field is required.')
-    //          ->see('The icon field is required.');
-    // }
-    // public function testThatUrlAndiconFieldsAreMissing()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
+    public function testThatAllFieldsAreMissingExceptIcon()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type('framework of the artisan', 'description')
+             ->press('Upload Video')
+             ->see('The title field is required.')
+             ->see('The category field is required.')
+             ->see('The url field is required.');
+    }
 
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type($category->id, 'category')
-    //          ->type('Switching from Mailgun to Sendgrid', 'title')
-    //          ->press('Upload Video')
-    //          ->see('The url field is required.')
-    //          ->see('The icon field is required.');
-    // }
-    // public function testThatCategoryAndTitleFieldsAreMissing()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
+    public function testThatAllFieldsAreMissingExceptTitle()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
 
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
-    //          ->type('L', 'icon')
-    //          ->press('Upload Video')
-    //          ->see('The category field is required.')
-    //          ->see('The title field is required.');
-    // }
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type('Writing an integration test in Laravel', 'title')
+             ->press('Upload Video')
+             ->see('The description field is required.')
+             ->see('The category field is required.')
+             ->see('The url field is required.');
+    }
 
-    // public function testThatTitleAndiconFieldsAreMissing()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
+    public function testThatAllFieldsAreMissingExceptUrl()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
 
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type($category->id, 'category')
-    //          ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
-    //          ->press('Upload Video')
-    //          ->see('The icon field is required.')
-    //          ->see('The title field is required.');
-    // }
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
+             ->press('Upload Video')
+             ->see('The title field is required.')
+             ->see('The category field is required.')
+             ->see('The description field is required.');
+    }
 
-    // public function testThatCategoryAndUrlFieldsAreMissing()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->type('Event in Laravel', 'title')
-    //          ->press('Upload Video')
-    //          ->see('The category field is required.')
-    //          ->see('The url field is required.');
-    // }
-
-    // public function testThatVideoWasUpdated()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $category = factory('Desire2Learn\Category')->Upload Video([
-    //         'user_id' => $user->id,
-    //         'name'    => 'Laravel',
-    //         'icon'    => 'L',
-    //     ]);
-
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboard/video/edit/'.$video->id)
-    //       ->select($category->id, 'category')
-    //       ->type('L', 'title')
-    //       ->type('It is the language of the Html', 'icon')
-    //       ->type('https://www.youtube.com/watch?v=hKUwxXgz2RM', 'url')
-    //       ->press('Update')
-    //       ->seePageIs('/dashboard/video/view')
-    //       ->see('L');
-    // }
+    public function testThatAllFieldsAreMissingExceptCategory()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type($category->id, 'category')
+             ->press('Upload Video')
+             ->see('The title field is required.')
+             ->see('The url field is required.')
+             ->see('The description field is required.');
+    }
     
-    // public function testThatOnlyLoggedInUserCanUpdateVideo()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
+    public function testThatUrlAndiconFieldsAreMissing()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
 
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->visit('/dashboard/video/edit/'.$video->id)
-    //       ->seePageIs('/login');
-    // }
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type($category->id, 'category')
+             ->type('Switching from Mailgun to Sendgrid', 'title')
+             ->press('Upload Video')
+             ->see('The url field is required.')
+             ->see('The description field is required.');
+    }
 
-    // public function testThatASingleVideoWasRetrived()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $category = factory('Desire2Learn\Category')->Upload Video([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboard/video/edit/'.$video->id)
-    //      ->see($video->title);
-    // }
+    public function testThatCategoryAndTitleFieldsAreMissing()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
 
-    // public function testThatASingleVideoWasNotRetrived()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $category = factory('Desire2Learn\Category')->Upload Video([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboard/video/edit/17')
-    //      ->seePageIs('/dashboar/video/Upload Video')
-    //      ->see('Oops! unauthorized access to video!');
-    // }
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
+             ->type('framework of the artisan', 'description')
+             ->press('Upload Video')
+             ->see('The category field is required.')
+             ->see('The title field is required.');
+    }
+
+    public function testThatTitleAndiconFieldsAreMissing()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type($category->id, 'category')
+             ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
+             ->press('Upload Video')
+             ->see('The description field is required.')
+             ->see('The title field is required.');
+    }
+
+    public function testThatCategoryAndUrlFieldsAreMissing()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->type('Event in Laravel', 'title')
+             ->press('Upload Video')
+             ->see('The category field is required.')
+             ->see('The url field is required.');
+    }
+
+    public function testThatVideoWasUpdated()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/video/edit/'.$video->id)
+          ->select($category->id, 'category')
+          ->type('Laravel', 'title')
+          ->type('It is the language of the Html', 'description')
+          ->type('https://www.youtube.com/watch?v=hKUwxXgz2RM', 'url')
+          ->press('Update Video')
+          ->seePageIs('/dashboard/index')
+          ->see('Likes');
+    }
+    
+    public function testThatOnlyLoggedInUserCanUpdateVideo()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+
+        $video = $this->uploadVideo($user, $category);
+        $this->visit('/video/edit/'.$video->id)
+          ->seePageIs('/login');
+    }
+
+    public function testThatASingleVideoWasRetrived()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/video/edit/'.$video->id)
+         ->see($video->title);
+    }
+
+    public function testThatASingleVideoWasNotRetrived()
+    {
+        // $user = factory('Desire2Learn\User')->create();
+        // $category = factory('Desire2Learn\Category')->create([
+        //     'user_id'     => $user->id,
+        //     'name'        => 'Laravel',
+        //     'description' => 'framework of the artisan',
+        // ]);
+        // $video = $this->uploadVideo($user, $category);
+        // $this->actingAs($user)->visit('video/edit/17')
+        //  ->seePageIs('/dashboard/index');
+    }
 
     // public function testgetAllVideos()
     // {
@@ -261,43 +268,31 @@ class Video
     //     ->see($video->category->name);
     // }
 
-    // public function testchangeVideoStatus()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $category = factory('Desire2Learn\Category')->Upload Video([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboard/video/delete/'.$video->id)
-    //    ->see('Operation Successfully');
-    // }
+    
 
-    // public function testThatOnlyLoggedInUserCanDeleteVideo()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $category = factory('Desire2Learn\Category')->Upload Video([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->visit('/dashboard/video/delete/'.$video->id)
-    //     ->seePageIs('/login');
-    // }
+    public function testThatOnlyLoggedInUserCanDeleteVideo()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+        $video = $this->uploadVideo($user, $category);
+        $this->visit('/video/delete/'.$video->id)
+        ->seePageIs('/login');
+    }
 
-    // public function uploadVideo($user, $category)
-    // {
-    //     $video = factory('Desire2Learn\Video')->create([
-    //       'title'        => 'Laravel',
-    //       'user_id'      => $user->id,
-    //       'category_id'  => $category->id,
-    //       'views'        => 0,
-    //     ]);
+    public function uploadVideo($user, $category)
+    {
+        $video = factory('Desire2Learn\Video')->create([
+          'title'        => 'Laravel',
+          'user_id'      => $user->id,
+          'views'        => 0,
+        ]);
 
-    //     return $video;
-    // }
+        return $video;
+    }
 
     // public function testThatUserDoesNotSupplyAValidYoutubeUrl()
     // {

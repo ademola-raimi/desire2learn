@@ -46,7 +46,7 @@ $factory->define(Desire2Learn\Video::class, function (Faker\Generator $faker) {
         'title'       => $faker->name,
         'url'         => $faker->url,
         'description' => $faker->text,
-        'category_id' => 1,
+        'category'    => 1,
         'user_id'     => 1,
         'views'       => 0,
     ];
