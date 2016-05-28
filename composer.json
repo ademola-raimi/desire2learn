@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "laravel/socialite": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -16,7 +17,6 @@
         "doctrine/dbal": "^2.5",
         "jrm2k6/cloudder": "0.2.*",
         "sendgrid/sendgrid": "~4.0",
-        "laravel/socialite": "~2.0",
         "uxweb/sweet-alert": "~1.1",
         "kryptonit3/counter": "5.2.*",
         "phpunit/phpunit": "~5.0",
