@@ -82,8 +82,10 @@ class OauthController extends controller
             'password'       => bcrypt(str_random(10)),
             'email'          => $user->getEmail() ?: str_random(10).'@noemail.app',
             'avatar'         => $user->getAvatar(),
+            'provider_id'    => $user->getId(),
             'role_id'        => 1,
             'remember_token' => str_random(10),
+            'provider'       => $provider,
         ]);
     }
 }
