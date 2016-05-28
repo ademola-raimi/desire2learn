@@ -57,12 +57,12 @@ class VideoController extends Controller
         return redirect()->route('dashboard.home');     
     }
 
-    public function getRelatedVideos($videos)
-    {
-        $videos = Video::where('category', $video->category)->get();
+    // public function getRelatedVideos($videos)
+    // {
+    //     $videos = Video::where('category', $video->category)->get();
 
-        return $videos;
-    }
+    //     return $videos;
+    // }
 
     public function showVideo($id)
     {
