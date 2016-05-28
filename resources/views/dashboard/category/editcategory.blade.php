@@ -17,12 +17,12 @@
         <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
             <h3>Edit category</h3>
             <hr>
-            <form class="form" role="form" action="/category/edit/{{ $video->id }}/update" method="POST" >
+            <form class="form" role="form" action="/category/edit/{{ $category->id }}/update" method="POST" >
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" value="{{ $video->name }}">
+                    <input type="text" class="form-control" name="name" value="{{ $category->name }}">
                     @if ($errors->has('name'))
                         <span class="help-block">
                             <strong>{{ $errors->first('name') }}</strong>

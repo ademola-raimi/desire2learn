@@ -36,7 +36,7 @@ $factory->define(Desire2Learn\User::class, function (Faker\Generator $faker) {
 $factory->define(Desire2Learn\Category::class, function (Faker\Generator $faker) {
     return [
         'name'        => $faker->name,
-        'icon'        => $faker->name,
+        'description' => $faker->name,
         'user_id'     => 1,
     ];
 });

@@ -4,6 +4,7 @@ namespace Desire2Learn\Http\Controllers;
 
 use Auth;
 use Alert;
+use Validator;
 use Desire2Learn\User;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
@@ -50,7 +51,7 @@ class CategoryController extends Controller
     {
         $category = Category::where('id', $id)->first();
         
-        return view('dashboard.video.editcategory', compact('category'));
+        return view('dashboard.category.editcategory', compact('category'));
     }
 
     /**
@@ -61,7 +62,7 @@ class CategoryController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'name'        => 'required|name|unique:videos,url,'.$request->id,
+            'name'        => 'required|unique:videos,url,'.$request->id,
             'description' => 'required',
         ]);
 

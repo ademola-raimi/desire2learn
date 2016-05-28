@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class VideoCategory 
+class VideoCategoryTest
 {
     use DatabaseTransactions;
 
