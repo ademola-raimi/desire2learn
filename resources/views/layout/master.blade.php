@@ -31,6 +31,10 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{!! load_asset('font-awesome/css/font-awesome.min.css') !!}">
     <link href="{!! load_asset ('sweetalert/sweetalert.css') !!}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
 
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="{!! load_asset('css/owl.carousel.css') !!}">
@@ -69,6 +73,7 @@
     <script src="{!! load_asset('js/map.js') !!}"></script>
     <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
     <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
    
     @include('sweet::alert')
