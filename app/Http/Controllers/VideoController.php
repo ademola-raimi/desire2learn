@@ -88,8 +88,13 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        $video = video::where('id', $id)->first();
+        $video = Auth::user()->videos->find($id);
         $categories = Category::all();
+
+        if (is_null($video)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+            return redirect()->route('dashboard.home');  
+        }
         
         return view('dashboard.video.editvideo', compact('video', 'categories'));
     }

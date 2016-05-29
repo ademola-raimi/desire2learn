@@ -242,15 +242,15 @@ class Video extends TestCase
 
     public function testThatASingleVideoWasNotRetrived()
     {
-        // $user = factory('Desire2Learn\User')->create();
-        // $category = factory('Desire2Learn\Category')->create([
-        //     'user_id'     => $user->id,
-        //     'name'        => 'Laravel',
-        //     'description' => 'framework of the artisan',
-        // ]);
-        // $video = $this->uploadVideo($user, $category);
-        // $this->actingAs($user)->visit('video/edit/17')
-        //  ->seePageIs('/dashboard/index');
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'framework of the artisan',
+        ]);
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('video/edit/7')
+         ->seePageIs('/dashboard/index');
     }
 
     // public function testgetAllVideos()
@@ -294,31 +294,31 @@ class Video extends TestCase
         return $video;
     }
 
-    // public function testThatUserDoesNotSupplyAValidYoutubeUrl()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
+    public function testInValidYoutubeUrl()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'Framework of the arisan',
+        ]);
 
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboar/video/create')
-    //          ->select($category->id, 'category')
-    //          ->type('Laravel file System/Cloud Storage', 'title')
-    //          ->type('//http://goodheads.io/2016/03/16/dependency-injection-explained-plain-english/', 'url')
-    //          ->type('File upload system in laravel', 'icon')
-    //          ->press('Upload Video')
-    //          ->see('The url format is invalid.');
-    // }
+        $video = $this->uploadVideo($user, $category);
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->select($category->id, 'category')
+             ->type('Laravel URL generator', 'title')
+             ->type('//http://laravel.com/doc', 'url')
+             ->type('Framework of the arisan', 'description')
+             ->press('Upload Video')
+             ->see('The url format is invalid.');
+    }
 
-    // public function testThatAUrlClickLinksToAVideo()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $video = factory('Desire2Learn\Video')->Upload Video();
-    //     $this->visit('/')
-    //     ->click('VIEW')
-    //     ->seePageIs('/view/video/'.$video->id);
-    // }
+    public function testThatAUrlClickLinksToAVideo()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $video = factory('Desire2Learn\Video')->create();
+        $this->visit('/')
+        ->click($video->title)
+        ->seePageIs('/video/'.$video->id);
+    }
 }
