@@ -36,16 +36,16 @@ class UserSignUpTest extends TestCase
 
     public function testForUserAlreadyExists()
     {
-        Session::start();
-        $user = factory('Desire2Learn\User')->create([
-            'username'       => 'Demo',
-            'email'          => 'demola@gmail.com',
-            'password'       => bcrypt('london'),
-            'first_name'     => 'Demola',
-            'last_name'      => 'Raimi',
-            'role_id'        => 1,
-            'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
-        ]);
+        // Session::start();
+        // $user = factory('Desire2Learn\User')->create([
+        //     'username'       => 'Demo',
+        //     'email'          => 'demola@gmail.com',
+        //     'password'       => bcrypt('london'),
+        //     'first_name'     => 'Demola',
+        //     'last_name'      => 'Raimi',
+        //     'role_id'        => 1,
+        //     'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
+        // ]);
 
         // $response = $this->actingAs($user)
         // ->call('POST', 'signup', [
@@ -68,8 +68,8 @@ class UserSignUpTest extends TestCase
         
     }
 
-    // public function testThatUserSignUpUsingOauth()
-    // {
+    public function testThatUserSignUpUsingOauth()
+    {
     //     $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');
     //     $provider->shouldReceive('redirect')->andReturn('Redirected');
     //     $providerName = class_basename($provider);
@@ -86,7 +86,7 @@ class UserSignUpTest extends TestCase
     //     $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');
     //     $provider->shouldReceive('user')->andReturn($abstractUser);
     //     Socialite::shouldReceive('driver')->with('facebook')->andReturn($provider);
-    //     $this->visit('/auth/facebook/callback')
+    //     $this->visit('/twitter/callback')
     //     ->seePageIs('/');
-    // }
+    }
 }
