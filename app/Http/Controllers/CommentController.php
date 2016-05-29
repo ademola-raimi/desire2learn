@@ -97,5 +97,5 @@ class CommentController extends Controller
     //     } else {
     //     	alert()->error('Something went wrong', 'Error');
     //     }
-    }
+    //}
 }
