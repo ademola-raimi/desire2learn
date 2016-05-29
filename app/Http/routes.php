@@ -218,7 +218,7 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
 |--------------------------------------------------------------------------
 */
 Route::get('category/delete/{id}', [
-        'uses' => 'CategoryController@destroy',
-        'as'   => 'delete-video',
-        'middleware' => 'category-delete',
-    ]);
+    'uses' => 'CategoryController@destroy',
+    'as'   => 'delete-category',
+    'middleware' => 'category-delete',
+]);

@@ -33,35 +33,18 @@ class VideoCategoryTest extends TestCase
 
     public function testForSuccessfulVideoCategoryUpload()
     {
-        // $user     = $this->createUserWithSuperAdminRole();
-        // $category = factory('Desire2Learn\Category')->create([
-        //     'name'        => 'Laravel',
-        //     'description' => 'framework for artisan web',
-        //     'user_id'     => $user->id,
-        // ]);
+        $user     = $this->createUserWithSuperAdminRole();
+        $category = factory('Desire2Learn\Category')->create([
+            'name'        => 'Laravel',
+            'description' => 'framework for artisan web',
+            'user_id'     => $user->id,
+        ]);
 
-        // $this->actingAs($user)->visit('/category/create')
-        //      ->type('Laravel', 'name')
-        //      ->type('framework for artisan web', 'description')
-        //      ->press('Upload Category')
-        //      ->see('LIKES VIEW FAVOURITE');
-
-
-
-        // $user     = $this->createUserWithSuperAdminRole();
-        // $response = $this->actingAs($user)
-        // ->call('POST', '/category/create', [
-        //     'name'        => 'Laravel',
-        //     'description' => 'framework for artisan web',
-        // ]);
-
-        // $this->actingAs($user)
-        //    ->visit('/category/create/')
-        //    ->type('Laravel', 'name')
-        //    ->type('framework for artisan web', 'description')
-        //    ->press('Upload Category')
-        //    ->seePageIs('/dashboard/index')
-        //    ->see('LIKES VIEW FAVOURITE');
+        $this->actingAs($user)->visit('/category/create')
+            ->type('PHP', 'name')
+            ->type('The elephant language', 'description')
+            ->press('Upload Category')
+            ->see('Likes');
     }
 
     public function testForMissingVideoCategoryNameField()

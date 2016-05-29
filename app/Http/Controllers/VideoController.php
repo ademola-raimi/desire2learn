@@ -4,7 +4,6 @@ namespace Desire2Learn\Http\Controllers;
 
 use Auth;
 use Alert;
-use Counter;
 use Desire2Learn\Like;
 use Desire2Learn\Video;
 use Desire2Learn\Comment;
@@ -68,13 +67,15 @@ class VideoController extends Controller
     {
         $video = Video::find($id);
 
+        if (is_null($video)) {
+            alert()->error('Oops! The video is not available!');
+            return redirect()->route('index');  
+        }
+
         $relatedVideos = Video::where('category', $video->category)->get();
         //$relatedVideo = $this->getRelatedVideos($videos);
 
-        $counter = Counter::showAndCount('show-video', $video->id);
-        if ($counter) {
-            $video->increment('views');
-        }
+        $video->increment('views');
 
         $latestComments = $video->comments()->latest()->take(10)->get();
 
@@ -138,16 +139,24 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        $video = Video::where('id', $id)->delete();
+        $video = Auth::user()->videos->find($id);
 
-        if ($video) {
+        if (is_null($video)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+
+            return redirect()->route('dashboard.home');
+        }
+
+        $videoDelete = $video->delete();
+
+        if ($videoDelete) {
             alert()->success('Video deleted succesfully', 'success');
 
             return redirect()->route('dashboard.home'); 
         } else {
            alert()->error('Something went wrong', 'error');
 
-            return redirect()->back();
+            return redirect()->route('dashboard.home');
         }
     }
 }

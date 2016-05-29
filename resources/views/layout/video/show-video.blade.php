@@ -1,6 +1,5 @@
  @extends('layout.master')
 
-
 @section('title', 'Welcome to D2l')
 
 @section('content')
@@ -159,7 +158,6 @@
                             <p class="card-text">Creator: {{ $relatedVideo->user->username }}</p>
                             @endforeach
                         </div>
-                  
                 </ul>
             </div>
         </section>

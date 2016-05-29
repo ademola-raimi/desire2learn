@@ -10,8 +10,7 @@
         "laravel/socialite": "~2.0",
         "jrm2k6/cloudder": "0.2.*",
         "sendgrid/sendgrid": "~4.0",
-        "uxweb/sweet-alert": "~1.1",
-        "kryptonit3/counter": "5.2.*"
+        "uxweb/sweet-alert": "~1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

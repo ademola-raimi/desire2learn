@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5701dcef4d101eda672f6de532bcfb22",
-    "content-hash": "9f432f5aaf36c2b2baef7fdb3044737e",
+    "hash": "ace4e2bf122c6217456037ef6b51af19",
+    "content-hash": "5d215deb5492a526c67b48bab2589e68",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -567,54 +567,6 @@
             "time": "2015-04-20 18:58:01"
         },
         {
-            "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "ef558efd72963fbcc6c0ef56cd2da841197b73d8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/ef558efd72963fbcc6c0ef56cd2da841197b73d8",
-                "reference": "ef558efd72963fbcc6c0ef56cd2da841197b73d8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jaybizzle\\CrawlerDetect\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Beech",
-                    "email": "m@rkbee.ch",
-                    "role": "Developer"
-                }
-            ],
-            "description": "CrawlerDetect is a PHP class for detecting bots/crawlers/spiders via the user agent",
-            "homepage": "https://github.com/JayBizzle/Crawler-Detect/",
-            "keywords": [
-                "crawler",
-                "crawler detect",
-                "crawler detector",
-                "crawlerdetect",
-                "php crawler detect"
-            ],
-            "time": "2016-05-19 22:01:17"
-        },
-        {
             "name": "jeremeamia/SuperClosure",
             "version": "2.2.0",
             "source": {
@@ -722,45 +674,6 @@
                 "upload"
             ],
             "time": "2016-05-25 15:33:08"
-        },
-        {
-            "name": "kryptonit3/counter",
-            "version": "5.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Kryptonit3/Counter.git",
-                "reference": "90018295725cbb4dbc4bb3081d30039f0c36a2ae"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Kryptonit3/Counter/zipball/90018295725cbb4dbc4bb3081d30039f0c36a2ae",
-                "reference": "90018295725cbb4dbc4bb3081d30039f0c36a2ae",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.*",
-                "jaybizzle/crawler-detect": "1.*",
-                "php": ">=5.3.3",
-                "ramsey/uuid": "~2.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kryptonit3\\Counter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jesse Szypulski",
-                    "email": "jesse.szypulski@gmail.com"
-                }
-            ],
-            "description": "Hit counter for your pages.",
-            "time": "2016-01-26 18:37:38"
         },
         {
             "name": "laravel/framework",
@@ -1517,73 +1430,6 @@
                 "shell"
             ],
             "time": "2016-03-09 05:03:14"
-        },
-        {
-            "name": "ramsey/uuid",
-            "version": "2.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/uuid.git",
-                "reference": "b2ef4dd9584268d73f92f752a62bc24cd534dc9a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/b2ef4dd9584268d73f92f752a62bc24cd534dc9a",
-                "reference": "b2ef4dd9584268d73f92f752a62bc24cd534dc9a",
-                "shasum": ""
-            },
-            "require": {
-                "paragonie/random_compat": "^1.0|^2.0",
-                "php": ">=5.3.3"
-            },
-            "replace": {
-                "rhumsaa/uuid": "self.version"
-            },
-            "require-dev": {
-                "doctrine/dbal": ">=2.3",
-                "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "moontoast/math": "~1.1",
-                "phpunit/phpunit": "~4.1|~5.0",
-                "satooshi/php-coveralls": "~0.6",
-                "squizlabs/php_codesniffer": "^2.3",
-                "symfony/console": "~2.3|~3.0"
-            },
-            "suggest": {
-                "doctrine/dbal": "Allow the use of a UUID as doctrine field type.",
-                "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
-                "symfony/console": "Support for use of the bin/uuid command line tool."
-            },
-            "bin": [
-                "bin/uuid"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Rhumsaa\\Uuid\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marijn Huizendveld",
-                    "email": "marijn.huizendveld@gmail.com"
-                },
-                {
-                    "name": "Ben Ramsey",
-                    "homepage": "http://benramsey.com"
-                }
-            ],
-            "description": "A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
-            "homepage": "https://github.com/ramsey/uuid",
-            "keywords": [
-                "guid",
-                "identifier",
-                "uuid"
-            ],
-            "time": "2016-03-22 18:20:19"
         },
         {
             "name": "sendgrid/sendgrid",
@@ -2514,16 +2360,16 @@
         },
         {
             "name": "uxweb/sweet-alert",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uxweb/sweet-alert.git",
-                "reference": "13c6846d4d789cbd71716639c14a455b095db14a"
+                "reference": "b22ba7c206c6f39c98d438ff1587b41f7571d917"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uxweb/sweet-alert/zipball/13c6846d4d789cbd71716639c14a455b095db14a",
-                "reference": "13c6846d4d789cbd71716639c14a455b095db14a",
+                "url": "https://api.github.com/repos/uxweb/sweet-alert/zipball/b22ba7c206c6f39c98d438ff1587b41f7571d917",
+                "reference": "b22ba7c206c6f39c98d438ff1587b41f7571d917",
                 "shasum": ""
             },
             "require": {
@@ -2556,7 +2402,7 @@
                 "laravel",
                 "sweet"
             ],
-            "time": "2016-03-08 06:11:44"
+            "time": "2016-05-29 03:32:56"
         },
         {
             "name": "vlucas/phpdotenv",
