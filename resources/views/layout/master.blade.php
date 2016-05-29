@@ -80,7 +80,7 @@
 
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="{!! load_asset('js/script.js') !!}"></script>
-    <script src="{!! load_asset('js/main.js') !!}"></script>
+    <script src="{!! load_asset('js/like.js') !!}"></script>
     <script src="{!! load_asset('js/comment.js') !!}"></script>
 </body>
 </html>
