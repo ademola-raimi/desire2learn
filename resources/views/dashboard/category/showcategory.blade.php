@@ -9,7 +9,7 @@
 <div class="row">
     @include('dashboard.partials.side-nav-bar')
 </div>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="row" style="margin-left: 1%;">
         <div class="col-lg-3 col-md-6">
             <div class="card card-inverse card-success">
@@ -48,5 +48,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection

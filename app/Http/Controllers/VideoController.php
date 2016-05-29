@@ -69,6 +69,7 @@ class VideoController extends Controller
 
         if (is_null($video)) {
             alert()->error('Oops! The video is not available!');
+
             return redirect()->route('index');  
         }
 
@@ -79,7 +80,7 @@ class VideoController extends Controller
 
         $latestComments = $video->comments()->latest()->take(10)->get();
 
-        return view('layout.video.show-video', compact('video', 'latestComments', 'relatedVideos'));
+        return view('layout.video.showvideo', compact('video', 'latestComments', 'relatedVideos'));
     }
 
     /**

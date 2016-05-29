@@ -48,7 +48,8 @@ class SuperAdminUser
 
         if ($user->role_id === 1) {
             Alert::error('You have no access to visit this page', 'Error');
-            return redirect()->back();
+
+            return redirect()->route('dashboard.home');
         }
 
         return $next($request);

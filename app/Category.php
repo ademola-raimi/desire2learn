@@ -11,6 +11,7 @@ class Category extends Model
         'description', 
         'user_id',
     ];
+
     /**
      * A Category belongs to many videos
      *
@@ -19,5 +20,15 @@ class Category extends Model
     public function videos()
     {
         return $this->belongsToMany('Desire2Learn\Video');
+    }
+
+    /**
+     * A category belongs to one user.
+     *
+     * @return Object
+     */
+    public function user()
+    {
+        return $this->belongsTo('Desire2Learn\User');
     }
 }

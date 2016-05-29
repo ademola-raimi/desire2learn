@@ -12,6 +12,19 @@ use Desire2Learn\Http\Requests;
 
 class CategoryController extends Controller
 {
+    public function showCategory($id)
+    {
+        $category = Category::find($id);
+
+        if (is_null($category)) {
+            alert()->error('Oops! The category is not available!');
+
+            return redirect()->route('dashboard.home');  
+        }
+
+        return view('dashboard.category.showcategory', compact('category'));
+    }
+
     public function createCategory()
     {
     	return view('dashboard.category.uploadform');
@@ -49,13 +62,16 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::where('id', $id)->first();
+        $category = Auth::user()->categories->find($id);
+
+        if (is_null($category)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+            return redirect()->route('dashboard.home');  
+        }
+
         if ($category) {
             return view('dashboard.category.editcategory', compact('category'));
-        }
-        
-        alert()->error('Category does not exist', 'error');
-        return redirect()->route('dashboard.home');    
+        }   
     }
 
     /**
@@ -66,7 +82,7 @@ class CategoryController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'name'        => 'required|unique:videos,url,'.$request->id,
+            'name'        => 'required|unique:categories,name,'.$request->id,
             'description' => 'required',
         ]);
 
@@ -87,22 +103,30 @@ class CategoryController extends Controller
     }
 
      /**
-     * This method delete videos created 
+     * This method delete categorys created 
      *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = Category::where('id', $id)->delete();
+        $category = Auth::user()->categories->find($id);
 
-        if ($category) {
+        if (is_null($category)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+
+            return redirect()->route('dashboard.home');
+        }
+
+        $categoryDelete = $category->delete();
+
+        if ($categoryDelete) {
             alert()->success('category deleted succesfully', 'success');
 
             return redirect()->route('dashboard.home'); 
         } else {
-           alert()->error('Something went wrong', 'error');
+            alert()->error('Something went wrong', 'error');
 
-            return redirect()->back();
+            return redirect()->route('dashboard.home');
         }
     }
 }

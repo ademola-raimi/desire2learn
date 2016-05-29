@@ -1,6 +1,5 @@
 @extends('dashboard.master')
 
-
 @section('title', 'Admin Page')
 
 @section('content')

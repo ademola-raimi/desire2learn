@@ -46,9 +46,10 @@ class DeleteCategory
             return redirect()->guest('login');
         }
 
-        if ($user->role_id === 1 || 2) {
+        if ($user->role_id == 1 || $user->role_id == 2) {
             Alert::error('You have no access to visit this page', 'Error');
-            return redirect()->back();
+
+            return redirect()->route('dashboard.home');
         }
 
         return $next($request);

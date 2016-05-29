@@ -13,6 +13,7 @@ class Video extends Model
         'description',
         'user_id',
     ];
+    
     /**
      * A video belongs to one user.
      *

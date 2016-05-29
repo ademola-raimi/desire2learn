@@ -191,6 +191,21 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
 */
 Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], function () {
 
+    Route::get('/create', [
+        'uses' => 'CategoryController@createCategory',
+        'as'   => 'create-category',
+    ]);
+
+    Route::post('/create', [
+        'uses' => 'CategoryController@postCategory',
+        'as'   => 'post.category',
+    ]);
+
+    Route::get('{id}', [
+        'uses' => 'CategoryController@showCategory',
+        'as'   => 'show-category',
+    ]);
+
     Route::get('/edit/{id}', [
         'uses' => 'CategoryController@edit',
         'as'   => 'edit-video'
@@ -199,16 +214,6 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
     Route::post('/edit/{id}/update', [
         'uses' => 'CategoryController@update',
         'as'   => 'update-video'
-    ]);
-
-    Route::get('/create', [
-        'uses' => 'CategoryController@createCategory',
-        'as'   => 'create.category',
-    ]);
-
-    Route::post('/create/', [
-        'uses' => 'CategoryController@postCategory',
-        'as'   => 'post.category',
     ]);
 });
 

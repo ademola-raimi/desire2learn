@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasMany('Desire2Learn\Video');
     }
 
+    public function categories()
+    {
+        return $this->hasMany('Desire2Learn\Category');
+    }
+
     /**
      * Define roles table relationship
      *
