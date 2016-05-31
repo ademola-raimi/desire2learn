@@ -38,6 +38,11 @@ Route::get('logout', [
     'as'   => 'logout'
 ]);
 
+Route::get('category/video/{categoryId}', [
+    'uses' => 'CategoryController@showVideoCategory',
+    'as' => 'show-video-category'
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes- index
@@ -60,21 +65,15 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         'as'   => 'post.video',
     ]);
 
-    Route::get('category/create', [
-        'uses' => 'CategoryController@createCategory',
-        'as'   => 'create.category',
+    Route::get('video/upload', [
+        'uses' => 'DashboardController@uploadedVideos',
+        'as'   => 'uploaded.video',
     ]);
 
-    // Route::post('category/icon', [
-    //     'uses' => 'CategoryController@postIcon',
-    //     'as'   => 'post.icon',
-    // ]);
-
-    Route::post('category/create', [
-        'uses' => 'CategoryController@postCategory',
-        'as'   => 'post.category',
+    Route::get('/category', [
+        'uses' => 'DashboardController@showCategories',
+        'as'   => 'all.categories',
     ]);
-
 });
 
 /*
@@ -120,11 +119,6 @@ Route::group(['prefix' => 'profile'], function () {
 */
 Route::group(['prefix' => 'video'], function () {
 
-    Route::get('/', [
-        'uses' => 'VideoController@getAllVideos',
-        'as'   => 'all-videos',
-    ]);
-
     Route::get('{id}', [
         'uses' => 'VideoController@showVideo',
         'as'   => 'show_video',
@@ -168,13 +162,13 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'comment',
     ]);
 
-    Route::put('comment/{id}/edit', [
-        'uses' => 'CommentController@editComment'
-    ]);
+    // Route::put('comment/{id}/edit', [
+    //     'uses' => 'CommentController@editComment'
+    // ]);
 
-    Route::delete('comment/{commentId}', [
-        'uses' => 'CommentController@deleteComment'
-    ]);
+    // Route::delete('comment/{commentId}', [
+    //     'uses' => 'CommentController@deleteComment'
+    // ]);
 });
 
 /*
@@ -200,12 +194,29 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
     ]);
 });
 
+
+
 /*
 |--------------------------------------------------------------------------
 | category Routes   
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => '/category', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], function () {
+
+    Route::get('/create', [
+        'uses' => 'CategoryController@createCategory',
+        'as'   => 'create-category',
+    ]);
+
+    Route::post('/create', [
+        'uses' => 'CategoryController@postCategory',
+        'as'   => 'post.category',
+    ]);
+
+    Route::get('{id}', [
+        'uses' => 'CategoryController@showSingleCategory',
+        'as'   => 'show-single-category',
+    ]);
 
     Route::get('/edit/{id}', [
         'uses' => 'CategoryController@edit',
@@ -216,9 +227,15 @@ Route::group(['prefix' => '/category', 'middleware' => 'auth'], function () {
         'uses' => 'CategoryController@update',
         'as'   => 'update-video'
     ]);
-
-    Route::get('/delete/{id}', [
-        'uses' => 'CategoryController@destroy',
-        'as'   => 'delete-video'
-    ]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Delete category Routes   
+|--------------------------------------------------------------------------
+*/
+Route::get('category/delete/{id}', [
+    'uses' => 'CategoryController@destroy',
+    'as'   => 'delete-category',
+    'middleware' => 'category-delete',
+]);

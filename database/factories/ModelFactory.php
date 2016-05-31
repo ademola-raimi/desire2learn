@@ -17,6 +17,7 @@ $factory->define(Desire2Learn\User::class, function (Faker\Generator $faker) {
         'first_name'      => $faker->name,
         'last_name'       => $faker->name,
         'email'           => $faker->email,
+        'provider'        => $faker->name,
         'role_id'         => 1,
         'password'        => bcrypt(str_random(10)),
         'remember_token'  => str_random(10),
@@ -35,7 +36,7 @@ $factory->define(Desire2Learn\User::class, function (Faker\Generator $faker) {
 $factory->define(Desire2Learn\Category::class, function (Faker\Generator $faker) {
     return [
         'name'        => $faker->name,
-        'icon'        => $faker->name,
+        'description' => $faker->name,
         'user_id'     => 1,
     ];
 });
@@ -45,7 +46,7 @@ $factory->define(Desire2Learn\Video::class, function (Faker\Generator $faker) {
         'title'       => $faker->name,
         'url'         => $faker->url,
         'description' => $faker->text,
-        'category_id' => 1,
+        'category'    => 1,
         'user_id'     => 1,
         'views'       => 0,
     ];
@@ -59,7 +60,15 @@ $factory->define(Desire2Learn\Comment::class, function (Faker\Generator $faker) 
     ];
 });
 
-$factory->define(Desire2Learn\Favourite::class, function (Faker\Generator $faker) {
+$factory->define(Desire2Learn\Like::class, function (Faker\Generator $faker) {
+    return [
+        'video_id' => 1,
+        'user_id'  => 1,
+        'like'     => 1,
+    ];
+});
+
+$factory->define(Desire2Learn\View::class, function (Faker\Generator $faker) {
     return [
         'video_id' => 1,
         'user_id'  => 1,

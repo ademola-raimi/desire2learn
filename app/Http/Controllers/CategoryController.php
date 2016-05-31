@@ -4,13 +4,36 @@ namespace Desire2Learn\Http\Controllers;
 
 use Auth;
 use Alert;
+use Validator;
 use Desire2Learn\User;
+use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
 
 class CategoryController extends Controller
 {
+    public function showSingleCategory($id)
+    {
+        $category = Category::find($id);
+
+        if (is_null($category)) {
+            alert()->error('Oops! The category is not available!');
+
+            return redirect()->route('dashboard.home');
+        }
+
+        return view('dashboard.category.showsinglecategory', compact('category'));
+    }
+
+    public function showVideoCategory($categoryId)
+    {
+        $video = Video::where('category', $categoryId)->paginate(6);
+        $categories = Category::all();
+
+        return view('layout.home', compact('video', 'categories'));
+    }
+
     public function createCategory()
     {
     	return view('dashboard.category.uploadform');
@@ -40,6 +63,7 @@ class CategoryController extends Controller
     		return redirect()->back();
     	}
     }
+    
     /**
      * This method is for editing of the apps
      *
@@ -47,9 +71,16 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::where('id', $id)->first();
-        
-        return view('dashboard.video.editcategory', compact('category'));
+        $category = Auth::user()->categories->find($id);
+
+        if (is_null($category)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+            return redirect()->route('dashboard.home');  
+        }
+
+        if ($category) {
+            return view('dashboard.category.editcategory', compact('category'));
+        }   
     }
 
     /**
@@ -60,7 +91,7 @@ class CategoryController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'name'        => 'required|name|unique:videos,url,'.$request->id,
+            'name'        => 'required|unique:categories,name,'.$request->id,
             'description' => 'required',
         ]);
 
@@ -81,22 +112,30 @@ class CategoryController extends Controller
     }
 
      /**
-     * This method delete videos created 
+     * This method delete categorys created 
      *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = Category::where('id', $id)->delete();
+        $category = Auth::user()->categories->find($id);
 
-        if ($category) {
+        if (is_null($category)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+
+            return redirect()->route('dashboard.home');
+        }
+
+        $categoryDelete = $category->delete();
+
+        if ($categoryDelete) {
             alert()->success('category deleted succesfully', 'success');
 
             return redirect()->route('dashboard.home'); 
         } else {
-           alert()->error('Something went wrong', 'error');
+            alert()->error('Something went wrong', 'error');
 
-            return redirect()->back();
+            return redirect()->route('dashboard.home');
         }
     }
 }

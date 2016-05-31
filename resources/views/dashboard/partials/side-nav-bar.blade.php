@@ -8,13 +8,11 @@
         <ul class="nav nav-sidebar" style="margin-top: 20%;">
             <li class="active"><a href="{{ route('dashboard.home') }}" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
             </li>
-            <li><a href="#" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>Video Category</a>
+            <li><a href="{{ route('all.categories') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>Video Categories</a>
             </li>
-            <li><a href="#" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>Uploaded Videos</a>
+            <li><a href="{{ route('uploaded.video') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>Uploaded Videos</a>
             </li>
-            
-            
-            <li><a href="#" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-play-circle" aria-hidden="true"></span>Favourited videos</a>
+            <li><a href="{{ route('create.video') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-play-circle" aria-hidden="true"></span>Upload video</a>
             </li>
         </ul>
         <!-- script-for-menu -->

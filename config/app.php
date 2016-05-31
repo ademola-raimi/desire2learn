@@ -158,7 +158,6 @@ return [
         Desire2Learn\Providers\AuthServiceProvider::class,
         Desire2Learn\Providers\EventServiceProvider::class,
         Desire2Learn\Providers\RouteServiceProvider::class,
-        Kryptonit3\Counter\CounterServiceProvider::class,
 
     ],
 
@@ -209,7 +208,5 @@ return [
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
-        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
     ],
-
 ];

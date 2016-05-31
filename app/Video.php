@@ -13,6 +13,7 @@ class Video extends Model
         'description',
         'user_id',
     ];
+    
     /**
      * A video belongs to one user.
      *
@@ -41,6 +42,16 @@ class Video extends Model
     public function likes()
     {
         return $this->hasMany('Desire2Learn\Like');
+    }
+
+    /**
+     * Each episode has many likes
+     *
+     * @return object
+     */
+    public function views()
+    {
+        return $this->hasMany('Desire2Learn\View');
     }
 
     /**

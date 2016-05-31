@@ -4,7 +4,7 @@ namespace Desire2Learn\Http\Controllers;
 
 use Auth;
 use Alert;
-use Counter;
+use Desire2Learn\View;
 use Desire2Learn\Like;
 use Desire2Learn\Video;
 use Desire2Learn\Comment;
@@ -26,7 +26,7 @@ class VideoController extends Controller
       $urlString = parse_url($url, PHP_URL_QUERY);
       parse_str($urlString, $args);
 
-      return $args['v'];
+      return $args['v']; 
     }
 
     public function postVideo(Request $request)
@@ -40,7 +40,7 @@ class VideoController extends Controller
 
         $videoUpload = Video::create([
             'title'       => $request['title'],
-            'user_id'      => auth()->user()->id,
+            'user_id'     => auth()->user()->id,
             'url'         => $this->getYouTubeIdFromURL($request['url']),
             'category'    => $request['category'],
             'description' => $request['description'],
@@ -57,28 +57,42 @@ class VideoController extends Controller
         return redirect()->route('dashboard.home');     
     }
 
-    public function getRelatedVideos($videos)
-    {
-        $videos = Video::where('category', $video->category)->get();
+    // public function getRelatedVideos($videos)
+    // {
+    //     $videos = Video::where('category', $video->category)->get();
 
-        return $videos;
+    //     return $videos;
+    // }
+
+    public function postView($id, $video)
+    {
+        if (Auth::check()) {
+            $addView = View::create([
+                'user_id'  => auth()->user()->id,
+                'video_id' => $video->id,
+            ]);
+        }
     }
 
     public function showVideo($id)
     {
         $video = Video::find($id);
 
-        $relatedVideos = Video::where('category', $video->category)->get();
-        //$relatedVideo = $this->getRelatedVideos($videos);
+        if (is_null($video)) {
+            alert()->error('Oops! The video is not available!');
 
-        $counter = Counter::showAndCount('show-video', $video->id);
-        if ($counter) {
-            $video->increment('views');
+            return redirect()->route('index');  
         }
+
+        $relatedVideos = Video::where('category', $video->category)->get();
+
+        $video->increment('views');
+
+        $this->postView($id, $video);
 
         $latestComments = $video->comments()->latest()->take(10)->get();
 
-        return view('layout.video.show-video', compact('video', 'latestComments', 'relatedVideos'));
+        return view('layout.video.showvideo', compact('video', 'latestComments', 'relatedVideos'));
     }
 
     /**
@@ -88,8 +102,13 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        $video = video::where('id', $id)->first();
+        $video = Auth::user()->videos->find($id);
         $categories = Category::all();
+
+        if (is_null($video)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+            return redirect()->route('dashboard.home');  
+        }
         
         return view('dashboard.video.editvideo', compact('video', 'categories'));
     }
@@ -133,16 +152,24 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        $video = Video::where('id', $id)->delete();
+        $video = Auth::user()->videos->find($id);
 
-        if ($video) {
+        if (is_null($video)) {
+            alert()->error('Oops! unauthorize because you are not the owner!');
+
+            return redirect()->route('dashboard.home');
+        }
+
+        $videoDelete = $video->delete();
+
+        if ($videoDelete) {
             alert()->success('Video deleted succesfully', 'success');
 
             return redirect()->route('dashboard.home'); 
         } else {
            alert()->error('Something went wrong', 'error');
 
-            return redirect()->back();
+            return redirect()->route('dashboard.home');
         }
     }
 }

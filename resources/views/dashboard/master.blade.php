@@ -28,9 +28,10 @@
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{!! load_asset('font-awesome/css/font-awesome.min.css') !!}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
     <!-- Devicons CSS  -->
-    <link href="//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
     <link href="{!! load_asset('devicons-master/css/devicons.min.css') !!}"
     
     <!-- Custom Theme files -->
@@ -97,7 +98,7 @@
         // Animation complete.
         });
         });
-        </script>
+    </script>
   
   </body>
 </html>

@@ -1,5 +1,7 @@
 @extends('dashboard.master')
+
 @section('title', 'Admin Page')
+
 @section('content')
 <div class="row">
     @include('dashboard.partials.top-nav-bar')
@@ -16,7 +18,7 @@
                         <i class="fa fa-eye fa-5x"></i>
                     </div>
                     <h6 class="text-uppercase" style="font-size: 2rem">Views</h6>
-                    <h1 class="display-1">134</h1>
+                    <h1 class="display-1">{{ $views->count() }}</h1>
                 </div>
                 
             </div>
@@ -27,8 +29,8 @@
                     <div class="rotate">
                         <i class="fa fa-thumbs-up fa-5x"></i>
                     </div>
-                    <h6 class="text-uppercase" style="font-size: 2rem">Likes</h6>
-                    <h1 class="display-1">134</h1>
+                    <h6 class="text-uppercase" style="font-size: 2rem">Reactions</h6>
+                    <h1 class="display-1">{{ $reactions->count() }}</h1>
                 </div>
                 
             </div>
@@ -37,10 +39,10 @@
             <div class="card card-inverse card-success">
                 <div class="card-block bg-success">
                     <div class="rotate">
-                        <i class="fa fa-star-o fa-5x"></i>
+                        <i class="fa fa-file-video-o fa-5x"></i>
                     </div>
-                    <h6 class="text-uppercase" style="font-size: 2rem">Favourites</h6>
-                    <h1 class="display-1">134</h1>
+                    <h6 class="text-uppercase" style="font-size: 2rem">UploadedVideos</h6>
+                    <h1 class="display-1">{{ $uploadedVideos->count() }}</h1>
                 </div>
                 
             </div>
