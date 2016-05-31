@@ -253,21 +253,6 @@ class Video extends TestCase
         $this->actingAs($user)->visit('video/edit/7')
          ->seePageIs('/dashboard/index');
     }
-
-    // public function testgetAllVideos()
-    // {
-    //     $user = factory('Desire2Learn\User')->Upload Video();
-    //     $category = factory('Desire2Learn\Category')->Upload Video([
-    //         'user_id'     => $user->id,
-    //         'name'        => 'Laravel',
-    //         'icon' => 'L',
-    //     ]);
-    //     $video = $this->uploadVideo($user, $category);
-    //     $this->actingAs($user)->visit('/dashboard/video/view')
-    //     ->see($video->title)
-    //     ->see($video->url)
-    //     ->see($video->category->name);
-    // }
     
     public function testThatOnlyLoggedInUserCanDeleteVideo()
     {
@@ -345,9 +330,53 @@ class Video extends TestCase
     {
         $user = factory('Desire2Learn\User')->create();
         $video = factory('Desire2Learn\Video')->create();
-        
+
         $this->visit('/')
         ->click($video->title)
         ->seePageIs('/video/'.$video->id);
+    }
+
+    public function testUploadedVideosIsAvailable()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $video = factory('Desire2Learn\Video')->create([
+            'title'        => 'Haskell',
+            'description'  => 'It is the language of the web',
+            'user_id'      => $user->id,
+            'views'        => 0,
+        ]);
+
+        $this->actingAs($user)->visit('/dashboard/video/upload')
+        ->see($video->name);
+    }
+
+    public function testUploadedVideosIsNotAvailable()
+    {
+        $user = factory('Desire2Learn\User')->create();
+
+        $this->actingAs($user)->visit('/dashboard/video/upload')
+        ->see('OOPS SORRY YOU HAVEN');
+    }
+
+    public function testVideosAreNotAvailableOnHomePage()
+    {
+        $user = factory('Desire2Learn\User')->create();
+
+        $this->visit('/')
+        ->see('Oops sorry we have no videos yet');
+    }
+
+    public function testVideosAreAvailableOnHomePage()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $video = factory('Desire2Learn\Video')->create([
+            'title'        => 'Haskell',
+            'description'  => 'It is the language of the web',
+            'user_id'      => $user->id,
+            'views'        => 0,
+        ]);
+
+        $this->visit('/')
+        ->see($video->title);
     }
 }

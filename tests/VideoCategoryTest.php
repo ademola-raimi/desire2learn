@@ -145,21 +145,17 @@ class VideoCategoryTest extends TestCase
             ->seePageIs('/dashboard/index');
     }    
 
-    // public function testgetAllCategories()
-    // {
-    //     $user = $this->createUserWithSuperAdminRole();
-    //     $categories = factory('Desire2Learn\Category')->create([
-    //         'name'        => 'Javascript',
-    //         'description' => 'It is the language of the web',
-    //         'user_id'     => $user->id,
-    //     ]);
-    //     $this->actingAs($user)->visit('/dashboard/category/view')
-    //     ->see($categories->name);
-    //     $this->assertArrayHasKey('id', $categories->toArray());
-    //     $this->assertArrayHasKey('name', $categories->toArray());
-    //     $this->assertArrayHasKey('description', $categories->toArray());
-    //     $this->assertArrayHasKey('user_id', $categories->toArray());
-    // }
+    public function testgetAllCategories()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $categories = factory('Desire2Learn\Category')->create([
+            'name'        => 'Javascript',
+            'description' => 'It is the language of the web',
+            'user_id'     => $user->id,
+        ]);
+        $this->actingAs($user)->visit('/dashboard/category')
+        ->see($categories->name);
+    }
 
     public function createUserWithSuperAdminRole()
     {
@@ -193,30 +189,26 @@ class VideoCategoryTest extends TestCase
         return $user;
     }
 
-    // public function testRelatedVideos()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create();
-    //     $video = factory('Desire2Learn\Video')->create([
-    //         'title'        => 'Haskell',
-    //         'description'  => 'It is the language of the web',
-    //         'user_id'      => $user->id,
-    //         'category_id'  => $category->id,
-    //         'views'        => 0,
-    //         'favourites'   => 0,
-    //     ]);
-    //     $this->visit('video/category/'.$category->name)
-    //     ->see($category->name)
-    //     ->see($video->title)
-    //     ->see($video->description);
-    //}
+    public function testRelatedVideos()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create();
+        $video = factory('Desire2Learn\Video')->create([
+            'title'        => 'Haskell',
+            'description'  => 'It is the language of the web',
+            'user_id'      => $user->id,
+            'views'        => 0,
+        ]);
+        $this->visit('/category/video/'.$category->id)
+        ->see($video->title);
+    }
 
-    // public function testThatVideosHasNotBeenUploadedForACategory()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $category = factory('Desire2Learn\Category')->create();
-    //     $video = factory('Desire2Learn\Video')->create();
-    //     $this->visit('video/category/Ginger')
-    //     ->see('Oops! videos are not available for display!');
-    // }
+    public function testThatVideosHasNotBeenUploadedForACategory()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create();
+        $video = factory('Desire2Learn\Video')->create();
+        $this->visit('video/2')
+        ->seePageIs('/');
+    }
 }

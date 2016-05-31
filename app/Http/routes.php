@@ -162,13 +162,13 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'comment',
     ]);
 
-    Route::put('comment/{id}/edit', [
-        'uses' => 'CommentController@editComment'
-    ]);
+    // Route::put('comment/{id}/edit', [
+    //     'uses' => 'CommentController@editComment'
+    // ]);
 
-    Route::delete('comment/{commentId}', [
-        'uses' => 'CommentController@deleteComment'
-    ]);
+    // Route::delete('comment/{commentId}', [
+    //     'uses' => 'CommentController@deleteComment'
+    // ]);
 });
 
 /*
