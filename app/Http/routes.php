@@ -59,6 +59,16 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         'uses' => 'VideoController@postVideo',
         'as'   => 'post.video',
     ]);
+
+    Route::get('video/upload', [
+        'uses' => 'DashboardController@uploadedVideos',
+        'as'   => 'uploaded.video',
+    ]);
+
+    Route::get('/category', [
+        'uses' => 'DashboardController@showCategories',
+        'as'   => 'all.categories',
+    ]);
 });
 
 /*
@@ -191,6 +201,11 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
 */
 Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], function () {
 
+    Route::get('/{categoryId}', [
+        'uses' => 'CategoryController@showVideoCategory',
+        'as' => 'show-video-category'
+    ]);
+
     Route::get('/create', [
         'uses' => 'CategoryController@createCategory',
         'as'   => 'create-category',
@@ -202,8 +217,8 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
     ]);
 
     Route::get('{id}', [
-        'uses' => 'CategoryController@showCategory',
-        'as'   => 'show-category',
+        'uses' => 'CategoryController@showSingleCategory',
+        'as'   => 'show-single-category',
     ]);
 
     Route::get('/edit/{id}', [

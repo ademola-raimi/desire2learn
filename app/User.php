@@ -90,6 +90,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Define likes table relationship
+     *
+     * @return object
+     */
+     public function views()
+    {
+        return $this->hasMany('Desire2Learn\View');
+    }
+
+    /**
      * Define comment table relationship
      *
      * @return object

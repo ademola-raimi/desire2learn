@@ -4,6 +4,7 @@ namespace Desire2Learn\Http\Controllers;
 
 use Auth;
 use Alert;
+use Desire2Learn\View;
 use Desire2Learn\Like;
 use Desire2Learn\Video;
 use Desire2Learn\Comment;
@@ -63,6 +64,14 @@ class VideoController extends Controller
     //     return $videos;
     // }
 
+    public function postView($id, $video)
+    {
+        $addView = View::create([
+            'user_id'  => auth()->user()->id,
+            'video_id' => $video->id,
+        ]);
+    }
+
     public function showVideo($id)
     {
         $video = Video::find($id);
@@ -77,6 +86,8 @@ class VideoController extends Controller
         //$relatedVideo = $this->getRelatedVideos($videos);
 
         $video->increment('views');
+
+        $this->postView($id, $video);
 
         $latestComments = $video->comments()->latest()->take(10)->get();
 

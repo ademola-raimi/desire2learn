@@ -209,5 +209,4 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
     ],
-
 ];

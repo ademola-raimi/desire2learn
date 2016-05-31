@@ -6,23 +6,32 @@ use Auth;
 use Alert;
 use Validator;
 use Desire2Learn\User;
+use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
 
 class CategoryController extends Controller
 {
-    public function showCategory($id)
+    public function showSingleCategory($id)
     {
         $category = Category::find($id);
 
         if (is_null($category)) {
             alert()->error('Oops! The category is not available!');
 
-            return redirect()->route('dashboard.home');  
+            return redirect()->route('dashboard.home');
         }
 
-        return view('dashboard.category.showcategory', compact('category'));
+        return view('dashboard.category.showsinglecategory', compact('category'));
+    }
+
+    public function showVideoCategory($categoryId)
+    {
+        $video = Video::where('category', $categoryId)->paginate(6);
+        $categories = Category::all();
+
+        return view('layout.home', compact('video', 'categories'));
     }
 
     public function createCategory()

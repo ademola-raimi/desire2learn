@@ -45,6 +45,16 @@ class Video extends Model
     }
 
     /**
+     * Each episode has many likes
+     *
+     * @return object
+     */
+    public function views()
+    {
+        return $this->hasMany('Desire2Learn\View');
+    }
+
+    /**
      * Define comment table relationship
      *
      * @return object

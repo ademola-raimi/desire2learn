@@ -55,7 +55,7 @@
 			<div class="button-details">
 			{!! $video->render() !!}
 		</div>
-		</div>
+	    </div>
 		
 	</div>
 </div>
