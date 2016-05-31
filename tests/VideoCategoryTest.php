@@ -44,7 +44,7 @@ class VideoCategoryTest extends TestCase
             ->type('PHP', 'name')
             ->type('The elephant language', 'description')
             ->press('Upload Category')
-            ->see('Likes');
+            ->see('Reaction');
     }
 
     public function testForMissingVideoCategoryNameField()
@@ -90,7 +90,7 @@ class VideoCategoryTest extends TestCase
           ->type('It is the language of the Html', 'description')
           ->press('Update Category')
           ->seePageIs('/dashboard/index')
-          ->see('Likes');
+          ->see('Reaction');
     }
 
     public function testCategoryRetrievedByRightOwner()

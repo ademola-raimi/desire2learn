@@ -60,7 +60,15 @@ $factory->define(Desire2Learn\Comment::class, function (Faker\Generator $faker) 
     ];
 });
 
-$factory->define(Desire2Learn\Favourite::class, function (Faker\Generator $faker) {
+$factory->define(Desire2Learn\Like::class, function (Faker\Generator $faker) {
+    return [
+        'video_id' => 1,
+        'user_id'  => 1,
+        'like'     => 1,
+    ];
+});
+
+$factory->define(Desire2Learn\View::class, function (Faker\Generator $faker) {
     return [
         'video_id' => 1,
         'user_id'  => 1,

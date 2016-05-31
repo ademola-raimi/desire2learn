@@ -38,6 +38,11 @@ Route::get('logout', [
     'as'   => 'logout'
 ]);
 
+Route::get('category/video/{categoryId}', [
+    'uses' => 'CategoryController@showVideoCategory',
+    'as' => 'show-video-category'
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes- index
@@ -114,11 +119,6 @@ Route::group(['prefix' => 'profile'], function () {
 */
 Route::group(['prefix' => 'video'], function () {
 
-    Route::get('/', [
-        'uses' => 'VideoController@getAllVideos',
-        'as'   => 'all-videos',
-    ]);
-
     Route::get('{id}', [
         'uses' => 'VideoController@showVideo',
         'as'   => 'show_video',
@@ -194,17 +194,14 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
     ]);
 });
 
+
+
 /*
 |--------------------------------------------------------------------------
 | category Routes   
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], function () {
-
-    Route::get('/{categoryId}', [
-        'uses' => 'CategoryController@showVideoCategory',
-        'as' => 'show-video-category'
-    ]);
 
     Route::get('/create', [
         'uses' => 'CategoryController@createCategory',

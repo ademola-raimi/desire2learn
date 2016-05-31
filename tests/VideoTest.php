@@ -49,7 +49,7 @@ class Video extends TestCase
              ->type('https://www.youtube.com/watch?v=9vN2IdeALaJ', 'url')
              ->type('Using the cloud system available on laravel', 'description')
              ->press('Upload Video')
-             ->see('Likes');
+             ->see('Reaction');
     }
 
     public function testThatAllFieldsAreMissingExceptIcon()
@@ -210,7 +210,7 @@ class Video extends TestCase
           ->type('https://www.youtube.com/watch?v=hKUwxXgz2RM', 'url')
           ->press('Update Video')
           ->seePageIs('/dashboard/index')
-          ->see('Likes');
+          ->see('Reaction');
     }
     
     public function testThatOnlyLoggedInUserCanUpdateVideo()
@@ -345,6 +345,7 @@ class Video extends TestCase
     {
         $user = factory('Desire2Learn\User')->create();
         $video = factory('Desire2Learn\Video')->create();
+        
         $this->visit('/')
         ->click($video->title)
         ->seePageIs('/video/'.$video->id);

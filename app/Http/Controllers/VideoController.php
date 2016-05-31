@@ -66,10 +66,12 @@ class VideoController extends Controller
 
     public function postView($id, $video)
     {
-        $addView = View::create([
-            'user_id'  => auth()->user()->id,
-            'video_id' => $video->id,
-        ]);
+        if (Auth::check()) {
+            $addView = View::create([
+                'user_id'  => auth()->user()->id,
+                'video_id' => $video->id,
+            ]);
+        }
     }
 
     public function showVideo($id)
@@ -83,7 +85,6 @@ class VideoController extends Controller
         }
 
         $relatedVideos = Video::where('category', $video->category)->get();
-        //$relatedVideo = $this->getRelatedVideos($videos);
 
         $video->increment('views');
 
