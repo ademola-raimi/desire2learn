@@ -23,7 +23,6 @@
                 <div class="col-lg-3 col-md-3">
                     <div class="card card-inverse card-success">
                         <div class="card-block bg-success" style="margin-bottom: 2%;">
-                            <!-- <i style="width: 20em;" class="devicon-{{ strtolower($categories->name) }}-plain colored"></i> -->
                             <h6 class="text-uppercase" style="font-size: 2rem"></h6>
                             
                         </div>

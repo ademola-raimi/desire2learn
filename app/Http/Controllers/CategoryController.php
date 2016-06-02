@@ -55,7 +55,7 @@ class CategoryController extends Controller
         if ($categoryUpload) {
             alert()->success('Category uploaded successfully', 'success');
 
-        	return redirect()->route('dashboard.home');
+        	return redirect()->route('uploaded.categories');
     	}
     	else {
             alert()->success('Category upload failed', 'success');

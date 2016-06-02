@@ -32,4 +32,11 @@ class DashboardController extends Controller
 
     	return view('dashboard.category.showcategories', compact('category'));
     }
+
+    public function uploadedCategory()
+    {
+        $uploadedCategory = Auth::user()->categories()->paginate(9);
+
+        return view('dashboard.category.uploadedcategories', compact('uploadedCategory'));
+    }
 }

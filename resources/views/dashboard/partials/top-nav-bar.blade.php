@@ -17,21 +17,13 @@
                 <!-- Start Navigation List -->
                 
                 <ul class="nav navbar-nav navbar-right">
-
-                    
-                    <li class="top-search">
-                        <form class="navbar-form navbar-right" style="width: 50%;">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <input type="submit" value=" ">
-                        </form>
-                    </li>
                     <!-- End Navigation List -->
 
                     <li>
                         {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" style="width: 45px; height: 45px;" />
                     </li>
                     
-                    <li><a class="play-icon popup-with-zoom-anim" href="{{ route('logout') }}">Logout</a></li>
+                    <li><a class="play-icon popup-with-zoom-anim" style="color: #4d4d4d;" href="{{ route('logout') }}">Logout</a></li>
                     
                     
                 </ul>

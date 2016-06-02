@@ -58,42 +58,42 @@
         </button>
         <!-- End Toggle Nav Link For Mobiles -->
         <a class="navbar-brand text-default" href="/">Desire2Learn</a>
+        <!-- <form action="{{ route('search.videos') }}" role="search" class="pull-right" style="margin-right: -80%; width: 100%; margin-top: 3%;">
+            <input type="text" name="query", class="form-control" placeholder="Search...">
+            <input type="submit" value=""><i class= glyphicon glyphicon-search
+></i>
+        </form> -->
     </div>
+
     <div class="navbar-collapse collapse">
         
         <!-- Start Navigation List -->
         <ul class="nav navbar-nav navbar-right">
             @if (! Auth::check())
-            <li class="top-search">
+            <!-- <li class="top-search">
                 <form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Search...">
                     <input type="submit" value=" ">
                 </form>
-            </li>
+            </li> -->
             <li>
-                <a class="active" href="/">Home</a>
+                <a type="button" class="btn btn-primary" href="/">Home</a>
             </li>
             
             <li>
-                <a href="{{ route('register') }}">Sign Up</a>
+                <a type="button" class="btn btn-primary" href="{{ route('register') }}">Sign Up</a>
             </li>
             <li>
-                <a href="{{ route('login') }}">Login</a>
+                <a type="button" class="btn btn-primary" stylle="margin-top:15%; " href="{{ route('login') }}">Login</a>
             </li>
             
             @else
             
             <!-- End Navigation List -->
-            <li class="top-search">
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <input type="submit" value=" ">
-                </form>
-            </li>
             <li id="dropdown">
                 <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: 20%;">
                     <li><a class="dropdown-item" href="{{ route('dashboard.home') }}"> <i class="fa fa-btn fa-dashboard"></i>Dashboard</a>
                     <li><a class="dropdown-item" href="{{ route('logout') }}" > <i class="fa fa-btn fa-power-off"></i>Logout</a></li>
                 </ul>

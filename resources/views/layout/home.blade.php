@@ -33,12 +33,12 @@
 					<div class="col-sm-3">
 						<div class="card-deck-wrapper">
 							<div class="card-deck sidebar-inner">
-								<div class="card">
+								<div class="card" >
 									<a href="/video/{{ $videos->id }}">
 										<img class="video-iframe" src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 									</a>
 									<div class="card-block">
-										<a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="/video/{{ $videos->id }}">{{ $videos->title }}</a>
+										<a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="/video/{{ $videos->id }}">{{substr($videos->title, 0, 35) }} {{ strlen($videos->title) > 35 ? '...': ''}}</a>
 										<p class="card-text">Creator: {{ $videos->user->username }}</p>
 										<p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($videos->created_at))->diffForHumans() }}</p>
 									</div>

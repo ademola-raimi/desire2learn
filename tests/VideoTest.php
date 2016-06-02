@@ -26,11 +26,11 @@ class Video extends TestCase
         $video = $this->uploadVideo($user, $category);
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->select($category->id, 'category')
-             ->type('Setting up Laravel 5.2', 'title')
+             ->type('Laravel', 'title')
              ->type('https://www.youtube.com/watch?v=9vN2IdeALaI', 'url')
              ->type('Laravel', 'description')
              ->press('Upload Video')
-             ->see('Views');
+             ->see('title');
     }
 
     public function testForSuccessfulVideoUpload()
@@ -49,7 +49,7 @@ class Video extends TestCase
              ->type('https://www.youtube.com/watch?v=9vN2IdeALaJ', 'url')
              ->type('Using the cloud system available on laravel', 'description')
              ->press('Upload Video')
-             ->see('Reaction');
+             ->see($video->title);
     }
 
     public function testThatAllFieldsAreMissingExceptIcon()
@@ -346,15 +346,15 @@ class Video extends TestCase
             'views'        => 0,
         ]);
 
-        $this->actingAs($user)->visit('/dashboard/video/upload')
+        $this->actingAs($user)->visit('/dashboard/video/uploaded')
         ->see($video->name);
     }
 
-    public function testUploadedVideosIsNotAvailable()
+    public function testUploadedVideoIsNotAvailable()
     {
         $user = factory('Desire2Learn\User')->create();
 
-        $this->actingAs($user)->visit('/dashboard/video/upload')
+        $this->actingAs($user)->visit('/dashboard/video/uploaded')
         ->see('OOPS SORRY YOU HAVEN');
     }
 

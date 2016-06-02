@@ -8,8 +8,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 card">
-            <h3>Register with Us, or <a href="{{ route('login') }}">Log In</a></h3>
+        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 3%; margin-bottom: 3%;">
+            <h3 style="margin-top: 3%; margin-bottom: 3%;">Register with Us, or <a href="{{ route('login') }}">Log In</a></h3>
             <form class="form" role="form" method="POST" action="{{ route('create-new-user') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -86,17 +86,17 @@
           </div>
           <div class="row">
                 <div class="col-xs-12 col-md-4">
-                    <a href="{{ url('/facebook') }}" class="btn btn-md btn-primary btn-block btn-social btn-facebook">
+                    <a href="{{ url('/facebook') }}" class="btn btn-md btn-primary btn-block btn-social btn-facebook" style="background-color: #3B5998; border: 1px solid #3B5998;">
                         <i class="fa fa-facebook"></i> Facebook
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <a href="{{ url('/twitter') }}" class="btn btn-md btn-block btn-social btn-twitter">
+                    <a href="{{ url('/twitter') }}" class="btn btn-md btn-primary btn-block btn-social btn-twitter" style="background-color: #55ACEE; border: 1px solid #55ACEE;">
                         <i class="fa fa-twitter"></i> Twitter
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                  <a href="{{ url('/github') }}" class="btn btn-md btn-block btn-social btn-github">
+                  <a href="{{ url('/github') }}" class="btn btn-md btn-primary btn-block btn-social btn-github" style="background-color: #444444; border: 1px solid #444444;">
                         <i class="fa fa-github"></i> Github
                   </a>
                 </div>

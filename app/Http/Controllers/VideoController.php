@@ -54,15 +54,8 @@ class VideoController extends Controller
 
         alert()->success('Video uploaded successfully', 'success');
 
-        return redirect()->route('dashboard.home');     
+        return redirect()->route('uploaded.video');     
     }
-
-    // public function getRelatedVideos($videos)
-    // {
-    //     $videos = Video::where('category', $video->category)->get();
-
-    //     return $videos;
-    // }
 
     public function postView($id, $video)
     {
@@ -84,6 +77,9 @@ class VideoController extends Controller
             return redirect()->route('index');  
         }
 
+        $like  = $video->likes->where('like', 1);
+        $unlike = $video->likes->where('like', 0);
+
         $relatedVideos = Video::where('category', $video->category)->get();
 
         $video->increment('views');
@@ -92,7 +88,7 @@ class VideoController extends Controller
 
         $latestComments = $video->comments()->latest()->take(10)->get();
 
-        return view('layout.video.showvideo', compact('video', 'latestComments', 'relatedVideos'));
+        return view('layout.video.showvideo', compact('video', 'like', 'unlike', 'latestComments', 'relatedVideos'));
     }
 
     /**

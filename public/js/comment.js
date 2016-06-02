@@ -40,16 +40,6 @@ $(document).ready(function() {
                             newComment += '<div class="comment-body" style="margin-left: -8%; margin-top: 1%;" ';
                             newComment += 'data-comment-id="' + response.commentId + '">';
                             newComment += '<span> <strong>' + comment + '</strong>' + ', ' + 'Just now </span>';
-                            //newComment += '<span>' + comment->created_at->diffForHumans() + '</span>';
-                            // newComment += '<div class="update-actions pull-right">';
-                            // newComment += '<a href="#" id="comment_action_caret" class="fa fa-bars no-style-link"></a>';
-                            // newComment += '<div id="comment_actions" style="display:none">';
-                            // newComment += '<a href="#" class="fa fa-pencil comment-action-edit no-style-link" ';
-                            // newComment += 'data-commentId="' + response.commentId + '"></a>';
-                            // newComment += '<a href="#" class="fa fa-trash comment-action-delete no-style-link" ';
-                            // newComment += 'data-commentId="' + response.commentId + '"></a>';
-                            // newComment += '</div>';
-                            // newComment += '</div>';
                             newComment += '</div></div></div></div>';
 
                             $('.load_comment').last().append(newComment);
@@ -62,9 +52,7 @@ $(document).ready(function() {
 
                             //empty the comment field
                             $('#new-comment-field').val('');
-
                             break;
-
                         default:
                         return false;
                     } 

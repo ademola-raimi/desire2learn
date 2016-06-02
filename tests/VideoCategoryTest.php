@@ -44,7 +44,7 @@ class VideoCategoryTest extends TestCase
             ->type('PHP', 'name')
             ->type('The elephant language', 'description')
             ->press('Upload Category')
-            ->see('Reaction');
+            ->see($category->name);
     }
 
     public function testForMissingVideoCategoryNameField()
@@ -203,7 +203,7 @@ class VideoCategoryTest extends TestCase
         ->see($video->title);
     }
 
-    public function testThatVideosHasNotBeenUploadedForACategory()
+    public function testThatVideoHasNotBeenUploadedForACategory()
     {
         $user = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create();
