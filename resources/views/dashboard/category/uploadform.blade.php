@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
-            <h3>New Category upload</h3>
+            <h3 style="margin-top: 3%;">New Category upload</h3>
             <hr>
             <form class="form" role="form" method="POST" action="{{ route('post.category') }}" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

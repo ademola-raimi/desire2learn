@@ -8,10 +8,10 @@
 
     <div class="container">
         <div class="row">
-        <div class="error">404</div>
-            <div class="error-message">
+        <h4 class="error" style="margin-top: 3%;">404</h4>
+            <p class="error-message" style="font-weight: 100px; margin-top: 2%; color: red;">
                 It looks like there is an inbalance on the world wide web
-            </div>
+            </p>
 
             <h3 class="error-exit-message">
                 we are so sorry!
@@ -19,15 +19,15 @@
 
             <br>
 
-            <a class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="This way home" href="/">
-                <i class="large material-icons">store</i>
+            <a type="button" class="btn btn-primary" href="/">
+                This way home
             </a>
 
             <br>
     </div>
     </div>
 
-<footer class="container-fluid">
+<footer class="container-fluid" style="margin-top: 22%;">
     @include('layout.partials.footer')
 </footer>
 
