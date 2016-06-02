@@ -26,7 +26,7 @@ class VideoController extends Controller
       $urlString = parse_url($url, PHP_URL_QUERY);
       parse_str($urlString, $args);
 
-      return $args['v']; 
+      return $args['v'];
     }
 
     public function postVideo(Request $request)
