@@ -12,8 +12,8 @@
 		<div class="card">
 			<iframe width="100%" height="550" src="http://www.youtube.com/embed/{{ $video->url }}?autoplay=1" allowfullscreen style="margin-bottom: -1%;"></iframe>
 		</div>
-			<div class="row">
-				<h3> {{ ucwords($video->title) }}</h3><p class="pull-right"><em>Created by </em><a href="#" ><strong> {{ ucwords($video->user->username) }}</strong></a></p>
+			<div class="row" style="margin-left: 0.2%; margin-top: 2%;">
+				<h3> {{ ucwords($video->title) }}</h3><p class="pull-right" style="margin-right: 1%;"><em>Created by </em><a href="#" ><strong> {{ ucwords($video->user->username) }}</strong></a></p>
 				<div class="video_details">
 					<ul class="list-inline">
 						<li>
@@ -26,24 +26,24 @@
     					@if (! Auth::check())
     					<li>
     						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}">
-    							<i class="fa fa-thumbs-up"> {{ count($video->likes) }} </i>
+    							<i class="fa fa-thumbs-up"> {{ $like->count() }} </i>
     						</a>
     					</li>
     					<li>
     						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}">
-    							<i class="fa fa-thumbs-down"> {{ count($video->likes) }} </i>
+    							<i class="fa fa-thumbs-down"> {{ $unlike->count() }} </i>
     						</a>
     					</li>
     					@else
     					
     					<li>
     						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}">
-    							<i class="fa fa-thumbs-up"> {{ count($video->likes->where('like', 1)) }} </i>
+    							<i class="fa fa-thumbs-up"> {{ $like->count() }} </i>
     						</a>
     					</li>
     					<li>
     						<a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}">
-    							<i class="fa fa-thumbs-down"> {{ count($video->likes->where('like', 0)) }} </i>
+    							<i class="fa fa-thumbs-down"> {{ $unlike->count() }} </i>
     						</a>
     					</li>
     					@endif

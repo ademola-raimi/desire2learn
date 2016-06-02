@@ -31,14 +31,10 @@ class LikeController extends Controller
         $like = $user->likes()->where('video_id', $videoId)->first();
         if ($like) {
             $alreadyLike = $like->like;
-            dd($update);
-            $update = true;
-            dd($update);
+            $update      = true;
 
             if ($alreadyLike == $isLike) {
                 $like->delete();
-
-                return 'deleted the row';
             }
         } else {
             $like = new Like();
@@ -49,7 +45,7 @@ class LikeController extends Controller
 
     public function wrapUpUpdate($videoId, $isLike, $update, $video, $like, $user)
     {
-        $like->like = $isLike;
+        $like->like    = $isLike;
         $like->user_id = $user->id;
         $like->video_id = $video->id;
 
@@ -59,6 +55,26 @@ class LikeController extends Controller
             $like->save();
         }
 
-        return 'success';
+        return $this->sendResponseToJquery($like);
+    }
+
+    public function sendResponseToJquery($like)
+    {
+        return ['message' => 'Yoo'];
+        
+        if (is_null($like)) {
+            return $response = json_encode([
+                'message' => 'you did not show any reaction', 'status_code' => 400 
+            ]);
+        }
+
+        if ($like->like == 1) {
+            return $response = [
+                'message' => 'You like this post', 'status_code' => 200 
+            ];
+        }
+        return $response = [
+                'message' => 'You dislike this post', 'status_code' => 200 
+            ];
     }
 }

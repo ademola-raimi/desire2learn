@@ -65,7 +65,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         'as'   => 'post.video',
     ]);
 
-    Route::get('video/upload', [
+    Route::get('video/uploaded', [
         'uses' => 'DashboardController@uploadedVideos',
         'as'   => 'uploaded.video',
     ]);
@@ -203,6 +203,11 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
 */
 Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], function () {
 
+    Route::get('/uploaded', [
+        'uses' => 'DashboardController@uploadedCategory',
+        'as'   => 'uploaded.categories',
+    ]);
+
     Route::get('/create', [
         'uses' => 'CategoryController@createCategory',
         'as'   => 'create-category',
@@ -237,5 +242,21 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
 Route::get('category/delete/{id}', [
     'uses' => 'CategoryController@destroy',
     'as'   => 'delete-category',
-    'middleware' => 'category-delete',
+    'middleware' => 'special.user',
+]);
+
+Route::get('/search', [
+    'uses' => 'SearchController@getResults',
+    'as' => 'search.videos',
+]);
+
+Route::get('/dashboard/new/superadmin', [
+    'uses'       => 'DashboardController@getAdminForm',
+    'middleware' => 'special.user',
+]);
+
+Route::post('/dashboard/new/superadmin', [
+    'uses'       => 'DashboardController@createAdmin',
+    'as'         => 'post.superadmin',
+    'middleware' => 'special.user',
 ]);
