@@ -74,7 +74,6 @@
     <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
     <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-
    
     @include('sweet::alert')
 
