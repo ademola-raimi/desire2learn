@@ -9,8 +9,8 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 card">
-            <h3>Update Profile</h3>
+        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 7%;">
+            <h3 style="margin-top: 3%;">Update Profile</h3>
             <hr>
             <form class="form" role="form" method="POST" action="{{ route('post-profile') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

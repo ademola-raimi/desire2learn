@@ -94,6 +94,12 @@
                 <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: 20%;">
+                    <li>
+                        <a href="{{ route('edit-profile') }}">
+                            <i class="fa fa-btn fa-user"></i> {{ ucwords(Auth::user()->username) }}'s profile
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item" href="{{ route('dashboard.home') }}"> <i class="fa fa-btn fa-dashboard"></i>Dashboard</a>
                     <li><a class="dropdown-item" href="{{ route('logout') }}" > <i class="fa fa-btn fa-power-off"></i>Logout</a></li>
                 </ul>

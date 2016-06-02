@@ -29,9 +29,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         parent::registerPolicies($gate);
 
-        // Superadmin user can create and edit a category
+        // Superadmin and special user can create and edit a category
         $gate->define('super-admin', function ($user) {
             return $user->role_id === 2 || 3;
+        });
+
+        // Regular user can cannot create and edit a category
+        $gate->define('super-admin', function ($user) {
+            return $user->role_id !== 1;
         });
     }
 }

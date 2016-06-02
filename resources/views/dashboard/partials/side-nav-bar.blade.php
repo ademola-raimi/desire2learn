@@ -10,12 +10,14 @@
             </li>
             <li><a href="{{ route('all.categories') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>Video Categories</a>
             </li>
+
             @can ( 'super-admin', Auth::user()->role_id )
-            <li><a href="{{ route('uploaded.categories') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>Uploaded Categories</a>
+            <li><a href="{{ route('uploaded.categories') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-list-alt" aria-hidden="true"></span>Uploaded Categories</a>
             </li>
-            <li><a href="{{ route('create-category') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>Upload Category</a>
+            <li><a href="{{ route('create-category') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-inbox" aria-hidden="true"></span>Upload Category</a>
             </li>
             @endcan
+
             <li><a href="{{ route('uploaded.video') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>Uploaded Videos</a>
             </li>
             <li><a href="{{ route('create.video') }}" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-play-circle" aria-hidden="true"></span>Upload video</a>
