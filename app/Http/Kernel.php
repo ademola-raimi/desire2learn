@@ -50,6 +50,6 @@ class Kernel extends HttpKernel
         'guest' => \Desire2Learn\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'superadmin.user' => \Desire2Learn\Http\Middleware\SuperAdminUser::class,
-        'category-delete' => \Desire2Learn\Http\Middleware\DeleteCategory::class,
+        'special.user' => \Desire2Learn\Http\Middleware\SpecialUser::class,
     ];
 }

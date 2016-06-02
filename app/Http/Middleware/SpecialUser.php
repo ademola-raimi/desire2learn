@@ -8,9 +8,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Desire2learn\Http\Requests;
 use Illuminate\Contracts\Auth\Guard;
-use Desire2Learn\Http\Middleware\DeleteCategory;
+use Desire2Learn\Http\Middleware\SpecialUser;
 
-class DeleteCategory
+class SpecialUser
 {
     /**
      * The Guard implementation.

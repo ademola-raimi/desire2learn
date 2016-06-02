@@ -3,6 +3,8 @@
 namespace Desire2Learn\Http\Controllers;
 
 use Auth;
+use Alert;
+use Desire2Learn\User;
 use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
@@ -38,5 +40,31 @@ class DashboardController extends Controller
         $uploadedCategory = Auth::user()->categories()->paginate(9);
 
         return view('dashboard.category.uploadedcategories', compact('uploadedCategory'));
+    }
+
+    public function getAdminForm()
+    {
+        return view('dashboard.superadminform');
+    }
+
+    public function createAdmin(Request $request)
+    {
+        $this->validate($request, [
+            'email'    => 'required',
+        ]);
+
+        $user = User::where('email', $request['email'])->first();
+
+        if (is_null($user)) {
+            alert()->error('Invalid Email');
+
+            return redirect()->back();
+        }
+
+        alert()->success('Successfully created a superadmin user');
+
+        $user->increment('role_id');
+
+        return redirect()->route('dashboard.home');
     }
 }
