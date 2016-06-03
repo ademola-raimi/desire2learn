@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta name="description" content="Welcome to Desire2learn where learning is made available and easier through video tutorials." />
+    <meta name="generator" content="Desire2Learn">
 
     <link href="{!! load_asset('images/logo.png') !!}" rel="stylesheet">
 
