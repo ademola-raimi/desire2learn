@@ -32,8 +32,8 @@ $(document).ready(function() {
             url: '/video/' + videoId + '/like',
             data: data,
             success: function (res) {
-                console.log('res ' + res.data);
-                cb(null, res);
+                $('i.fa-thumbs-up').html(' ' + res.like);
+                $('i.fa-thumbs-down').html(' '+ res.unlike)
             },
             error: function (err) {
                 console.log('err ' + err);

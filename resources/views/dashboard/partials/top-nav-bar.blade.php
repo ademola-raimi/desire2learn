@@ -1,9 +1,9 @@
 <header class="clearfix">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f5f5f5;">
         
         
         <!-- End Top Bar -->
-        <div class="container" style="margin-top: -13%">
+        <div class="container" style="margin-top: -13%;">
             <div class="navbar-header">
                 <!-- Stat Toggle Nav Link For Mobiles -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

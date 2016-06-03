@@ -1,4 +1,5 @@
- <header class="clearfix">
+ 
+ <header class="clearfix" style="background-color: #f5f5f5;">
 <!-- Start  Logo & Naviagtion  -->
 <div class="navbar navbar-default navbar-top">
 <div class="container">

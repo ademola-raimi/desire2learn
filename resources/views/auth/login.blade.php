@@ -2,9 +2,9 @@
 @section('title', 'Sign-Up your data')
 @section('content')
 @include('layout.partials.top-nav-bar')
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 3%; margin-bottom: 3%;">
+<div class="row" style="background-color: #f5f5f5;">
+<div class="container" >    
+        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 3%; margin-bottom: 3%; background-color: #fff;">
             <h3 style="margin-top: 3%; margin-bottom: 3%;">Log In, or <a href="{{ route('register') }}">Sign Up</a></h3>
             <form role="form" method="POST" action="{{ route('post-login') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -36,7 +36,7 @@
                 <hr class="hr-or">
                 <span class="span-or">OR</span>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom: 3%;">
                 <div class="col-xs-12 col-md-4">
                     <a href="{{ url('/facebook') }}" class="btn btn-md btn-primary btn-block btn-social btn-facebook" style="background-color: #3B5998; border: 1px solid #3B5998;">
                         <i class="fa fa-facebook"></i> Facebook
@@ -55,8 +55,9 @@
             </div>
         </div>
     </div>
-</div>
-<footer class="container-fluid" style="margin-top: 7%;">
+
+<footer class="container-fluid" style="margin-top: 10%;">
     @include('layout.partials.footer')
 </footer>
+</div>
 @endsection

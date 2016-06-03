@@ -67,6 +67,24 @@ class UserSignUpTest extends TestCase
         
     }
 
+    /**
+     * Test create method,
+     * Normal users can create an account
+     *
+     * @return void
+     */
+    public function testAuthCreate()
+    {
+        $this->authController->create([
+            'name' => 'name',
+            'username' => 'username',
+            'password' => 'password',
+            'email' => 'test@email.com'
+        ]);
+        $this->seeInDatabase('users', ['name' => 'name', 'email' => 'test@email.com']);
+    }
+
+
     public function testThatUserSignUpUsingOauth()
     {
         $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');

@@ -58,13 +58,23 @@ class ProfileUpdateTest extends TestCase
             ->see('The avatar field is required.');
     }
 
-    // public function testThatTheUserUploadProfilePicture()
-    // {
-    //     $user = factory('Desire2Learn\User')->create();
-    //     $this->actingAs($user)
-    //         ->visit('/profile/edit')
-    //         ->attach(storage_path('dem.jpg'), 'avatar')
-    //         ->press('Upload')
-    //         ->see('Avatar updated successfully');
-    // }
+    public function testThatTheUserUploadProfilePicture()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $this->actingAs($user)
+            ->visit('/profile/edit')
+            ->attach(storage_path('dem.jpg'), 'avatar')
+            ->press('Upload')
+            ->see($user->avatar);
+    }
+
+    public function testThatTheUserUploadProfilePictureFailed()
+    {
+        $user = factory('Desire2Learn\User')->create();
+        $this->actingAs($user)
+            ->visit('/profile/edit')
+            ->attach(storage_path('dem.mp4'), 'avatar')
+            ->press('Upload')
+            ->see('The avatar must be an image.');
+    }
 }

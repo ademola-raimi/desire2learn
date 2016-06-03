@@ -3,6 +3,7 @@
 @section('content')
 @include('layout.partials.top-nav-bar')
 <!-- Start Header Section -->
+<div class="row" style="background-color: #f5f5f5;">
 <div class="banner">
 	<div class="overlay">
 		<div class="container">
@@ -42,7 +43,7 @@
 					<div class="col-sm-3">
 						<div class="card-deck-wrapper">
 							<div class="card-deck sidebar-inner">
-								<div class="card" >
+								<div class="card" style="background-color: #fff;">
 									<a href="/video/{{ $videos->id }}">
 										<img class="video-iframe" src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 									</a>
@@ -86,4 +87,5 @@
 	@include('layout.partials.footer')
 </footer>
 <!-- End Footer Section -->
+</div>
 @endsection

@@ -17,49 +17,59 @@ class LikeController extends Controller
         $this->like = $like;
     }
 	public function postLikeVideo(Request $request, $videoId)
-    {   
+    {
         if ($request->ajax()) {
             if ($request->get('isLike') === 'true') {
-                $this->rowExists(auth()->user()->id, $videoId, true);
+                return $this->checkRowExists(auth()->user()->id, $videoId, true);
             } else {
-                $this->rowExists(auth()->user()->id, $videoId, false);
+                return $this->checkRowExists(auth()->user()->id, $videoId, false);
             }
         }
     }
 
-    private function rowExists($userId, $videoId, $isLike)
+    private function checkRowExists($userId, $videoId, $isLike)
     {
         $exists = Like::where('user_id', $userId)->where('video_id', $videoId)->first();
 
         switch(true) {
-            case !$exists && $isLike:
-                $this->likeVideo($videoId, $userId);
+            case ! $exists && $isLike:
+               return $this->likeVideo($videoId, $userId);
             break;
             case ! $exists && ! $isLike:
-                $this->unlikeVideo($videoId, $userId);
+                return $this->unlikeVideo($videoId, $userId);
             break;
             case $exists && $isLike:
-                $this->alreadyLiked($exists);
+                return $this->alreadyLiked($exists);
             break;
             case $exists && !$isLike:
-                $this->removeLike($exists);
+                return $this->alreadyUnliked($exists);
             break;
+        }
+    }
+
+    private function alreadyUnliked($exists)
+    {
+        if ($exists->like) {
+            return $this->toggleLike($exists);
+        } else {
+            return $this->removeLike($exists);
         }
     }
 
     private function alreadyLiked($exists)
     {
         if ($exists->like) {
-            $this->removeLike($exists);
+            return $this->removeLike($exists);
         } else {
-            $this->toggleLike($exists);
+            return $this->toggleLike($exists);
         }
     }
 
     private function removeLike($like)
     {
         Like::find($like->id)->delete();
-        return response()->json(['message' => 'like deleted'], 200);
+
+        return response()->json(['message' => 'delete like row', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
     }
 
     private function toggleLike($like)
@@ -67,12 +77,13 @@ class LikeController extends Controller
         if ($like->like) {
             $like->like = 0;
             $like->save();
-            return response()->json($like);
+            
+            return response()->json(['message' => 'update like column to 0 to unlike', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
         } else {
             $like->like = 1;
             $like->save();
 
-            return response()->json($like, 200);
+            return response()->json(['message' => 'update like column to 1', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
         }
     }
 
@@ -83,7 +94,7 @@ class LikeController extends Controller
         $this->like->like = 1;
         $this->like->save();
 
-        return response()->json($this->like, 200);
+        return response()->json(['message' => 'create new row for like', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
     }
 
     private function unlikeVideo($videoId, $userId)
@@ -93,7 +104,20 @@ class LikeController extends Controller
         $this->like->video_id = $videoId;
         $this->like->save();
 
-        return response()->json($this->like, 200);
+        return response()->json(['message' => 'create new row for unlike', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
     }
 
+    public function countLike()
+    {
+        $like = Like::where('like', 1)->get();
+
+        return $like->count();
+    }
+
+    public function countUnLike()
+    {
+        $like = Like::where('like', 0)->get();
+
+        return $like->count();
+    }
 }
