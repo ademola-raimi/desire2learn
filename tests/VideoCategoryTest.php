@@ -212,7 +212,7 @@ class VideoCategoryTest extends TestCase
         ->seePageIs('/');
     }
 
-    public function testThatOnlySpecialUserCanCreateAdminUser()
+    public function testThatOnlySpecialUserGetAdminUserPage()
     {
         $user = $this->createSpecialUser();
 

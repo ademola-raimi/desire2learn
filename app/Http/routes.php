@@ -56,7 +56,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('video/create', [
-        'uses' => 'VideoController@createVideo',
+        'uses' => 'VideoController@uploadVideo',
         'as'   => 'create.video',
     ]);
 
@@ -141,7 +141,7 @@ Route::group(['prefix' => '/{provider}', 'middleware' => ['web']], function () {
 | Like  
 |--------------------------------------------------------------------------
 */
-Route::post('/video/like/{id}', [
+Route::post('/video/{id}/like', [
     'uses' => 'LikeController@postLikeVideo',
     'as' => 'like'
 ]);
@@ -161,14 +161,6 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'CommentController@postComment',
         'as' => 'comment',
     ]);
-
-    // Route::put('comment/{id}/edit', [
-    //     'uses' => 'CommentController@editComment'
-    // ]);
-
-    // Route::delete('comment/{commentId}', [
-    //     'uses' => 'CommentController@deleteComment'
-    // ]);
 });
 
 /*

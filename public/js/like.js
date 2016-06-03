@@ -8,21 +8,37 @@ $(document).ready(function() {
     $('.vote').on('click', function(e){
         e.preventDefault();
         var data = {
-            isLike: $(this).find('i').hasClass('fa-thumbs-up'),
-            user: $(this).data('user')
+            isLike: $(this).find('i').hasClass('fa-thumbs-up')? true : false,
+            user_id: $(this).data('user')
         }
+
         var videoId = $(this).attr('id');
-        makeLikeAction(videoId, data);
+        toggleLike(videoId, data, function (err, res) {
+            if (err) {
+                console.log('Error: '+ err);
+            } else {
+                console.log(res);
+            }
+        });
     });
 
-    function makeLikeAction(videoId, data){
-        if (data.user == undefined) {
+    function toggleLike(videoId, data, cb){
+        if (data.user_id == undefined) {
             return window.location.href = "/login";
         }
+
         $.ajax({
             method: 'POST',
-            url: '/video/like/' + videoId,
+            url: '/video/' + videoId + '/like',
             data: data,
+            success: function (res) {
+                $('i.fa-thumbs-up').html(' ' + res.like);
+                $('i.fa-thumbs-down').html(' '+ res.unlike)
+            },
+            error: function (err) {
+                console.log('err ' + err);
+                cb(err, null);
+            }
         });
     }
 });

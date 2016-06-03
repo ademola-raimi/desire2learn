@@ -15,7 +15,7 @@ use Desire2Learn\Http\Repository\VideoRepository;
 
 class VideoController extends Controller
 {
-    public function createVideo()
+    public function uploadVideo()
     {
     	$categories = Category::all();
     	return view('dashboard.video.uploadform', compact('categories'));
@@ -23,38 +23,73 @@ class VideoController extends Controller
 
     public function getYouTubeIdFromURL($url)
     {
-      $urlString = parse_url($url, PHP_URL_QUERY);
-      parse_str($urlString, $args);
+        $videoId = substr($url, 32, 11);
 
-      return $args['v']; 
+        return $this->checkyoutubeUrlExist($videoId);
     }
+
+    /**
+     * Validate the existence of a resource video.
+     *
+     * @param $url 
+     *
+     * @return bool
+     */
+    protected function checkyoutubeUrlExist($videoId)
+    {
+        $url = "https://www.youtube.com/watch?v=$videoId";
+        $headers = get_headers($url);
+
+        return ($headers[0] !== 'HTTP/1.0 404 Not Found') ? true : false;
+    }
+
 
     public function postVideo(Request $request)
     {
     	$this->validate($request, [
             'title'       => 'required',
-            'url'         => 'required|url',
+            'url'          => 'required|url',
             'category'    => 'required',
             'description' => 'required',
         ]);
 
+        $video = Video::where('category', $request['category'])->where('url', substr($request['url'], 32, 11))->get();
+
+        if ($video->count() > 0) {
+            alert()->error('The video already exist in this category', 'error');
+
+            return redirect()->back();
+        }
+
+        $url = $this->getYouTubeIdFromURL($request['url']);
+
+        if ($url) {
+            return $this->createVideo($request);
+        }
+        alert()->error('Invalid youtube url', 'error');
+
+        return redirect()->back();
+    }
+
+    public function createVideo($request)
+    {
         $videoUpload = Video::create([
             'title'       => $request['title'],
             'user_id'     => auth()->user()->id,
-            'url'         => $this->getYouTubeIdFromURL($request['url']),
+            'url'         => substr($request['url'], 32, 11),
             'category'    => $request['category'],
             'description' => $request['description'],
         ]);
 
-        if (is_null($videoUpload->id)) {
-            alert()->error('Video upload failed', 'error');
+            if (is_null($videoUpload->id)) {
+                alert()->error('Video upload failed', 'error');
 
-            return redirect()->back();
-    	}
+                return redirect()->back();
+            }
 
-        alert()->success('Video uploaded successfully', 'success');
+            alert()->success('Video uploaded successfully', 'success');
 
-        return redirect()->route('uploaded.video');     
+            return redirect()->route('uploaded.video'); 
     }
 
     public function postView($id, $video)

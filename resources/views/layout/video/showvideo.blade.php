@@ -1,27 +1,26 @@
- @extends('layout.master')
+@extends('layout.master')
 
 @section('title', 'Welcome to D2l')
 
 @section('content')
 
 @include('layout.partials.top-nav-bar')
-
-<div class="container" style="margin-bottom: 6%; margin-top: 3%;">
+<div class="row" style="background-color: #f5f5f5;">
+<div class="container" style="margin-bottom: 6%; margin-top: 2%;>
 	<div class="row">
-		<h2>{{ $video->title }}</h2>
 		<div class="card">
 			<iframe width="100%" height="550" src="http://www.youtube.com/embed/{{ $video->url }}?autoplay=1" allowfullscreen style="margin-bottom: -1%;"></iframe>
 		</div>
 			<div class="row" style="margin-left: 0.2%; margin-top: 2%;">
 				<h3> {{ ucwords($video->title) }}</h3><p class="pull-right" style="margin-right: 1%;"><em>Created by </em><a href="#" ><strong> {{ ucwords($video->user->username) }}</strong></a></p>
-				<div class="video_details">
+				<div class="video_details" style="margin-top: 1%;">
 					<ul class="list-inline">
 						<li>
-							<a type="button" class="btn btn-primary btn-sm views">
-								<i class="fa fa-eye"> {{ $video->views }}  </i>
-							</a>
+							<p class="btn btn-primary btn-sm views" style="cursor: Auto;">
+								<i class="fa fa-eye"> {{ $video->views }} </i>
+							</p>
 						</li>
-    					<li><a type="button" class="btn btn-primary btn-sm comments"> <i class="fa fa-comment"> {{ count($video->comments) }}</i></a>
+    					<li><p  class="btn btn-primary btn-sm comments" style="cursor: Auto;"> <i class="fa fa-comment"> {{ count($video->comments) }}</i></p>
     					</li>
     					@if (! Auth::check())
     					<li>
@@ -166,4 +165,5 @@
 	@include('layout.partials.footer')
 </footer>
 <!-- End Footer Section -->
+</div>
 @endsection

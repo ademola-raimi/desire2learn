@@ -3,6 +3,7 @@
 @section('content')
 @include('layout.partials.top-nav-bar')
 <!-- Start Header Section -->
+<div class="row" style="background-color: #f5f5f5;">
 <div class="banner">
 	<div class="overlay">
 		<div class="container">
@@ -11,7 +12,16 @@
 				<p>Learning is not attained by chance, It must be sought for with ardor and attended with deligence <br> Dive in to get started</p>
 				
 				@if (! Auth::check())
-				<a href="{{ route('register') }}" class="page-scroll btn btn-primary">Register</a>
+				<!-- <a href="{{ route('register') }}" class="page-scroll btn btn-primary">Register</a> -->
+				<a href="{{ url('/facebook') }}" class="page-scroll btn btn-primary" style="background-color: #3B5998; width: 20%;">
+                        <i class="fa fa-facebook"></i> SignIn With Facebook
+                </a>
+                <a href="{{ url('/twitter') }}" class="page-scroll btn btn-primary" style="background-color: #55ACEE; width: 20%;">
+                        <i class="fa fa-twitter"></i> SignIn with Twitter
+                </a>
+                <a href="{{ url('/github') }}" class="page-scroll btn btn-primary" style="background-color: #444444; width: 20%;">
+                        <i class="fa fa-github"></i> SignIn with Github
+                  </a>
 				@else
 				<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary">Dashboard</a>
 				@endif
@@ -33,7 +43,7 @@
 					<div class="col-sm-3">
 						<div class="card-deck-wrapper">
 							<div class="card-deck sidebar-inner">
-								<div class="card" >
+								<div class="card" style="background-color: #fff;">
 									<a href="/video/{{ $videos->id }}">
 										<img class="video-iframe" src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 									</a>
@@ -77,4 +87,5 @@
 	@include('layout.partials.footer')
 </footer>
 <!-- End Footer Section -->
+</div>
 @endsection
