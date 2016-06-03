@@ -39,6 +39,7 @@
             <!-- End Navigation List -->
             <li id="dropdown" style="margin-top: 2%; color: #6b6b6b;">
                 <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: 20%;">
                     <li>

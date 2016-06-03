@@ -3,14 +3,14 @@
         
         
         <!-- End Top Bar -->
-        <div class="container" style="margin-top: -13%;">
+        <div class="container" style="margin-top: -20%;">
             <div class="navbar-header">
                 <!-- Stat Toggle Nav Link For Mobiles -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <i class="fa fa-bars"></i>
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
-                <a class="navbar-brand text-default" style="margin-top: 60%;" href="/">Desire2Learn</a>
+                <a class="navbar-brand text-default" style="margin-top: 100%;" href="/">Desire2Learn</a>
             </div>
             <div class="navbar-collapse collapse" stylle="margin-top: 10%;">
                 
@@ -19,7 +19,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- End Navigation List -->
 
-                    <li class="dropdown" style="margin-top: 100%;">
+                    <li class="dropdown" style="margin-top: 110%;">
                     <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" style="width: 45px; height: 45px;" />
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                     </a>
