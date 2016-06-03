@@ -10,7 +10,7 @@
                 </div>
             </div>
             
-            <div class="col-md-5">
+            <!-- <div class="col-md-5">
                 <div class="copyright-menu pull-right">
                    @if (! Auth::check())
                     <ul>
@@ -25,7 +25,7 @@
                     </ul>
                     @endif
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>

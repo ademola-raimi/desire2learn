@@ -11,70 +11,89 @@ use Illuminate\Support\Facades\Session;
 
 class LikeController extends Controller
 {
-	public function postLikeVideo(Request $request, $video_id)
+    private $like;
+    public function __construct(Like $like)
     {
-        $videoId = $video_id;
-        $isLike  = $request['isLike'] === 'true';
-        $update  = false;
-        $video   = Video::find($videoId);
-
-        if (!$video) {
-            return 'Something went wrong';
-        }
-
-        return $this->updateLikeTable($videoId, $isLike, $update, $video);
+        $this->like = $like;
     }
-
-    public function updateLikeTable($videoId, $isLike, $update, $video)
-    {
-        $user = Auth::user();
-        $like = $user->likes()->where('video_id', $videoId)->first();
-        if ($like) {
-            $alreadyLike = $like->like;
-            $update      = true;
-
-            if ($alreadyLike == $isLike) {
-                $like->delete();
+	public function postLikeVideo(Request $request, $videoId)
+    {   
+        if ($request->ajax()) {
+            if ($request->get('isLike') === 'true') {
+                $this->rowExists(auth()->user()->id, $videoId, true);
+            } else {
+                $this->rowExists(auth()->user()->id, $videoId, false);
             }
-        } else {
-            $like = new Like();
         }
-
-        $this->wrapUpUpdate($videoId, $isLike, $update, $video, $like, $user);
     }
 
-    public function wrapUpUpdate($videoId, $isLike, $update, $video, $like, $user)
+    private function rowExists($userId, $videoId, $isLike)
     {
-        $like->like    = $isLike;
-        $like->user_id = $user->id;
-        $like->video_id = $video->id;
+        $exists = Like::where('user_id', $userId)->where('video_id', $videoId)->first();
 
-        if ($update) {
-            $like->update();
+        switch(true) {
+            case !$exists && $isLike:
+                $this->likeVideo($videoId, $userId);
+            break;
+            case ! $exists && ! $isLike:
+                $this->unlikeVideo($videoId, $userId);
+            break;
+            case $exists && $isLike:
+                $this->alreadyLiked($exists);
+            break;
+            case $exists && !$isLike:
+                $this->removeLike($exists);
+            break;
+        }
+    }
+
+    private function alreadyLiked($exists)
+    {
+        if ($exists->like) {
+            $this->removeLike($exists);
         } else {
+            $this->toggleLike($exists);
+        }
+    }
+
+    private function removeLike($like)
+    {
+        Like::find($like->id)->delete();
+        return response()->json(['message' => 'like deleted'], 200);
+    }
+
+    private function toggleLike($like)
+    {
+        if ($like->like) {
+            $like->like = 0;
             $like->save();
-        }
+            return response()->json($like);
+        } else {
+            $like->like = 1;
+            $like->save();
 
-        return $this->sendResponseToJquery($like);
+            return response()->json($like, 200);
+        }
     }
 
-    public function sendResponseToJquery($like)
+    private function likeVideo($videoId, $userId)
     {
-        return ['message' => 'Yoo'];
-        
-        if (is_null($like)) {
-            return $response = json_encode([
-                'message' => 'you did not show any reaction', 'status_code' => 400 
-            ]);
-        }
+        $this->like->video_id = $videoId;
+        $this->like->user_id = $userId;
+        $this->like->like = 1;
+        $this->like->save();
 
-        if ($like->like == 1) {
-            return $response = [
-                'message' => 'You like this post', 'status_code' => 200 
-            ];
-        }
-        return $response = [
-                'message' => 'You dislike this post', 'status_code' => 200 
-            ];
+        return response()->json($this->like, 200);
     }
+
+    private function unlikeVideo($videoId, $userId)
+    {
+        $this->like->like = 0;
+        $this->like->user_id = $userId;
+        $this->like->video_id = $videoId;
+        $this->like->save();
+
+        return response()->json($this->like, 200);
+    }
+
 }
