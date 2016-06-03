@@ -51,7 +51,7 @@ http://desire2learn.herokuapp.com/
 
 ####Reactions and Comments
 <hr>
-#### A guest user is not priviledge to neither like or comment on a video
+##### A guest user is not priviledge to neither like or comment on a video
 
 ##### An authenticated user can 
 
@@ -72,7 +72,7 @@ Before diving in, kindly make the following available on your system:
 Clone the repository into your local environment
 
 ```bash
-$ https://github.com/andela-araimi/desire2learn
+$ https://github.com/andela-araimi/desire2learn.git
 ```
 
 ```bash
@@ -201,6 +201,6 @@ If you discover any security related issues, please email me at [Raimi Ademola](
 
 ### The MIT License (MIT)
 
-Copyright (c) 2016 John Ademola <ademola.raimi@andela.com>
+Copyright (c) 2016 Raimi Ademola <ademola.raimi@andela.com>
 
 The Desire2Learn is an open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
