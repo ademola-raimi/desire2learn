@@ -16,11 +16,11 @@
 				<div class="video_details" style="margin-top: 1%;">
 					<ul class="list-inline">
 						<li>
-							<a type="button" class="btn btn-primary btn-sm views">
-								<i class="fa fa-eye"> {{ $video->views }}  </i>
-							</a>
+							<p class="btn btn-primary btn-sm views" style="cursor: Auto;">
+								<i class="fa fa-eye"> {{ $video->views }} </i>
+							</p>
 						</li>
-    					<li><a type="button" class="btn btn-primary btn-sm comments"> <i class="fa fa-comment"> {{ count($video->comments) }}</i></a>
+    					<li><p  class="btn btn-primary btn-sm comments" style="cursor: Auto;"> <i class="fa fa-comment"> {{ count($video->comments) }}</i></p>
     					</li>
     					@if (! Auth::check())
     					<li>
