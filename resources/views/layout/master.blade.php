@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="description" content="Welcome to Desire2learn where learning is made available and easier through video tutorials." />
     <meta name="generator" content="Desire2Learn">
+    <meta property="desire2learn:image" content="{!! load_asset('images/banner.jpg') !!}">
 
     <link href="{!! load_asset('images/logo.png') !!}" rel="stylesheet">
 
