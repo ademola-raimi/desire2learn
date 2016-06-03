@@ -197,15 +197,31 @@ ul.cl-effect-1,ul.cl-effect-2 {
     display: block;
     text-decoration: none;
 }
-.glyphicon-film{
-	margin: 0 2em 0 0;
-    font-size: 16px !important;	
-}
+
 .glyphicon-home {
 	margin: 0 2em 0 0;
     font-size: 16px !important;
 }
-.glyphicon-music {
+.glyphicon-blackboard {
+  margin: 0 2em 0 0;
+    font-size: 16px !important;
+}
+.glyphicon-inbox {
+  margin: 0 2em 0 0;
+    font-size: 16px !important;
+}
+
+.glyphicon-hourglass {
+  margin: 0 2em 0 0;
+    font-size: 16px !important;
+}
+
+.glyphicon-play-circle {
+  margin: 0 2em 0 0;
+    font-size: 16px !important;
+}
+
+.glyphicon-list-alt {
     margin: 0 2em 0 0;
     font-size: 16px !important;
 }

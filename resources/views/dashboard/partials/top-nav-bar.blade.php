@@ -10,7 +10,7 @@
                 <i class="fa fa-bars"></i>
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
-                <a class="navbar-brand text-default" style="margin-top: 100%;" href="/">Desire2Learn</a>
+                <a class="navbar-brand text-default" style="margin-top: 100% !important;" href="/">Desire2Learn</a>
             </div>
             <div class="navbar-collapse collapse" stylle="margin-top: 10%;">
                 
@@ -30,8 +30,8 @@
                         </a>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('dashboard.home') }}"> <i class="fa fa-btn fa-dashboard"></i>Dashboard</a>
-                    <li><a class="dropdown-item" href="{{ route('logout') }}" > <i class="fa fa-btn fa-power-off"></i>Logout</a></li>
+                    <li><a class="dropdown-item" href="{{ route('dashboard.home') }}"> <i class="fa fa-btn fa-dashboard" style="margin: 0 0.5em 0 0;"></i>Dashboard</a>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}" > <i class="fa fa-btn fa-power-off" style="margin: 0 0.5em 0 0;"></i>Logout</a></li>
                          
                     </ul>
                     </li>
