@@ -19,7 +19,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- End Navigation List -->
 
-                    <li class="dropdown" style="margin-top: 110%;">
+                    <li class="dropdown" style="margin-top: 200% ! important;">
                     <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" style="width: 45px; height: 45px;" />
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                     </a>
