@@ -284,7 +284,7 @@ class Video extends TestCase
 
     public function testThatVideoWasNotDeletedByNonOwner()
     {
-       $user = factory('Desire2Learn\User')->create();
+        $user = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
