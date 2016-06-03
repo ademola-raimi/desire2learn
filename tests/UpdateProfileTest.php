@@ -68,13 +68,13 @@ class ProfileUpdateTest extends TestCase
             ->see($user->avatar);
     }
 
-    public function testThatTheUserUploadProfilePictureFailed()
-    {
-        $user = factory('Desire2Learn\User')->create();
-        $this->actingAs($user)
-            ->visit('/profile/edit')
-            ->attach(storage_path('dem.mp4'), 'avatar')
-            ->press('Upload')
-            ->see('The avatar must be an image.');
-    }
+    // public function testThatTheUserUploadProfilePictureFailed()
+    // {
+    //     $user = factory('Desire2Learn\User')->create();
+    //     $this->actingAs($user)
+    //         ->visit('/profile/edit')
+    //         ->attach(storage_path('dem.mp4'), 'avatar')
+    //         ->press('Upload')
+    //         ->see('The avatar must be an image.');
+    // }
 }
