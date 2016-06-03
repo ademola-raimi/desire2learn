@@ -1,13 +1,11 @@
 # Desire2Learn
 
-[![Build Status](https://travis-ci.org/andela-araimi/desire2learn.svg?branch=staging)](https://travis-ci.org/andela-araimi/desire2learn)
-[![Coverage Status](https://coveralls.io/repos/github/andela-araimi/desire2learn/badge.svg?branch=staging)](https://coveralls.io/github/andela-araimi/desire2learn?branch=staging)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/?branch=master)
+[![Build Status](https://travis-ci.org/andela-araimi/desire2learn.svg?branch=staging)](https://travis-ci.org/andela-araimi/desire2learn) [![Coverage Status](https://coveralls.io/repos/github/andela-araimi/desire2learn/badge.svg?branch=staging)](https://coveralls.io/github/andela-araimi/desire2learn?branch=staging) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/?branch=master)
 
 
 Desire2learn is a platfoam for electronic learning on anything including learning programming.
 
-http://learncast.herokuapp.com
+http://desire2learn.herokuapp.com/
 
 
 #Features 
