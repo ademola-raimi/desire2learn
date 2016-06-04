@@ -3,14 +3,14 @@
         
         
         <!-- End Top Bar -->
-        <div class="container" style="margin-top: -20%;">
+        <div class="container" style="margin-top: -23%;">
             <div class="navbar-header">
                 <!-- Stat Toggle Nav Link For Mobiles -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <i class="fa fa-bars"></i>
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
-                <a class="navbar-brand text-default" style="margin-top: 100% !important;" href="/">Desire2Learn</a>
+                <a class="navbar-brand text-default" style="margin-top: 110% !important;" href="/">Desire2Learn</a>
             </div>
             <div class="navbar-collapse collapse" stylle="margin-top: 10%;">
                 
