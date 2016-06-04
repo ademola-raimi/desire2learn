@@ -50,7 +50,7 @@ Route::get('category/video/{categoryId}', [
 */
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
-    Route::get('index', [
+    Route::get('/', [
         'uses' => 'DashboardController@index',
         'as'   => 'dashboard.home',
     ]);
