@@ -38,7 +38,7 @@ Route::get('logout', [
     'as'   => 'logout'
 ]);
 
-Route::get('category/video/{categoryId}', [
+Route::get('category/{categoryId}/videos', [
     'uses' => 'CategoryController@showVideoCategory',
     'as' => 'show-video-category'
 ]);

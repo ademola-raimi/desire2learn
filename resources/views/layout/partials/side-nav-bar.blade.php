@@ -18,7 +18,7 @@
                         <div class="card-block bg-success" style="margin-bottom: 4%; background-color: #e5e5e5;">
                         </div>
                     <i style="width: 20em;" class="devicon-{{ strtolower($category->name) }}-plain colored"></i>
-                            <a class="text-uppercase" href="/category/video/{{ $category->id }}">{{ $category->name }}</a>
+                            <a class="text-uppercase" href="/category/{{ $category->id }}/videos">{{ $category->name }}</a>
                     </div>
                     @endforeach
             </div>
