@@ -9,7 +9,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
+        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 2%;">
             <h3>Super-Admin form</h3>
             <hr>
             <form class="form" role="form" method="POST" action="{{ route('post.superadmin') }}" enctype="multipart/form-data">

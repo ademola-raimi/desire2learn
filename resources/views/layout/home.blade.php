@@ -45,7 +45,7 @@
 							<div class="card-deck sidebar-inner">
 								<div class="card" style="background-color: #fff;">
 									<a href="/video/{{ $videos->id }}">
-										<img class="video-iframe" src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
+										<img src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 									</a>
 									<div class="card-block">
 										<a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="/video/{{ $videos->id }}">{{substr($videos->title, 0, 35) }} {{ strlen($videos->title) > 35 ? '...': ''}}</a>

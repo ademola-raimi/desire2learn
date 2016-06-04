@@ -37,7 +37,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top {
     box-shadow: 0px 0 2px #C1C1C1 !important;
 }
 .sidebar {
-    top: 80px;
+    top: 90.5px;
     background: #272c2e;
     border: none;
     padding: 0 20px 20px 20px;
@@ -52,93 +52,7 @@ form.navbar-form.navbar-right {
     margin-left: 10em;
     position: relative;
 }
-.navbar-form .form-control {
-    width: 100%;
-}
-.top-search form input[type="text"] {
-    position: relative;
-    padding: 6px 43px 6px 12px;
-    outline: none;
-    box-shadow: 0 0 0;
-}
-.top-search form input[type="text"]:focus {
-    outline: none;
-    box-shadow: 0 0 0;
-    border: 1px solid #ccc;
-}
-.top-search form input[type="submit"] {
-    background: url(../images/9.png) no-repeat 0px 0px !important;
-    width: 18px !important;
-    height: 18px !important;
-    border: none !important;
-    position: absolute !important;
-    outline: none !important;
-    top: 9px;
-    right: 26px;
-}
-.header-top-right {
-  float: right;
-}
-.file {
-  float: left;
-  margin: 1.1em 0 0 0;
-}
-.file input[type="text"] {
-  width: 60%;
-  padding: 9px;
-  border: none;
-  font-size: 1.1em;
-  border: 1px solid #705e57;
-  font-weight: 600;
-  color: #705e57;
-  outline: none;
-  background: #fff;
-  font-weight: 500;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-.file a{
-    padding: 8px 20px;
-    background: #F7F7F7;
-    color: #272C2E;
-    font-size: 14px;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
-    -ms-border-radius: 3px;
-    text-decoration: none;
-}
-.file a:hover {
-  opacity: 0.8;
-}
-.file a:focus {
-    outline: none;
-}
-.signin{
-  float: left;
-  margin: 1.1em 0 0 1em;
-}
-.signin a{
-	padding: 8px 20px;
-    background: #21DEEF;
-    color: #FFF;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
-    -ms-border-radius: 3px;
-}
-.signin a:hover{
-	text-decoration:none;
-	color:#272C2E;
-	background:#F7F7F7;
-}
-.signin a:focus {
-    outline: none;
-}
+.
 .main {
     padding: 5em 0 0 0;
 }

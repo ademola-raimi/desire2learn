@@ -39,8 +39,8 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role_id === 3;
         });
 
-        // Regular user can cannot create and edit a category
-        $gate->define('super-admin', function ($user) {
+        // Regular User cannot create, edit and create a category
+        $gate->define('super-special-admin', function ($user) {
             return $user->role_id !== 1;
         });
     }
