@@ -89,7 +89,7 @@ class VideoCategoryTest extends TestCase
           ->type('PHP', 'name')
           ->type('It is the language of the Html', 'description')
           ->press('Update Category')
-          ->seePageIs('/dashboard/index')
+          ->seePageIs('/dashboard')
           ->see('Reaction');
     }
 
@@ -115,7 +115,7 @@ class VideoCategoryTest extends TestCase
             'user_id'     => $user->id,
         ]);
         $this->actingAs($user)->visit('/category/edit/100')
-         ->seePageIs('/dashboard/index');
+         ->seePageIs('/dashboard');
     }
 
     public function testThatCategoryWasDeletedByTheRightOwner()
@@ -129,7 +129,7 @@ class VideoCategoryTest extends TestCase
 
         $this->actingAs($user)->visit('/category/delete/'.$category->id);
         $this->visit('/category/'.$category->id)
-            ->seePageIs('/dashboard/index');
+            ->seePageIs('/dashboard');
     }
 
     public function testThatCategoryWasNotDeletedByNonOwner()
@@ -142,7 +142,7 @@ class VideoCategoryTest extends TestCase
         ]);
 
         $this->actingAs($user)->visit('/video/delete/7')
-            ->seePageIs('/dashboard/index');
+            ->seePageIs('/dashboard');
     }    
 
     public function testgetAllCategories()
@@ -199,7 +199,7 @@ class VideoCategoryTest extends TestCase
             'user_id'      => $user->id,
             'views'        => 0,
         ]);
-        $this->visit('/category/video/'.$category->id)
+        $this->visit('category/'.$category->id .'/videos')
         ->see($video->title);
     }
 

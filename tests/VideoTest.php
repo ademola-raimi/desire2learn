@@ -209,7 +209,7 @@ class Video extends TestCase
           ->type('It is the language of the Html', 'description')
           ->type('https://www.youtube.com/watch?v=hKUwxXgz2RM', 'url')
           ->press('Update Video')
-          ->seePageIs('/dashboard/index')
+          ->seePageIs('/dashboard')
           ->see('Reaction');
     }
     
@@ -251,7 +251,7 @@ class Video extends TestCase
         ]);
         $video = $this->uploadVideo($user, $category);
         $this->actingAs($user)->visit('video/edit/7')
-         ->seePageIs('/dashboard/index');
+         ->seePageIs('/dashboard');
     }
     
     public function testThatOnlyLoggedInUserCanDeleteVideo()
@@ -293,7 +293,7 @@ class Video extends TestCase
 
         $video    = $this->uploadVideo($user, $category);
         $this->actingAs($user)->visit('/video/delete/7')
-            ->seePageIs('/dashboard/index');
+            ->seePageIs('/dashboard');
     }
 
     public function uploadVideo($user, $category)
