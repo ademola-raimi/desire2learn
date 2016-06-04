@@ -21,6 +21,10 @@
             </li>
             <li><a href="{{ route('create.video') }}" class="user-icon"><i class="fa fa-file-video-o" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Upload video</a>
             </li>
+            @can ( 'special-admin', Auth::user()->role_id )
+            <li><a href="{{ route('admin-form') }}" class="user-icon"><i class="fa fa-plus" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Create Admin User</a>
+            </li>
+            @endcan
         </ul>
         <!-- script-for-menu -->
         <div class="side-bottom">
