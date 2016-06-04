@@ -15,30 +15,24 @@
             <div class="navbar-collapse collapse" stylle="margin-top: 10%;">
                 
                 <!-- Start Navigation List -->
-                
                 <ul class="nav navbar-nav navbar-right">
                     <!-- End Navigation List -->
-
-                    <li class="dropdown" style="margin-top: 110%;">
-                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" style="width: 45px; height: 45px;" />
-                        <i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: 20%;">
-                    <li>
-                        <a href="{{ route('edit-profile') }}">
-                            <i class="fa fa-btn fa-user"></i> {{ ucwords(Auth::user()->username) }}'s profile
+                    <li class="dropdown" stylle="margin-top: 160%;">
+                        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" style="width: 45px; height: 45px;" />
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
                         </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: 20%;">
+                            <li>
+                                <a href="{{ route('edit-profile') }}">
+                                    <i class="fa fa-btn fa-user"></i> {{ ucwords(Auth::user()->username) }}'s profile
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a class="dropdown-item" href="{{ route('dashboard.home') }}"> <i class="fa fa-btn fa-dashboard" style="margin: 0 0.5em 0 0;"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}" > <i class="fa fa-btn fa-power-off" style="margin: 0 0.5em 0 0;"></i>Logout</a></li>
+                            
+                        </ul>
                     </li>
-                    <li role="separator" class="divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('dashboard.home') }}"> <i class="fa fa-btn fa-dashboard" style="margin: 0 0.5em 0 0;"></i>Dashboard</a>
-                    <li><a class="dropdown-item" href="{{ route('logout') }}" > <i class="fa fa-btn fa-power-off" style="margin: 0 0.5em 0 0;"></i>Logout</a></li>
-                         
-                    </ul>
-                    </li>
-                    
-                    
-                    
-                    
                 </ul>
                 
                 <!--End Navigation List-->

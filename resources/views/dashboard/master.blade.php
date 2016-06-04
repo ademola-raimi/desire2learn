@@ -92,13 +92,13 @@
     <!-- <script src="assets/js/script.js"></script>  -->
 
 
-    <script>
+    <!-- <script>
         $( ".top-navigation" ).click(function() {
         $( ".drop-navigation" ).slideToggle( 300, function() {
         // Animation complete.
         });
         });
-    </script>
+    </script> -->
   
   </body>
 </html>

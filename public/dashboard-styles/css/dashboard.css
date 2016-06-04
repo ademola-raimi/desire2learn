@@ -21,6 +21,10 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+.dropdown {
+  margin-top: 170%;
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
