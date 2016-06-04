@@ -7,12 +7,12 @@
 <meta name="Desire2learn" content="It's kinda like yotube where users can learn various programming lamguages at will for free. It's practical and at no cost" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap -->
-<link href="{!! load_asset('dashboard/css/bootstrap.min.css') !!}" rel='stylesheet' type='text/css' media="all" />
+<link href="{!! load_asset('dashboard-styles/css/bootstrap.min.css') !!}" rel='stylesheet' type='text/css' media="all" />
 <!-- //bootstrap -->
-<link href="{!! load_asset('dashboard/css/dashboard.css') !!}" rel="stylesheet">
+<link href="{!! load_asset('dashboard-styles/css/dashboard.css') !!}" rel="stylesheet">
 <!-- Custom Theme files -->
-<link href="{!! load_asset('dashboard/css/style.css') !!}" rel='stylesheet' type='text/css' media="all" />
-<script src="{!! load_asset('dashboard/js/jquery-1.11.1.min.js') !!}"></script>
+<link href="{!! load_asset('dashboard-styles/css/style.css') !!}" rel='stylesheet' type='text/css' media="all" />
+<script src="{!! load_asset('dashboard-styles/js/jquery-1.11.1.min.js') !!}"></script>
 <!--start-smoth-scrolling-->
 <!-- fonts -->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -68,7 +68,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-  <!--   <script src="{!! load_asset('dashboard/js/bootstrap.min.js') !!}"></script>
+  <!--   <script src="{!! load_asset('dashboard-styles/js/bootstrap.min.js') !!}"></script>
     <script src="{!! load_asset('js/jquery-2.1.3.min.js') !!}"></script>
     <script src="{!! load_asset('js/jquery-migrate-1.2.1.min.js') !!}"></script>
     <script src="{!! load_asset('bootstrap/js/bootstrap.min.js') !!}"></script>
