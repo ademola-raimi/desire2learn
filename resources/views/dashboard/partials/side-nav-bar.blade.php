@@ -24,7 +24,7 @@
         </ul>
         <!-- script-for-menu -->
         <div class="side-bottom">
-            <div class="copyright">
+            <div class="copyright" style="padding-left: 10px;">
                 <strong style="color: #fff"> #TIA {{ \Carbon\Carbon::now()->year }}.</strong>
                 <strong style="color: #fff">Made with <i class="fa fa-heart" style="color:red;"></i>
                 <span class="incognito-text">By</span> <a href="https://github.com/andela-araimi" target="_blank">Demo</a></strong>
