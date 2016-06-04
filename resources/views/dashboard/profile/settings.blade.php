@@ -1,15 +1,14 @@
 @extends('dashboard.master')
-@section('title', 'Admin Page')
+@section('title', 'Update Profile')
 @section('content')
-<div class="row">
+<div class="row" style="position: fixed; margin-left: 9%; margin-top: -0.6%;">
     @include('dashboard.partials.top-nav-bar')
 </div>
 <div class="row">
     @include('dashboard.partials.side-nav-bar')
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 7%;">
+        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6.5%;">
             <h3 style="margin-top: 3%;">Update Profile</h3>
             <hr>
             <form class="form" role="form" method="POST" action="{{ route('post-profile') }}">
@@ -61,7 +60,7 @@
                 <form class="form" method="POST" action="{{ route('post-avatar') }}" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
-                        <img src="{{ $users->getAvatar() }}" title="avatar" alt="avatar" class="img-circle">
+                        <img src="{{ $users->getAvatar() }}" title="avatar" alt="avatar" height="50" width="50" style="border-radius:25px;">
                     </div>
                     <div class="form-group">
                         <input id="avatar" type="file" class="validate" name="avatar">

@@ -4,7 +4,6 @@
 
 @section('content')
 
-@include('layout.partials.top-nav-bar')
 
     <div class="container">
         <div class="row">
