@@ -25,9 +25,7 @@ class CreateCommentsTable extends Migration
                 
             $table->foreign('video_id')
                 ->references('id')
-                ->on('videos')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->on('videos');
             
         });
     }
