@@ -22,13 +22,13 @@ http://desire2learn.herokuapp.com/
 - Traditional : User [Log In](http://desire2learn.herokuapp.com/login) via form
 - Oauth : Users can also use social platform to login which is available right on the homepage.
 
-#### Video resources
+#### Video Resources
 
 ##### A guest user can 
 
 - Only watch videos on the platform
 
-##### An authenticated `Regular Users and Super Admin Users`  can 
+##### An authenticated `Regular User and Super Admin User`  can 
 
 - watch videos on the platform
 - Add videos to available categories
@@ -51,7 +51,7 @@ http://desire2learn.herokuapp.com/
 
 ####Reactions and Comments
 <hr>
-#### A guest user is not priviledge to neither like or comment on a video
+#### A guest user is not priviledged to either like or comment on a video
 
 ##### An authenticated user can 
 
@@ -59,7 +59,7 @@ http://desire2learn.herokuapp.com/
 - Add comments to video
 
 
-##Usage
+##Installation
 <hr>
 
 Before diving in, kindly make the following available on your system:
@@ -72,7 +72,7 @@ Before diving in, kindly make the following available on your system:
 Clone the repository into your local environment
 
 ```bash
-$ https://github.com/andela-araimi/desire2learn
+$ https://github.com/andela-araimi/desire2learn.git
 ```
 
 ```bash
@@ -191,7 +191,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/andela-
 
 ## Security
 
-If you discover any security related issues, please email me at [Raimi Ademola](ademola.raimi@andela.com) or create an issue.
+If you discover any security related issues, please email me at ademola.raimi@andela.com or create an issue.
 
 ## Credits
 

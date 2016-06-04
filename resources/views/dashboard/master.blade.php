@@ -13,6 +13,7 @@
 <!-- Custom Theme files -->
 <link href="{!! load_asset('dashboard-styles/css/style.css') !!}" rel='stylesheet' type='text/css' media="all" />
 <script src="{!! load_asset('dashboard-styles/js/jquery-1.11.1.min.js') !!}"></script>
+
 <!--start-smoth-scrolling-->
 <!-- fonts -->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -54,7 +55,6 @@
     <link rel="stylesheet" href="{!! load_asset('css/lightbox.css') !!}">
 
     <!-- Sulfur CSS Styles  -->
-    <link rel="stylesheet" href="{!! load_asset('css/style.css') !!}">
 
     <!-- Responsive CSS Style -->
     <link rel="stylesheet" href="{!! load_asset('css/responsive.css') !!}">
@@ -67,11 +67,15 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  <!--   <script src="{!! load_asset('dashboard-styles/js/bootstrap.min.js') !!}"></script>
-    <script src="{!! load_asset('js/jquery-2.1.3.min.js') !!}"></script>
+    <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
+    
+   
+    @include('sweet::alert')
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <!-- <script src="{!! load_asset('js/jquery-2.1.3.min.js') !!}"></script> -->
     <script src="{!! load_asset('js/jquery-migrate-1.2.1.min.js') !!}"></script>
-    <script src="{!! load_asset('bootstrap/js/bootstrap.min.js') !!}"></script>
     <script src="{!! load_asset('js/owl.carousel.min.js') !!}"></script>
     <script src="{!! load_asset('js/jquery.appear.js') !!}"></script>
     <script src="{!! load_asset('js/jquery.fitvids.js') !!}"></script>
@@ -80,25 +84,10 @@
     <script src="{!! load_asset('js/count-to.js') !!}"></script>
     <script src="{!! load_asset('js/styleswitcher.js') !!}"></script>
     <script src="{!! load_asset('js/map.js') !!}"></script>
-    <script src="{!! load_asset('js/map.js') !!}"></script> -->
+    <script src="{!! load_asset('js/map.js') !!}"></script>
     <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
-    
-   
-    @include('sweet::alert')
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <!-- <script src="assets/js/script.js"></script>  -->
-
-
-    <!-- <script>
-        $( ".top-navigation" ).click(function() {
-        $( ".drop-navigation" ).slideToggle( 300, function() {
-        // Animation complete.
-        });
-        });
-    </script> -->
+<!--     <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> -->
   
   </body>
 </html>

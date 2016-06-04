@@ -11,7 +11,7 @@
             </li>
             <li><a href="{{ route('all.categories') }}" class="user-icon"><i class="fa fa-first-order" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Video Categories</a>
             </li>
-            @can ( 'super-admin', Auth::user()->role_id )
+            @can ( 'super-special-admin', Auth::user()->role_id )
             <li><a href="{{ route('uploaded.categories') }}" class="user-icon"><i class="fa fa-cloud-upload" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Uploaded Categories</a>
             </li>
             <li><a href="{{ route('create-category') }}" class="user-icon" ><i class="fa fa-upload" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Upload Category</a>
@@ -21,6 +21,10 @@
             </li>
             <li><a href="{{ route('create.video') }}" class="user-icon"><i class="fa fa-file-video-o" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Upload video</a>
             </li>
+            @can ( 'special-admin', Auth::user()->role_id )
+            <li><a href="{{ route('admin-form') }}" class="user-icon"><i class="fa fa-plus" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Create Admin User</a>
+            </li>
+            @endcan
         </ul>
         <!-- script-for-menu -->
         <div class="side-bottom">

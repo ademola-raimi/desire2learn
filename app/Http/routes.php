@@ -228,27 +228,22 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
 
 /*
 |--------------------------------------------------------------------------
-| Delete category Routes   
+| special users Routes   
 |--------------------------------------------------------------------------
 */
-Route::get('category/delete/{id}', [
-    'uses' => 'CategoryController@destroy',
-    'as'   => 'delete-category',
-    'middleware' => 'special.user',
-]);
+Route::group(['middleware' => 'superadmin.user'], function () {
+    Route::get('category/delete/{id}', [
+        'uses' => 'CategoryController@destroy',
+        'as'   => 'delete-category',
+    ]);
 
-Route::get('/search', [
-    'uses' => 'SearchController@getResults',
-    'as' => 'search.videos',
-]);
+    Route::get('/dashboard/new/superadmin', [
+        'uses' => 'DashboardController@getAdminForm',
+        'as'   => 'admin-form',
+    ]);
 
-Route::get('/dashboard/new/superadmin', [
-    'uses'       => 'DashboardController@getAdminForm',
-    'middleware' => 'special.user',
-]);
-
-Route::post('/dashboard/new/superadmin', [
-    'uses'       => 'DashboardController@createAdmin',
-    'as'         => 'post.superadmin',
-    'middleware' => 'special.user',
-]);
+    Route::post('/dashboard/new/superadmin', [
+        'uses'       => 'DashboardController@createAdmin',
+        'as'         => 'post.superadmin',
+    ]);
+});
