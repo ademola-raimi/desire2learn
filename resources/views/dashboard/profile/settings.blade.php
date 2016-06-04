@@ -1,15 +1,16 @@
 @extends('dashboard.master')
-@section('title', 'Update Profile')
+@section('title', 'Admin Page')
 @section('content')
-<div class="row" style="position: fixed; margin-left: 9%; margin-top: -0.6%;">
+<div class="row">
     @include('dashboard.partials.top-nav-bar')
 </div>
 <div class="row">
     @include('dashboard.partials.side-nav-bar')
 </div>
 <div class="container">
-        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6.5%;">
-            <h3 style="margin-top: 3%;">Update Profile</h3>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 2%;">
+            <h3 style="margin-top: 2%; margin-bottom: -3%;">Update Profile</h3>
             <hr>
             <form class="form" role="form" method="POST" action="{{ route('post-profile') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
