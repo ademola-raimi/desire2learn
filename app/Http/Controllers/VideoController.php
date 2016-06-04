@@ -53,6 +53,12 @@ class VideoController extends Controller
             'description' => 'required',
         ]);
 
+        if (strlen($request['url']) < 32) {
+            alert()->error('Please provide a valid youtube url length', 'error');
+            
+            return redirect()->back();
+        }
+
         $video = Video::where('category', $request['category'])->where('url', substr($request['url'], 32, 11))->get();
 
         if ($video->count() > 0) {
@@ -66,6 +72,7 @@ class VideoController extends Controller
         if ($url) {
             return $this->createVideo($request);
         }
+
         alert()->error('Invalid youtube url', 'error');
 
         return redirect()->back();
