@@ -179,7 +179,7 @@ class LikeController extends Controller
      */
     private function countLike()
     {
-        $like = Like::where('like', 1)->get();
+        $like = Like::where('like', true)->get();
 
         return $like->count();
     }
@@ -192,7 +192,7 @@ class LikeController extends Controller
      */
     private function countUnLike()
     {
-        $like = Like::where('like', 0)->get();
+        $like = Like::where('like', false)->get();
 
         return $like->count();
     }
