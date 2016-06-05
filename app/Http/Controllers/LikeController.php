@@ -121,12 +121,12 @@ class LikeController extends Controller
     private function toggleLike($like)
     {
         if ($like->like) {
-            $like->like = 0;
+            $like->like = false;
             $like->save();
             
             return response()->json(['message' => 'update like column to 0', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
         } else {
-            $like->like = 1;
+            $like->like = true;
             $like->save();
 
             return response()->json(['message' => 'update like column to 1', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
@@ -146,7 +146,7 @@ class LikeController extends Controller
     {
         $this->like->video_id = $videoId;
         $this->like->user_id = $userId;
-        $this->like->like = 1;
+        $this->like->like = true;
         $this->like->save();
 
         return response()->json(['message' => 'create new row for like', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
@@ -163,7 +163,7 @@ class LikeController extends Controller
      */
     private function unlikeVideo($videoId, $userId)
     {
-        $this->like->like = 0;
+        $this->like->like = false;
         $this->like->user_id = $userId;
         $this->like->video_id = $videoId;
         $this->like->save();
