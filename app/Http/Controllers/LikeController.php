@@ -59,10 +59,10 @@ class LikeController extends Controller
                 return $this->unlikeVideo($videoId, $userId);
             break;
             case $exists && $isLike:
-                return $this->alreadyLiked($exists);
+                return $this->alreadyLiked($exists, $videoId);
             break;
             case $exists && !$isLike:
-                return $this->alreadyUnliked($exists);
+                return $this->alreadyUnliked($exists, $videoId);
             break;
         }
     }
@@ -73,12 +73,12 @@ class LikeController extends Controller
      * 
      * @param $exists
      */
-    private function alreadyUnliked($exists)
+    private function alreadyUnliked($exists, $videoId)
     {
         if ($exists->like) {
-            return $this->toggleLike($exists);
+            return $this->toggleLike($exists, $videoId);
         } else {
-            return $this->removeLike($exists);
+            return $this->removeLike($exists, $videoId);
         }
     }
 
@@ -88,12 +88,12 @@ class LikeController extends Controller
      * 
      * @param $exists
      */
-    private function alreadyLiked($exists)
+    private function alreadyLiked($exists, $videoId)
     {
         if ($exists->like) {
-            return $this->removeLike($exists);
+            return $this->removeLike($exists, $videoId);
         } else {
-            return $this->toggleLike($exists);
+            return $this->toggleLike($exists, $videoId);
         }
     }
 
@@ -104,11 +104,11 @@ class LikeController extends Controller
      * 
      * @return Json response
      */
-    private function removeLike($like)
+    private function removeLike($like, $videoId)
     {
         Like::find($like->id)->delete();
 
-        return response()->json(['message' => 'delete like row', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
+        return response()->json(['message' => 'delete like row', 'like' => $this->countLike($videoId), 'unlike' => $this->countUnLike($videoId)], 200);
     }
 
     /**
@@ -118,18 +118,18 @@ class LikeController extends Controller
      * 
      * @return Json response
      */
-    private function toggleLike($like)
+    private function toggleLike($like, $videoId)
     {
         if ($like->like) {
             $like->like = false;
             $like->save();
             
-            return response()->json(['message' => 'update like column to 0', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
+            return response()->json(['message' => 'update like column to 0', 'like' => $this->countLike($videoId), 'unlike' => $this->countUnLike($videoId)], 200);
         } else {
             $like->like = true;
             $like->save();
 
-            return response()->json(['message' => 'update like column to 1', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
+            return response()->json(['message' => 'update like column to 1', 'like' => $this->countLike($videoId), 'unlike' => $this->countUnLike($videoId)], 200);
         }
     }
 
@@ -149,7 +149,7 @@ class LikeController extends Controller
         $this->like->like = true;
         $this->like->save();
 
-        return response()->json(['message' => 'create new row for like', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
+        return response()->json(['message' => 'create new row for like', 'like' => $this->countLike($videoId), 'unlike' => $this->countUnLike($videoId)], 200);
     }
 
     /**
@@ -168,7 +168,7 @@ class LikeController extends Controller
         $this->like->video_id = $videoId;
         $this->like->save();
 
-        return response()->json(['message' => 'create new row for unlike', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
+        return response()->json(['message' => 'create new row for unlike', 'like' => $this->countLike($videoId), 'unlike' => $this->countUnLike($videoId)], 200);
     }
 
     /**
@@ -177,9 +177,10 @@ class LikeController extends Controller
      * 
      * @return integer
      */
-    private function countLike()
+    private function countLike($videoId)
     {
-        $like = Like::where('like', true)->get();
+        $video = Video::find($videoId);
+        $like = $video->likes->where('like', true);
 
         return $like->count();
     }
@@ -190,9 +191,10 @@ class LikeController extends Controller
      * @return integer
      * 
      */
-    private function countUnLike()
+    private function countUnLike($videoId)
     {
-        $like = Like::where('like', false)->get();
+        $video = Video::find($videoId);
+        $like = $video->likes->where('like', false);
 
         return $like->count();
     }

@@ -50,7 +50,7 @@ http://desire2learn.herokuapp.com/
 
 
 ####Reactions and Comments
-<hr>
+
 #### A guest user is not priviledged to either like or comment on a video
 
 ##### An authenticated user can 
@@ -59,7 +59,7 @@ http://desire2learn.herokuapp.com/
 - Add comments to video
 
 
-##Installation
+###Installation
 <hr>
 
 Before diving in, kindly make the following available on your system:
@@ -155,8 +155,9 @@ $ php artisan serve
 ```
 
 
-## Tests
+### Tests
 <hr>
+
 if you have phpunit installed globally (recommended), run
 
 ```bash
@@ -167,14 +168,16 @@ Otherwise, run
 ```bash
 $ vendor/bin/phpunit
 ```
-## Contributing
+### Contributing
 <hr>
+
 Contributions are **welcome** and will be fully **credited**.
 
 We accept contributions via Pull Requests on [Github](https://github.com/andela-araimi/desire2learn).
 
-## Pull Requests
+### Pull Requests
 <hr>
+
 - **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP Code Sniffer](http://pear.php.net/package/PHP_CodeSniffer).
 
 - **Add tests!** - Your patch won't be accepted if it doesn't have tests.
@@ -189,15 +192,18 @@ We accept contributions via Pull Requests on [Github](https://github.com/andela-
 
 - **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
 
-## Security
+### Security
+<hr>
 
 If you discover any security related issues, please email me at ademola.raimi@andela.com or create an issue.
 
-## Credits
+### Credits
+<hr>
 
 [Raimi Ademola](https://github.com/andela-araimi/desire2learn)
 
-## License
+### License
+</hr>
 
 ### The MIT License (MIT)
 
