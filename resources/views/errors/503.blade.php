@@ -1,47 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
-        </div>
-    </body>
-</html>
+@extends('layout.master')
+@section('title', '503 page')
+@section('content')
+<div class="container">
+    <div class="row">
+        <h4 class="error" style="margin-top: 3%;">503</h4>
+        <p class="error-message" style="font-weight: 100px; margin-top: 2%; color: red;">
+            It looks like there is an inbalance on the world wide web
+        </p>
+        <h3 class="error-exit-message">
+        we are so sorry!
+        </h3>
+        <br>
+        <a type="button" class="btn btn-primary" href="/">
+            This way home
+        </a>
+        <br>
+    </div>
+</div>
+<footer class="container-fluid" style="margin-top: 22%;">
+    @include('layout.partials.footer')
+</footer>
+@endsection

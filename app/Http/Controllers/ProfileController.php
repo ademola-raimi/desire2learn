@@ -86,6 +86,9 @@ class ProfileController extends Controller
         }
     }
 
+    /**
+     *  get change password page
+     */
     public function getChangePassword()
     {
         $users = Auth::user();
@@ -93,24 +96,31 @@ class ProfileController extends Controller
         return view('dashboard.profile.changepassword', compact('users'));
     }
 
+    /**
+     *  Post change password request.
+     */
     public function postChangePassword(Request $request)
     {
         $this->validate($request, [
-            'old_password' => 'required',
-            'password' => 'required|min:6|confirmed',
+            'oldPassword' => 'required',
+            'newPassword'    => 'required|min:6',
         ]);
 
         $user = Auth::user();
 
         // Compare old password
-        if (!Hash::check($request->old_password, $user->password)) {
-            return redirect()->back()->withErrors(['old_password' => 'Old password incorrect']);
+        if (!Hash::check($request->oldPassword, $user->password)) {
+            alert()->error('Old password incorrect', 'error');
+
+            return redirect()->back();
         }
 
         // Update current password
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($request->newPassword);
         $user->save();
 
-        return redirect()->back()->with('status', 'Password successfully updated');
+        alert()->success('Password successfully updated', 'success');
+
+        return redirect()->route('index');
     }
 }

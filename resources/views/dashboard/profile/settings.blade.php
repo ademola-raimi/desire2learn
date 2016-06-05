@@ -1,5 +1,5 @@
 @extends('dashboard.master')
-@section('title', 'Admin Page')
+@section('title', 'update your profile')
 @section('content')
 <div class="row">
     @include('dashboard.partials.top-nav-bar')

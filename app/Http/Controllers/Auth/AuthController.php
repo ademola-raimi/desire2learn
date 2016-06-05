@@ -5,10 +5,8 @@ namespace Desire2Learn\Http\Controllers\Auth;
 use Auth;
 use Alert;
 use Validator;
-use Socialite;
 use Desire2Learn\User;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Mailer as Mail;
 use Desire2Learn\Http\Controllers\Controller;
 use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -16,23 +14,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-     | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    protected $mail;
-    protected $loginPath    = '/login';
-    protected $registerPath = '/register';
-    protected $redirectTo = '/';
 
     /**
      * This method displays the signup page.
@@ -71,10 +53,12 @@ class AuthController extends Controller
 
         if (!$authStatus) {
             Alert::error('Invalid email or Password', 'Error');
+
             return redirect()->back();
         }
 
         alert()->success('You are now signed in', 'Success');
+
         return redirect()->intended('/');
     }
 

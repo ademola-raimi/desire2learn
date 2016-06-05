@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role_id === 2 || 3;
         });
 
-        // Superadmin and special user can create and edit a category
+        // special user can create a superadmin user and can delete a catgory
         $gate->define('special-admin', function ($user) {
             return $user->role_id === 3;
         });

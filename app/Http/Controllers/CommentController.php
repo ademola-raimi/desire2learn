@@ -12,7 +12,9 @@ use Desire2Learn\Http\Controllers\Controller;
 class CommentController extends Controller
 {
     /**
-     * Process comment creation
+     * This method processes comment creation and returns reponse to jquery
+     *
+     * @return Response
      */
     public function postComment(Request $request)
     {

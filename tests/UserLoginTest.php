@@ -6,6 +6,9 @@ class UserLoginTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * Test that user cannot login successfully due to insupplied data
+     */
     public function testForunsuppliedLoginDetails()
     {
         $this->visit('/login')
@@ -16,6 +19,9 @@ class UserLoginTest extends TestCase
             ->see('The password field is required.');
     }
 
+    /**
+     * Test that user login successfully
+     */
     public function testForSuccessfulLogin()
     {
         $user = factory('Desire2Learn\User')->create([
@@ -37,6 +43,9 @@ class UserLoginTest extends TestCase
            ->see('Demo');
     }
 
+    /**
+     * Test that user logout successfully from its account
+     */
     public function testForSuccessfulLogout()
     {
         $user = factory('Desire2Learn\User')->create([
@@ -52,10 +61,13 @@ class UserLoginTest extends TestCase
         $this->actingAs($user)
            ->visit('/logout')
            ->seePageIs('/')
-           ->see('Register')
+           ->see('Sign Up')
            ->see('VIDEOS BY CATEGORY');
     }
 
+    /**
+     * Test that user cannot login successfully due to wrong data provided
+     */
     public function testForUnSuccessfulLogin()
     {
         $this->visit('/login')

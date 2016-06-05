@@ -6,7 +6,6 @@ use Auth;
 use Socialite;
 use Desire2Learn\User;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Mailer as Mail;
 use Desire2Learn\Http\Controllers\Controller;
 use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -14,17 +13,6 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class OauthController extends controller
 {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
@@ -35,7 +23,7 @@ class OauthController extends controller
     protected $redirectTo = '/';
 
     /**
-     * Redirect the user to the GitHub authentication page.
+     * Redirect the user to the Provider authentication page.
      *
      * @return Response
      */
@@ -45,14 +33,14 @@ class OauthController extends controller
     }
 
     /**
-     * Obtain the user information from GitHub.
+     * Obtain the user information from Provider.
      *
      * @return Response
      */
     public function handleProviderCallback($provider)
     {
     
-        $user = Socialite::driver($provider)->user();
+        $user     = Socialite::driver($provider)->user();
 
         $authUser = $this->findOrCreateUser($user, $provider);
 
@@ -82,10 +70,8 @@ class OauthController extends controller
             'password'       => bcrypt(str_random(10)),
             'email'          => $user->getEmail() ?: str_random(10).'@noemail.app',
             'avatar'         => $user->getAvatar(),
-            'provider_id'    => $user->getId(),
             'role_id'        => 1,
             'remember_token' => str_random(10),
-            'provider'       => $provider,
         ]);
     }
 }

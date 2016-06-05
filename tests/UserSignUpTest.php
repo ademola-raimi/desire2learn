@@ -7,6 +7,9 @@ class UserSignUpTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * Test that user sign up successfully
+     */
     public function testForSuccessfulSignUp()
     {
         Session::start();
@@ -34,6 +37,9 @@ class UserSignUpTest extends TestCase
            ->see('Demo');
     }
 
+    /**
+     * Test that user cannot sign up successfully due to data existence in the database
+     */
     public function testThatUserAlreadyExists()
     {
         Session::start();
@@ -47,8 +53,7 @@ class UserSignUpTest extends TestCase
             'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
-        $response = $this
-        ->call('POST', 'signup', [
+        $this->call('POST', 'signup', [
             'username'       => 'Demo',
             'email'          => 'demola@gmail.com',
             'password'       => bcrypt('london'),
@@ -67,13 +72,19 @@ class UserSignUpTest extends TestCase
         
     }
 
+    /**
+     * Test that user can sign up and sign in successfully using social network
+     */
     public function testThatUserSignUpUsingOauth()
     {
         $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');
+
         $provider->shouldReceive('redirect')->andReturn('Redirected');
-        $providerName = class_basename($provider);
+
+        $providerName  = class_basename($provider);
         $socialAccount = factory('Desire2Learn\User')->create(['provider' => $providerName]);
-        $abstractUser = Mockery::mock('Laravel\Socialite\Two\User');
+        $abstractUser  = Mockery::mock('Laravel\Socialite\Two\User');
+
         $abstractUser->shouldReceive('getId')
             ->andReturn($socialAccount->provider_user_id)
             ->shouldReceive('getEmail')
@@ -82,11 +93,15 @@ class UserSignUpTest extends TestCase
             ->andReturn('Olotin Temitope')
             ->shouldReceive('getAvatar')
             ->andReturn('https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200');
+
         $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');
+
         $provider->shouldReceive('user')->andReturn($abstractUser);
+
         Socialite::shouldReceive('driver')->with('facebook')->andReturn($provider);
+
         $this->visit('/facebook/callback')
-        ->seePageIs('/');
+            ->seePageIs('/');
 
     }
 }

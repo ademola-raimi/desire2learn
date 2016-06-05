@@ -12,11 +12,24 @@ use Illuminate\Support\Facades\Session;
 class LikeController extends Controller
 {
     private $like;
+
+    /**
+     * Like is injected in order to initialize the model
+     * 
+     */
     public function __construct(Like $like)
     {
         $this->like = $like;
     }
-	public function postLikeVideo(Request $request, $videoId)
+
+    /**
+     * This method gets the response from jquery and call the the 
+     * method that will check if row exit in the Like table.
+     * 
+     * @param $videoId
+     * @param $request
+     */
+	public function postLikeVideo($videoId, Request $request)
     {
         if ($request->ajax()) {
             if ($request->get('isLike') === 'true') {
@@ -27,6 +40,13 @@ class LikeController extends Controller
         }
     }
 
+    /**
+     * This method check the Like table with various cases
+     * 
+     * @param $videoId
+     * @param $request
+     * @param $IsLike
+     */
     private function checkRowExists($userId, $videoId, $isLike)
     {
         $exists = Like::where('user_id', $userId)->where('video_id', $videoId)->first();
@@ -47,6 +67,12 @@ class LikeController extends Controller
         }
     }
 
+    /**
+     * This method treat the case of row exist and isLike is false.
+     * it then update or delete base on the available like column data
+     * 
+     * @param $exists
+     */
     private function alreadyUnliked($exists)
     {
         if ($exists->like) {
@@ -56,6 +82,12 @@ class LikeController extends Controller
         }
     }
 
+    /**
+     * This method treat the case of row exist and isLike is true.
+     * It then update or delete base on the available like column data
+     * 
+     * @param $exists
+     */
     private function alreadyLiked($exists)
     {
         if ($exists->like) {
@@ -65,6 +97,13 @@ class LikeController extends Controller
         }
     }
 
+    /**
+     * This method remove the entire row
+     * 
+     * @param $like
+     * 
+     * @return Json response
+     */
     private function removeLike($like)
     {
         Like::find($like->id)->delete();
@@ -72,13 +111,20 @@ class LikeController extends Controller
         return response()->json(['message' => 'delete like row', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
     }
 
+    /**
+     * This method update the like column
+     * 
+     * @param $like
+     * 
+     * @return Json response
+     */
     private function toggleLike($like)
     {
         if ($like->like) {
             $like->like = 0;
             $like->save();
             
-            return response()->json(['message' => 'update like column to 0 to unlike', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
+            return response()->json(['message' => 'update like column to 0', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
         } else {
             $like->like = 1;
             $like->save();
@@ -87,6 +133,15 @@ class LikeController extends Controller
         }
     }
 
+    /**
+     * This method treat the case of row doesn't exist and isLike is true.
+     * it then creates the row and set like column to 1
+     * 
+     * @param $videoId
+     * @param $userId
+     * 
+     * @return Json response
+     */
     private function likeVideo($videoId, $userId)
     {
         $this->like->video_id = $videoId;
@@ -97,6 +152,15 @@ class LikeController extends Controller
         return response()->json(['message' => 'create new row for like', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
     }
 
+    /**
+     * This method treat the case of row doesn't exist ans isLike is false.
+     * It then creates the row and set the like column to 0
+     * 
+     * @param $videoId
+     * @param $userId
+     * 
+     * @return Json response
+     */
     private function unlikeVideo($videoId, $userId)
     {
         $this->like->like = 0;
@@ -107,14 +171,26 @@ class LikeController extends Controller
         return response()->json(['message' => 'create new row for unlike', 'like' => $this->countLike(), 'unlike' => $this->countUnLike()], 200);
     }
 
-    public function countLike()
+    /**
+     * This method count the number of like in the Like table
+     *
+     * 
+     * @return integer
+     */
+    private function countLike()
     {
         $like = Like::where('like', 1)->get();
 
         return $like->count();
     }
 
-    public function countUnLike()
+    /**
+     * This method count the number of unlike in the Like table.
+     * 
+     * @return integer
+     * 
+     */
+    private function countUnLike()
     {
         $like = Like::where('like', 0)->get();
 

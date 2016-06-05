@@ -1,5 +1,5 @@
 @extends('dashboard.master')
-@section('title', 'category upload')
+@section('title', 'superadmin creation form')
 @section('content')
 <div class="row">
     @include('dashboard.partials.top-nav-bar')
@@ -23,16 +23,14 @@
                     </span>
                     @endif
                 </div>
-                  
-
+                
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-btn fa-user"></i>Submit
+                    <i class="fa fa-btn fa-user"></i>Submit
                     </button>
                 </div>
                 
             </form>
-         
         </div>
     </div>
 </div>

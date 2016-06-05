@@ -35,7 +35,7 @@ class Video extends Model
     }
 
     /**
-     * Each episode has many likes
+     * Each video has many likes
      *
      * @return object
      */
@@ -45,7 +45,7 @@ class Video extends Model
     }
 
     /**
-     * Each episode has many likes
+     * Each video has many views
      *
      * @return object
      */
@@ -63,5 +63,4 @@ class Video extends Model
     {
         return $this->hasMany('Desire2Learn\Comment');
     }
-
 }

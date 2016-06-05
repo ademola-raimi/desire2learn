@@ -11,6 +11,12 @@ use Desire2Learn\Http\Repository\VideoRepository;
 
 class HomeController extends Controller
 {
+	/**
+     * This method displays the index page with all the videos and categories
+     * of the application
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
     	$video    = Video::paginate(9);

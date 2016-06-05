@@ -1,5 +1,5 @@
 @extends('dashboard.master')
-@section('title', 'category upload')
+@section('title', 'category upload form')
 @section('content')
 <div class="row">
     @include('dashboard.partials.top-nav-bar')
@@ -23,18 +23,16 @@
                     </span>
                     @endif
                 </div>
-
                 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                     <label for="description">Description</label>
                     <textarea type="description" class="form-control" name="description" value="{{ old('description') }}"></textarea>
                     @if ($errors->has('description'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('description') }}</strong>
-                        </span>
+                    <span class="help-block">
+                        <strong>{{ $errors->first('description') }}</strong>
+                    </span>
                     @endif
                 </div>
-                  
-
+                
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                     <i class="fa fa-btn fa-user"></i> Upload Category
@@ -42,7 +40,7 @@
                 </div>
                 
             </form>
-         
+            
         </div>
     </div>
 </div>

@@ -39,7 +39,7 @@ Route::get('logout', [
 ]);
 
 Route::get('category/{categoryId}/videos', [
-    'uses' => 'CategoryController@showVideoCategory',
+    'uses' => 'CategoryController@showVideoCategories',
     'as' => 'show-video-category'
 ]);
 
@@ -56,12 +56,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('video/create', [
-        'uses' => 'VideoController@uploadVideo',
+        'uses' => 'VideoController@getVideoForm',
         'as'   => 'create.video',
     ]);
 
     Route::post('video/create', [
-        'uses' => 'VideoController@postVideo',
+        'uses' => 'VideoController@validateVideoData',
         'as'   => 'post.video',
     ]);
 
@@ -71,7 +71,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('/category', [
-        'uses' => 'DashboardController@showCategories',
+        'uses' => 'DashboardController@showAllCategories',
         'as'   => 'all.categories',
     ]);
 });
@@ -171,7 +171,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
 
     Route::get('/edit/{id}', [
-        'uses' => 'VideoController@edit',
+        'uses' => 'VideoController@getVideoEditForm',
         'as'   => 'edit-video'
     ]);
 
@@ -210,13 +210,8 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
         'as'   => 'post.category',
     ]);
 
-    Route::get('{id}', [
-        'uses' => 'CategoryController@showSingleCategory',
-        'as'   => 'show-single-category',
-    ]);
-
     Route::get('/edit/{id}', [
-        'uses' => 'CategoryController@edit',
+        'uses' => 'CategoryController@getCategoryEditForm',
         'as'   => 'edit-video'
     ]);
 

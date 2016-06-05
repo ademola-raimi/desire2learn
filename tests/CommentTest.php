@@ -5,6 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class CommentTest extends TestCase
 {
     use DatabaseTransactions;
+    
     /**
      * Test guest user cannot comment
      */
@@ -27,7 +28,6 @@ class CommentTest extends TestCase
      * assert that an authenitcated user can add a new comment to a
      * video.
      *
-     * @return void
      */
     public function testAddNewComment()
     {
@@ -81,7 +81,6 @@ class CommentTest extends TestCase
     /**
      * test that a Comment belongs to a video.
      *
-     * @return void
      */
     public function testCommentVideoRelationship()
     {
@@ -100,9 +99,8 @@ class CommentTest extends TestCase
     }
     
     /**
-     * test the that a comment belongs to a user.
+     * test that a comment belongs to a user.
      *
-     * @return void
      */
     public function testCommentUserRelationship()
     {
@@ -120,6 +118,11 @@ class CommentTest extends TestCase
         $this->assertEquals($comment->user_id, $comment->user->id);
     }
 
+    /**
+     * A method to create a video.
+     *
+     * @return object
+     */
     public function uploadVideo($user, $category)
     {
         $video = factory('Desire2Learn\Video')->create([

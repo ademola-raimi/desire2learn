@@ -11,17 +11,29 @@ use Desire2Learn\Comment;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
-use Desire2Learn\Http\Repository\VideoRepository;
 
 class VideoController extends Controller
 {
-    public function uploadVideo()
+    /**
+     * This method gets video form 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getVideoForm()
     {
     	$categories = Category::all();
+
     	return view('dashboard.video.uploadform', compact('categories'));
     }
 
-    public function getYouTubeIdFromURL($url)
+    /**
+     * This method gets the url and extract the video Id 
+     *
+     * @param $url
+     * 
+     * @return youtube videoId
+     */
+    private function getYouTubeIdFromURL($url)
     {
         $videoId = substr($url, 32, 11);
 
@@ -35,16 +47,23 @@ class VideoController extends Controller
      *
      * @return bool
      */
-    protected function checkyoutubeUrlExist($videoId)
+    private function checkyoutubeUrlExist($videoId)
     {
-        $url = "https://www.youtube.com/watch?v=$videoId";
+        $url     = "https://www.youtube.com/watch?v=$videoId";
         $headers = get_headers($url);
 
         return ($headers[0] !== 'HTTP/1.0 404 Not Found') ? true : false;
     }
 
-
-    public function postVideo(Request $request)
+    /**
+     * Validate the requested video data and print 
+     * neccessary messages to users
+     *
+     * @param $request
+     *
+     * @return \Illuminate\Http\Response, Video data
+     */
+    public function validateVideoData(Request $request)
     {
     	$this->validate($request, [
             'title'       => 'required',
@@ -78,7 +97,14 @@ class VideoController extends Controller
         return redirect()->back();
     }
 
-    public function createVideo($request)
+    /**
+     * post the video data into the database  
+     *
+     * @param $request
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    private function createVideo($request)
     {
         $videoUpload = Video::create([
             'title'       => $request['title'],
@@ -99,7 +125,14 @@ class VideoController extends Controller
             return redirect()->route('uploaded.video'); 
     }
 
-    public function postView($id, $video)
+    /**
+     * post the view data of the current video by the current user
+     *
+     * @param $id
+     * @param $video
+     * 
+     */
+    private function postView($id, $video)
     {
         if (Auth::check()) {
             $addView = View::create([
@@ -109,6 +142,14 @@ class VideoController extends Controller
         }
     }
 
+    /**
+     * Show the video requested by the user and with the other data of the video
+     * such as number of comments, number of reactions etc.  
+     *
+     * @param $id
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function showVideo($id)
     {
         $video = Video::find($id);
@@ -119,7 +160,7 @@ class VideoController extends Controller
             return redirect()->route('index');  
         }
 
-        $like  = $video->likes->where('like', 1);
+        $like   = $video->likes->where('like', 1);
         $unlike = $video->likes->where('like', 0);
 
         $relatedVideos = Video::where('category', $video->category)->get();
@@ -134,11 +175,13 @@ class VideoController extends Controller
     }
 
     /**
-     * This method is for editing of the apps
+     * This method gets edit from of video created by the user
      *
+     * @param $id
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getVideoEditForm($id)
     {
         $video = Auth::user()->videos->find($id);
         $categories = Category::all();
@@ -152,8 +195,11 @@ class VideoController extends Controller
     }
 
     /**
-     * This method is for editing of the apps
+     * This method validates the inputed data and updates the requested video created by the user
      *
+     * @param $id
+     * @param $request
+     * 
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
@@ -183,8 +229,8 @@ class VideoController extends Controller
         }
     }
 
-     /**
-     * This method delete videos created 
+    /**
+     * This method deletes or destroys videos created by the user
      *
      * @return \Illuminate\Http\Response
      */

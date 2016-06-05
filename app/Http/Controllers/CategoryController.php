@@ -13,32 +13,39 @@ use Desire2Learn\Http\Requests;
 
 class CategoryController extends Controller
 {
-    public function showSingleCategory($id)
+    /**
+     * This method displays category form, only superadmin user can access this method as well as 
+     * other methods in this class
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createCategory()
     {
-        $category = Category::find($id);
-
-        if (is_null($category)) {
-            alert()->error('Oops! The category is not available!');
-
-            return redirect()->route('dashboard.home');
-        }
-
-        return view('dashboard.category.showsinglecategory', compact('category'));
+        return view('dashboard.category.uploadform');
     }
 
-    public function showVideoCategory($categoryId)
+    /**
+     * This method displays the video categories created by the user
+     *
+     * @param $categoryId
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function showVideoCategories($categoryId)
     {
-        $video = Video::where('category', $categoryId)->paginate(6);
+        $video      = Video::where('category', $categoryId)->paginate(6);
         $categories = Category::all();
 
         return view('layout.home', compact('video', 'categories'));
     }
 
-    public function createCategory()
-    {
-    	return view('dashboard.category.uploadform');
-    }
-
+    /**
+     * This method validates and posts the data of the new video category
+     *
+     * @param $request
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function postCategory(Request $request)
     {
     	$this->validate($request, [
@@ -65,11 +72,13 @@ class CategoryController extends Controller
     }
     
     /**
-     * This method is for editing of the apps
+     * This method gets the category edit form of the video
      *
+     * @param $id
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getCategoryEditForm($id)
     {
         $category = Auth::user()->categories->find($id);
 
@@ -84,8 +93,11 @@ class CategoryController extends Controller
     }
 
     /**
-     * This method is for editing of the apps
+     * This method validates and posts the video category data 
      *
+     * @param $id
+     * @param $request
+     * 
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
@@ -112,7 +124,10 @@ class CategoryController extends Controller
     }
 
      /**
-     * This method delete categorys created 
+     * This method deletes category created by the user, Only special user can access this method.
+     * A superadmin cannot delete a category.
+     *
+     * @param $id 
      *
      * @return \Illuminate\Http\Response
      */

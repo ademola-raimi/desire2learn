@@ -6,7 +6,10 @@ class Video extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testVideoWasVisited()
+    /**
+     * Test that video upload form was visited
+     */
+    public function testVideoUploadFormWasVisited()
     {
         $user = factory('Desire2Learn\User')->create();
 
@@ -14,9 +17,12 @@ class Video extends TestCase
              ->see('NEW VIDEO UPLOAD');
     }
 
+    /**
+     * Test that video already exist
+     */
     public function testThatVideoAlreadyExist()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -24,6 +30,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->select($category->id, 'category')
              ->type('Laravel', 'title')
@@ -33,9 +40,12 @@ class Video extends TestCase
              ->see('title');
     }
 
+    /**
+     * Test that video upload was successful
+     */
     public function testForSuccessfulVideoUpload()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -43,7 +53,8 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
-        $response = $this->actingAs($user)->visit('/dashboard/video/create')
+
+        $this->actingAs($user)->visit('/dashboard/video/create')
              ->select($category->id, 'category')
              ->type('Using the cloud system available on laravel', 'title')
              ->type('https://www.youtube.com/watch?v=9vN2IdeALaJ', 'url')
@@ -52,15 +63,20 @@ class Video extends TestCase
              ->see($video->title);
     }
 
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */
     public function testThatAllFieldsAreMissingExceptIcon()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
+
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type('framework of the artisan', 'description')
              ->press('Upload Video')
@@ -69,9 +85,12 @@ class Video extends TestCase
              ->see('The url field is required.');
     }
 
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */
     public function testThatAllFieldsAreMissingExceptTitle()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -79,6 +98,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type('Writing an integration test in Laravel', 'title')
              ->press('Upload Video')
@@ -87,9 +107,12 @@ class Video extends TestCase
              ->see('The url field is required.');
     }
 
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */
     public function testThatAllFieldsAreMissingExceptUrl()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -97,6 +120,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
              ->press('Upload Video')
@@ -105,15 +129,19 @@ class Video extends TestCase
              ->see('The description field is required.');
     }
 
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */
     public function testThatAllFieldsAreMissingExceptCategory()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type($category->id, 'category')
              ->press('Upload Video')
@@ -122,9 +150,12 @@ class Video extends TestCase
              ->see('The description field is required.');
     }
     
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */
     public function testThatUrlAndDescriptionAreMissing()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -132,6 +163,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type($category->id, 'category')
              ->type('Switching from Mailgun to Sendgrid', 'title')
@@ -140,9 +172,12 @@ class Video extends TestCase
              ->see('The description field is required.');
     }
 
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */
     public function testThatCategoryAndTitleFieldsAreMissing()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -150,6 +185,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
              ->type('framework of the artisan', 'description')
@@ -158,9 +194,12 @@ class Video extends TestCase
              ->see('The title field is required.');
     }
 
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */ 
     public function testThatTitleAndDescriptionAreMissing()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -168,6 +207,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type($category->id, 'category')
              ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
@@ -176,9 +216,12 @@ class Video extends TestCase
              ->see('The title field is required.');
     }
 
+    /**
+     * Test that video upload was unsuccessful due to missing fields
+     */
     public function testThatCategoryAndUrlFieldsAreMissing()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -186,6 +229,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->type('Event in Laravel', 'title')
              ->press('Upload Video')
@@ -193,9 +237,12 @@ class Video extends TestCase
              ->see('The url field is required.');
     }
 
+    /**
+     * Test that video upload was successful
+     */
     public function testThatVideoWasUpdated()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -203,19 +250,24 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/video/edit/'.$video->id)
-          ->select($category->id, 'category')
-          ->type('Laravel', 'title')
-          ->type('It is the language of the Html', 'description')
-          ->type('https://www.youtube.com/watch?v=hKUwxXgz2RM', 'url')
-          ->press('Update Video')
-          ->seePageIs('/dashboard')
-          ->see('Reaction');
+            ->select($category->id, 'category')
+            ->type('Laravel', 'title')
+            ->type('It is the language of the Html', 'description')
+            ->type('https://www.youtube.com/watch?v=hKUwxXgz2RM', 'url')
+            ->press('Update Video')
+            ->seePageIs('/dashboard')
+            ->see('Reaction');
     }
     
+    /**
+     * Test that video upload was unsuccessful due to unauthenticated user access 
+     * and redirect the unathenticated user to login page
+     */
     public function testThatOnlyLoggedInUserCanUpdateVideo()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -224,12 +276,15 @@ class Video extends TestCase
 
         $video = $this->uploadVideo($user, $category);
         $this->visit('/video/edit/'.$video->id)
-          ->seePageIs('/login');
+            ->seePageIs('/login');
     }
 
+    /**
+     * Test that video was retrieved by the right owner
+     */
     public function testVideoRetrievedByRightOwner()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -237,39 +292,52 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/video/edit/'.$video->id)
-         ->see($video->title);
+            ->see($video->title);
     }
 
+    /**
+     * Test that video was not retrieved because the user is not the creator
+     */
     public function testThatVideoNotRetrievedByNonOwner()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('video/edit/7')
          ->seePageIs('/dashboard');
     }
-    
+      
+
+    /**
+     * Test that video was only be deleted  by the an authenticated user
+     */
     public function testThatOnlyLoggedInUserCanDeleteVideo()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
         $video = $this->uploadVideo($user, $category);
+
         $this->visit('/video/delete/'.$video->id)
             ->seePageIs('/login');
     }
 
+    /**
+     * Test that video was deleted by the creator
+     */
     public function testThatVideoWasDeletedByTheRightOwner()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -277,14 +345,18 @@ class Video extends TestCase
         ]);
 
         $video    = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/video/delete/'.$video->id);
         $this->visit('/video/'.$video->id)
             ->seePageIs('/');
     }
 
+    /**
+     * Test that video was not deleted because the user is not the creator
+     */
     public function testThatVideoWasNotDeletedByNonOwner()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -292,10 +364,17 @@ class Video extends TestCase
         ]);
 
         $video    = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/video/delete/7')
             ->seePageIs('/dashboard');
     }
 
+    /**
+     * This method uplaod a video
+     *
+     * @return object
+     * 
+     */
     public function uploadVideo($user, $category)
     {
         $video = factory('Desire2Learn\Video')->create([
@@ -307,9 +386,12 @@ class Video extends TestCase
         return $video;
     }
 
+    /**
+     * Test invalid youtube url
+     */
     public function testInValidYoutubeUrl()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
@@ -317,6 +399,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
+
         $this->actingAs($user)->visit('/dashboard/video/create')
              ->select($category->id, 'category')
              ->type('Laravel URL generator', 'title')
@@ -326,19 +409,71 @@ class Video extends TestCase
              ->see('The url format is invalid.');
     }
 
+    /**
+     * Test that video Id of the youtube url is invalid
+     */
+    public function testInValidYoutubeUrlVideoId()
+    {
+        $user     = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'Framework of the arisan',
+        ]);
+
+        $video = $this->uploadVideo($user, $category);
+        
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->select($category->id, 'category')
+             ->type('Laravel URL generator', 'title')
+             ->type('https://www.youtube.com/watch?v=7TF00hJI78', 'url')
+             ->type('Framework of the arisan', 'description')
+             ->press('Upload Video')
+             ->see('New Video upload');
+    }
+
+    /**
+     * Test that the url length is not too short
+     */
+    public function testYoutubeUrlLengthIsTooShort()
+    {
+        $user     = factory('Desire2Learn\User')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'Framework of the arisan',
+        ]);
+
+        $video = $this->uploadVideo($user, $category);
+        
+        $this->actingAs($user)->visit('/dashboard/video/create')
+             ->select($category->id, 'category')
+             ->type('Laravel URL generator', 'title')
+             ->type('http://cat.ph', 'url')
+             ->type('Framework of the arisan', 'description')
+             ->press('Upload Video')
+             ->see('New Video upload');
+    }
+
+    /**
+     * Test that url clicks to the video
+     */
     public function testThatAUrlClickLinksToAVideo()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user  = factory('Desire2Learn\User')->create();
         $video = factory('Desire2Learn\Video')->create();
 
         $this->visit('/')
-        ->click($video->title)
-        ->seePageIs('/video/'.$video->id);
+            ->click($video->title)
+            ->seePageIs('/video/'.$video->id);
     }
-
+    
+    /**
+     * Test that uploaded video is instantly available for view
+     */    
     public function testUploadedVideosIsAvailable()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user  = factory('Desire2Learn\User')->create();
         $video = factory('Desire2Learn\Video')->create([
             'title'        => 'Haskell',
             'description'  => 'It is the language of the web',
@@ -347,28 +482,37 @@ class Video extends TestCase
         ]);
 
         $this->actingAs($user)->visit('/dashboard/video/uploaded')
-        ->see($video->name);
+          ->see($video->name);
     }
 
+    /**
+     * Test that uploaded video page has no videos 
+     */
     public function testUploadedVideoIsNotAvailable()
     {
         $user = factory('Desire2Learn\User')->create();
 
         $this->actingAs($user)->visit('/dashboard/video/uploaded')
-        ->see('OOPS SORRY YOU HAVEN');
+            ->see('OOPS SORRY YOU HAVEN');
     }
 
+    /**
+     * Test the homepage has no videos 
+     */
     public function testVideosAreNotAvailableOnHomePage()
     {
         $user = factory('Desire2Learn\User')->create();
 
         $this->visit('/')
-        ->see('Oops sorry we have no videos yet');
+            ->see('Oops sorry we have no videos yet');
     }
 
+    /**
+     * Test homepage has videos for display
+     */
     public function testVideosAreAvailableOnHomePage()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user  = factory('Desire2Learn\User')->create();
         $video = factory('Desire2Learn\Video')->create([
             'title'        => 'Haskell',
             'description'  => 'It is the language of the web',
@@ -377,6 +521,6 @@ class Video extends TestCase
         ]);
 
         $this->visit('/')
-        ->see($video->title);
+            ->see($video->title);
     }
 }

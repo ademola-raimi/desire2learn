@@ -25,14 +25,6 @@ $factory->define(Desire2Learn\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-
-// $factory->define(LearnCast\Role::class, function (Faker\Generator $faker) {
-//     return [
-//         'name'       => $faker->name,
-//         'role'       => 1,
-//     ];
-// });
-
 $factory->define(Desire2Learn\Category::class, function (Faker\Generator $faker) {
     return [
         'name'        => $faker->name,

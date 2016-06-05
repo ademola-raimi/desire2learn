@@ -1,7 +1,5 @@
 @extends('dashboard.master')
-
-@section('title', 'Admin Page')
-
+@section('title', 'All categories')
 @section('content')
 <div class="row">
     @include('dashboard.partials.top-nav-bar')
@@ -15,9 +13,9 @@
             <div class="col-lg-12" style="margin-bottom: -1%;">
                 <h1>Video Categories</h1>
             </div>
-        </div><!--/.row-->
-        <hr>
-        @foreach ($category->chunk(3) as $chunk)
+            </div><!--/.row-->
+            <hr>
+            @foreach ($category->chunk(3) as $chunk)
             <div class="row">
                 @foreach ($chunk as $categories)
                 <div class="col-lg-3 col-md-3">
@@ -26,12 +24,12 @@
                             <h6 class="text-uppercase" style="font-size: 2rem"></h6>
                             
                         </div>
-                    <i style="width: 20em;" class="devicon-{{ strtolower($categories->name) }}-plain colored"></i>
-                            <h6 class="text-uppercase" style="font-size: 2rem">{{ $categories->name }}</h6>
+                        <i style="width: 20em;" class="devicon-{{ strtolower($categories->name) }}-plain colored"></i>
+                        <h6 class="text-uppercase" style="font-size: 2rem">{{ $categories->name }}</h6>
                     </div>
                 </div>
                 @endforeach
             </div>
-         @endforeach
-</div>
-@endsection
+            @endforeach
+        </div>
+        @endsection

@@ -18,6 +18,11 @@ class Comment extends Model
         return $this->belongsTo('Desire2Learn\Video');
     }
 
+    /**
+     * Comments belong to a user
+     *
+     * @return object
+     */
     public function user()
     {
         return $this->belongsTo('Desire2Learn\User');

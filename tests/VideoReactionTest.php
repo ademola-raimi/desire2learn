@@ -6,12 +6,15 @@ class VideoReactionTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * Test that user can like a video
+     */
     public function testThatUserLikeAVideo()
     {
-        $user = factory('Desire2Learn\User')->create();
-        $video = factory('Desire2Learn\Video')->create();
+        $user     = factory('Desire2Learn\User')->create();
+        $video    = factory('Desire2Learn\Video')->create();
         $response = $this->actingAs($user)
-        ->call('POST', 'video/'.$video->id. '/like', [
+            ->call('POST', 'video/'.$video->id. '/like', [
             'user' => $user->id,
         ]);
 

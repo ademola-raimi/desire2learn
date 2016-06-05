@@ -18,6 +18,11 @@ class View extends Model
         return $this->belongsTo('Desire2Learn\Video');
     }
 
+    /**
+     * define view to user relationship. View belongs to a user
+     *
+     * @return object
+     */
     public function user()
     {
         return $this->belongsTo('Desire2Learn\User');

@@ -59,11 +59,21 @@ class User extends Authenticatable
         $this->save();
     }
 
+    /**
+     * A user has many videos
+     *
+     * @return object
+     */
     public function videos()
     {
         return $this->hasMany('Desire2Learn\Video');
     }
 
+    /**
+     * A user has many categories
+     *
+     * @return object
+     */
     public function categories()
     {
         return $this->hasMany('Desire2Learn\Category');
@@ -109,5 +119,3 @@ class User extends Authenticatable
         return $this->hasMany('Desire2Learn\Comment');
     }
 }
-
-
