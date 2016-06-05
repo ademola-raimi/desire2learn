@@ -23,7 +23,7 @@
                         <i class="fa fa-github"></i> SignIn with Github
                   </a>
 				@else
-				<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary">Dashboard</a>
+				<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary" style="border-color: red;">Dashboard</a>
 				@endif
 			</div>
 			

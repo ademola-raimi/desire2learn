@@ -27,7 +27,7 @@
         <div class="col-lg-3 col-md-6">
             <div class="card card-inverse card-success">
                 <div class="card-block bg-success">
-                    <div class="rotate">
+                    <div class="rotate" >
                         <i class="fa fa-thumbs-up fa-5x"></i>
                     </div>
                     <h6 class="text-uppercase" style="font-size: 2rem">Reactions</h6>
@@ -42,7 +42,7 @@
                     <div class="rotate">
                         <i class="fa fa-file-video-o fa-5x"></i>
                     </div>
-                    <h6 class="text-uppercase" style="font-size: 2rem">UploadedVideos</h6>
+                    <h6 class="text-uppercase" style="font-size: 2rem">Uploaded Videos</h6>
                     <h1 class="display-1">{{ $uploadedVideos->count() }}</h1>
                 </div>
                 

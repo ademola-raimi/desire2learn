@@ -74,7 +74,6 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-    <!-- <script src="{!! load_asset('js/jquery-2.1.3.min.js') !!}"></script> -->
     <script src="{!! load_asset('js/jquery-migrate-1.2.1.min.js') !!}"></script>
     <script src="{!! load_asset('js/owl.carousel.min.js') !!}"></script>
     <script src="{!! load_asset('js/jquery.appear.js') !!}"></script>
@@ -86,8 +85,6 @@
     <script src="{!! load_asset('js/map.js') !!}"></script>
     <script src="{!! load_asset('js/map.js') !!}"></script>
     <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
-<!--     <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-    <script href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> -->
   
   </body>
 </html>
