@@ -1,6 +1,6 @@
 # Desire2Learn
 
-[![Build Status](https://travis-ci.org/andela-araimi/desire2learn.svg?branch=staging)](https://travis-ci.org/andela-araimi/desire2learn) [![Coverage Status](https://coveralls.io/repos/github/andela-araimi/desire2learn/badge.svg?branch=staging)](https://coveralls.io/github/andela-araimi/desire2learn?branch=staging) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/?branch=master)
+[![Build Status](https://travis-ci.org/andela-araimi/desire2learn.svg?branch=master)](https://travis-ci.org/andela-araimi/desire2learn) [![Coverage Status](https://coveralls.io/repos/github/andela-araimi/desire2learn/badge.svg?branch=master)](https://coveralls.io/github/andela-araimi/desire2learn?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-araimi/desire2learn/?branch=master)
 
 
 Welcome to Desire2learn where learning is made available and easier through video tutorials.
