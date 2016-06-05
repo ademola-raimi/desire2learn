@@ -22,24 +22,24 @@
                     @if (! Auth::check())
                     <li>
                         <a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}">
-                            <i class="fa fa-thumbs-up"> {{ $like->count() }} </i>
+                            <i class="fa fa-thumbs-up"> {{ $like }} </i>
                         </a>
                     </li>
                     <li>
                         <a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}">
-                            <i class="fa fa-thumbs-down"> {{ $unlike->count() }} </i>
+                            <i class="fa fa-thumbs-down"> {{ $unlike }} </i>
                         </a>
                     </li>
                     @else
                     
                     <li>
                         <a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}">
-                            <i class="fa fa-thumbs-up"> {{ $like->count() }} </i>
+                            <i class="fa fa-thumbs-up"> {{ $like }} </i>
                         </a>
                     </li>
                     <li>
                         <a type="button" class="btn btn-primary btn-sm vote" id="{{ $video->id }}" data-user="{{ Auth::user()->id }}">
-                            <i class="fa fa-thumbs-down"> {{ $unlike->count() }} </i>
+                            <i class="fa fa-thumbs-down"> {{ $unlike }} </i>
                         </a>
                     </li>
                     @endif

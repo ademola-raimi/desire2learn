@@ -160,8 +160,8 @@ class VideoController extends Controller
             return redirect()->route('index');  
         }
 
-        $like   = $video->likes->where('like', 1);
-        $unlike = $video->likes->where('like', 0);
+        $like   = $video->likes->where('like', 1)->count();
+        $unlike = $video->likes->where('like', 0)->count();
 
         $relatedVideos = Video::where('category', $video->category)->get();
 
