@@ -25,7 +25,7 @@
             <div class="card card-inverse card-success">
                 <div class="card-block bg-success">
                     <div class="rotate" >
-                        <i class="fa fa-thumbs-up fa-5x"></i>
+                        <i class="fa fa-puzzle-piece" style="padding: 20px;" aria-hidden="true"></i>
                     </div>
                     <h6 class="text-uppercase" style="font-size: 2rem">Reactions</h6>
                     <h1 class="display-1">{{ $reactions->count() }}</h1>

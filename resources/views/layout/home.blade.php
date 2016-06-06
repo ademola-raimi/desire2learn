@@ -35,7 +35,6 @@
 	<div class="container">
 		<div class="col-sm-3 sidenav">@include('layout.partials.side-nav-bar')</div>
 		<div class="col-sm-9 sidebar">
-			<div class="container">
 				@if (count($video) > 0)
 				@foreach ($video->chunk(3) as $chunk)
 				<div class="row">
@@ -66,8 +65,6 @@
 					{!! $video->render() !!}
 				</div>
 			</div>
-			
-		</div>
 	</div>
 	<!-- End Body Section -->
 	<!-- Start Call to Action Section -->
