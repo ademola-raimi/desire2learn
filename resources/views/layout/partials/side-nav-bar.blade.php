@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 mobile-panel">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title" style="font-size: 1rem;">Videos By Category</h1>

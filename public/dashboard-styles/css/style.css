@@ -1967,7 +1967,7 @@ background: url(../images/social.png) no-repeat 0px 0px;
 	}
 	.drop-navigation{
 		display: none;
-		margin-top: 1em;
+		margin-top: -15%;
 	}
 	.top-navigation {
 	     display: block;

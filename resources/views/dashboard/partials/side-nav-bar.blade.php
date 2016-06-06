@@ -1,6 +1,6 @@
 <div class="col-sm-3 col-md-2 sidebar">
     <div class="top-navigation">
-        <div class="t-menu">MENU</div>
+        <div class="t-menu" style="margin-left: 10%;">MENU</div>
         
         <div class="clearfix"> </div>
     </div>
@@ -28,7 +28,7 @@
         </ul>
         <!-- script-for-menu -->
         <div class="side-bottom">
-            <div class="copyright" style="padding-left: 10px;">
+            <div class="copyright">
                 <strong style="color: #fff"> #TIA {{ \Carbon\Carbon::now()->year }}.</strong>
                 <strong style="color: #fff">Made with <i class="fa fa-heart" style="color:red;"></i>
                 <span class="incognito-text">By</span> <a href="https://github.com/andela-araimi" target="_blank">Demo</a></strong>

@@ -12,13 +12,13 @@
 					<p>Learning is not attained by chance, It must be sought for with ardor and attended with deligence <br> Dive in to get started</p>
 					
 					@if (! Auth::check())
-					<a href="{{ url('/facebook') }}" class="page-scroll btn btn-primary" style="background-color: #3B5998; width: 20%; border: none;">
+					<a href="{{ url('/facebook') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #3B5998; width: 20%; border: none;">
 						<i class="fa fa-facebook"></i> Sign In With Facebook
 					</a>
-					<a href="{{ url('/twitter') }}" class="page-scroll btn btn-primary" style="background-color: #55ACEE; width: 20%; border: none;">
+					<a href="{{ url('/twitter') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #55ACEE; width: 20%; border: none;">
 						<i class="fa fa-twitter"></i> Sign In with Twitter
 					</a>
-					<a href="{{ url('/github') }}" class="page-scroll btn btn-primary" style="background-color: #444444; width: 20%; border: none">
+					<a href="{{ url('/github') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #444444; width: 20%; border: none">
 						<i class="fa fa-github"></i> Sign In with Github
 					</a>
 					@else
@@ -35,6 +35,7 @@
 	<div class="container">
 		<div class="col-sm-3 sidenav">@include('layout.partials.side-nav-bar')</div>
 		<div class="col-sm-9 sidebar">
+			<div class="container">
 				@if (count($video) > 0)
 				@foreach ($video->chunk(3) as $chunk)
 				<div class="row">
@@ -65,6 +66,8 @@
 					{!! $video->render() !!}
 				</div>
 			</div>
+			
+		</div>
 	</div>
 	<!-- End Body Section -->
 	<!-- Start Call to Action Section -->

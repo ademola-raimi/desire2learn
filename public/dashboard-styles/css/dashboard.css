@@ -16,7 +16,7 @@
   margin-bottom: 0;
     margin-top: 0%;
   background: #f5f5f5;
-    border-bottom: 1px solid #595959 !important;
+    /*border-bottom: 1px solid #595959 !important;*/
   border: none;
   border-radius: 0;
     -webkit-border-radius: 0;
@@ -234,6 +234,9 @@ body {
 .sidebar {
   display: none;
 }
+.copyright {
+  display: none;
+}
 
 @media (min-width: 768px) {
   .sidebar {
@@ -249,11 +252,16 @@ body {
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
   }
+  .copyright{
+    display: block;
+    padding-left: 10px;
+  }
 }
 
 /* Sidebar navigation */
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
+  margin-top: -20px;
   margin-bottom: 20px;
   margin-left: -20px;
 }

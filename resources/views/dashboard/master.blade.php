@@ -70,5 +70,13 @@
             <script src="{!! load_asset('js/map.js') !!}"></script>
             <script src="{!! load_asset('js/map.js') !!}"></script>
             <script src="{!! load_asset('sweetalert/sweetalert.min.js') !!}"></script>
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('.top-navigation').on("click", function(){
+                        $('.drop-navigation').toggle('slow');
+                    });
+                });
+            </script>
         </body>
     </html>
