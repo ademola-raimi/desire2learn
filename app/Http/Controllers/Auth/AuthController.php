@@ -72,7 +72,7 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             'username' => 'required|max:255|unique:users,username',
-            'email' => 'required|email|max:255|unique:users,email',
+            'email'    => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:6|confirmed',
         ]);
 
@@ -100,6 +100,7 @@ class AuthController extends Controller
     public function logOut()
     {
         Auth::logout();
+        
         alert()->success('You have successully log out from your account', 'Good bye!');
 
         return redirect()->route('index');

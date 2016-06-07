@@ -20,11 +20,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-    	$reactions      = Auth::user()->likes();
-    	$uploadedVideos = Auth::user()->videos();
-    	$views          = Auth::user()->views();
+    	$favouritedVideos = Auth::user()->likes()->where('like', true);
+    	$uploadedVideos   = Auth::user()->videos();
+    	$categories       = Auth::user()->categories();
 
-    	return view('dashboard.index', compact('reactions', 'uploadedVideos', 'views'));
+    	return view('dashboard.index', compact('favouritedVideos', 'uploadedVideos', 'categories'));
     }
 
     /**
@@ -34,9 +34,29 @@ class DashboardController extends Controller
      */
     public function uploadedVideos()
     {
-    	$uploadedVideo = Auth::user()->videos()->paginate(3);
+    	$uploadedVideos = Auth::user()->videos()->paginate(3);
 
-    	return view('dashboard.video.uploadedvideo', compact('uploadedVideo'));
+    	return view('dashboard.video.uploadedvideo', compact('uploadedVideos'));
+    }
+
+    /**
+     * This method displays all the videos the user has uploaded in the application
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function favouritedVideos()
+    {
+        $likes = Auth::user()->likes()->where('like', true)->first();
+
+        if (is_null($likes)) {
+            $favouritedVideos = [];
+
+            return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
+        }
+
+        $favouritedVideos = $likes->video()->paginate(3);
+
+        return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
     }
 
     /**
@@ -69,7 +89,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAdminForm()
+    public function getSuperAdminForm()
     {
         return view('dashboard.superadminform');
     }
@@ -80,7 +100,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createAdmin(Request $request)
+    public function createSuperAdmin(Request $request)
     {
         $this->validate($request, [
             'email'    => 'required',

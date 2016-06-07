@@ -67,7 +67,7 @@ class VideoController extends Controller
     {
     	$this->validate($request, [
             'title'       => 'required',
-            'url'          => 'required|url',
+            'url'         => 'required|url',
             'category'    => 'required',
             'description' => 'required',
         ]);
@@ -114,15 +114,15 @@ class VideoController extends Controller
             'description' => $request['description'],
         ]);
 
-            if (is_null($videoUpload->id)) {
-                alert()->error('Video upload failed', 'error');
+        if (is_null($videoUpload->id)) {
+            alert()->error('Video upload failed', 'error');
 
-                return redirect()->back();
-            }
+            return redirect()->back();
+        }
 
-            alert()->success('Video uploaded successfully', 'success');
+        alert()->success('Video uploaded successfully', 'success');
 
-            return redirect()->route('uploaded.video'); 
+        return redirect()->route('uploaded.video'); 
     }
 
     /**
@@ -183,7 +183,7 @@ class VideoController extends Controller
      */
     public function getVideoEditForm($id)
     {
-        $video = Auth::user()->videos->find($id);
+        $video      = Auth::user()->videos->find($id);
         $categories = Category::all();
 
         if (is_null($video)) {

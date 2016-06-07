@@ -10,8 +10,8 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="row" style="margin-left: 1%;">
         <div class="container">
-            @if (count($uploadedVideos) > 0)
-            @foreach ($uploadedVideos->chunk(3) as $chunk)
+            @if (count($favouritedVideos) > 0)
+            @foreach ($favouritedVideos->chunk(3) as $chunk)
             <div class="row">
                 @foreach ($chunk as $video)
                 <div class="col-sm-3">
@@ -35,10 +35,10 @@
             </div>
             @endforeach
             <div class="button-details">
-                {!! $uploadedVideos->render() !!}
+                {!! $favouritedVideos->render() !!}
             </div>
             @else
-            <h4 class="center-align padcast-page-header" style="margin-bottom:50px;">You haven't uploaded any video yet, click <a href="/dashboard/video/create">here</a> to upload a video</h4>
+            <h4 class="center-align padcast-page-header" style="margin-bottom:50px;">You don't have any favourited video yet</h4>
             @endif
         </div>
     </div>

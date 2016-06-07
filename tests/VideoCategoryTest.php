@@ -107,7 +107,7 @@ class VideoCategoryTest extends TestCase
            ->type('It is the language of the Html', 'description')
            ->press('Update Category')
            ->seePageIs('/dashboard')
-           ->see('Reaction');
+           ->see('UPLOADED VIDEOS');
     }
 
     /**

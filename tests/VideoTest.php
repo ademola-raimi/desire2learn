@@ -258,7 +258,7 @@ class Video extends TestCase
             ->type('https://www.youtube.com/watch?v=hKUwxXgz2RM', 'url')
             ->press('Update Video')
             ->seePageIs('/dashboard')
-            ->see('Reaction');
+            ->see('UPLOADED VIDEOS');
     }
     
     /**
@@ -471,7 +471,7 @@ class Video extends TestCase
     /**
      * Test that uploaded video is instantly available for view
      */    
-    public function testUploadedVideosIsAvailable()
+    public function testUploadedVideoIsAvailable()
     {
         $user  = factory('Desire2Learn\User')->create();
         $video = factory('Desire2Learn\Video')->create([
@@ -493,7 +493,35 @@ class Video extends TestCase
         $user = factory('Desire2Learn\User')->create();
 
         $this->actingAs($user)->visit('/dashboard/video/uploaded')
-            ->see('OOPS SORRY YOU HAVEN');
+            ->see('You haven\'t uploaded any video yet');
+    }
+
+    /**
+     * Test that uploaded video is instantly available for view
+     */    
+    public function testFavouritedVideoIsAvailable()
+    {
+        $user  = factory('Desire2Learn\User')->create();
+        $video = factory('Desire2Learn\Video')->create([
+            'title'        => 'Haskell',
+            'description'  => 'It is the language of the web',
+            'user_id'      => $user->id,
+            'views'        => 0,
+        ]);
+
+        $this->actingAs($user)->visit('/dashboard/video/favourited')
+          ->see($video->name);
+    }
+
+    /**
+     * Test that uploaded video page has no videos 
+     */
+    public function testFavouritedVideoIsNotAvailable()
+    {
+        $user = factory('Desire2Learn\User')->create();
+
+        $this->actingAs($user)->visit('/dashboard/video/favourited')
+            ->see('You don\'t have any favourited video yet');
     }
 
     /**

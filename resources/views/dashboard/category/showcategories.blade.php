@@ -24,8 +24,10 @@
                             <h6 class="text-uppercase" style="font-size: 2rem"></h6>
                             
                         </div>
-                        <i style="width: 20em;" class="devicon-{{ strtolower($categories->name) }}-plain colored"></i>
-                        <h6 class="text-uppercase" style="font-size: 2rem">{{ $categories->name }}</h6>
+                        <div classs="category-detail" style="padding-left: 80px;">
+                            <i style="padding-left: 20px;" class="devicon-{{ strtolower($categories->name) }}-plain colored"></i>
+                            <h6 class="text-uppercase" style="font-size: 2rem">{{ $categories->name }}</h6>
+                        </div>
                     </div>
                 </div>
                 @endforeach
