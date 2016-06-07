@@ -20,9 +20,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-    	$favouritedVideos          = Auth::user()->likes()->where('like', true);
-    	$uploadedVideos = Auth::user()->videos();
-    	$categories     = Auth::user()->categories();
+    	$favouritedVideos = Auth::user()->likes()->where('like', true);
+    	$uploadedVideos   = Auth::user()->videos();
+    	$categories       = Auth::user()->categories();
 
     	return view('dashboard.index', compact('favouritedVideos', 'uploadedVideos', 'categories'));
     }
@@ -89,7 +89,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAdminForm()
+    public function getSuperAdminForm()
     {
         return view('dashboard.superadminform');
     }
@@ -100,7 +100,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createAdmin(Request $request)
+    public function createSuperAdmin(Request $request)
     {
         $this->validate($request, [
             'email'    => 'required',

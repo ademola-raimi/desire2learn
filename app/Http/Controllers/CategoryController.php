@@ -84,6 +84,7 @@ class CategoryController extends Controller
 
         if (is_null($category)) {
             alert()->error('Oops! unauthorize because you are not the owner!');
+            
             return redirect()->route('dashboard.home');  
         }
 

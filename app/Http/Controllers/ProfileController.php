@@ -34,17 +34,17 @@ class ProfileController extends Controller
     public function updateProfileSettings(Request $request)
     {
         $this->validate($request, [
-            'username'  => 'required|max:255|unique:users,username,'. Auth::user()->id,
+            'username'   => 'required|max:255|unique:users,username,'. Auth::user()->id,
             'first_name' => 'required|max:255',
             'last_name'  => 'required|max:255',
-            'email'     => 'required|max:255|unique:users,email,'. Auth::user()->id,
+            'email'      => 'required|max:255|unique:users,email,'. Auth::user()->id,
         ]);
 
         $updateUser = User::where('id', Auth::user()->id)->update([
-        	'username'  => $request->username,
+        	'username'   => $request->username,
         	'first_name' => $request->first_name,
         	'last_name'  => $request->last_name,
-        	'email'     => $request->email,
+        	'email'      => $request->email,
         ]);
 
         if ($updateUser) {

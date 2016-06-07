@@ -19,15 +19,15 @@ class CommentController extends Controller
     public function postComment(Request $request)
     {
         $newComment = Comment::create([
-            'comment'    => $request['comment'],
-            'user_id'     => Auth::user()->id,
-            'video_id'    => $request['video_id'],
+            'comment' => $request['comment'],
+            'user_id' => Auth::user()->id,
+            'video_id'=> $request['video_id'],
         ]);
 
         return $response = [
-            'message' => 'Comment created Successfully',
+            'message'     => 'Comment created Successfully',
             'status_code' => 200,
-            'commentId' => $newComment->id,
+            'commentId'   => $newComment->id,
         ];
     }
 }

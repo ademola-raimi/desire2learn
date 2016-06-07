@@ -238,7 +238,7 @@ Route::group(['middleware' => 'superadmin.user'], function () {
     ]);
 
     Route::get('/dashboard/new/superadmin', [
-        'uses' => 'DashboardController@getAdminForm',
+        'uses' => 'DashboardController@getSuperAdminForm',
         'as'   => 'admin-form',
     ]);
 
