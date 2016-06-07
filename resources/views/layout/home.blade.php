@@ -48,7 +48,7 @@
 										<img src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 									</a>
 									<div class="card-block">
-										<a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="/video/{{ $videos->id }}">{{substr($videos->title, 0, 35) }} {{ strlen($videos->title) > 35 ? '...': ''}}</a>
+										<a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="/video/{{ $videos->id }}">{{substr($videos->title, 0, 30) }} {{ strlen($videos->title) > 30 ? '...': ''}}</a>
 										<p class="card-text">Creator: {{ $videos->user->username }}</p>
 										<p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($videos->created_at))->diffForHumans() }}</p>
 									</div>

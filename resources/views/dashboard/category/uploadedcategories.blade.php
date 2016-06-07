@@ -11,7 +11,7 @@
     <div class="row" style="margin-left: 1%;">
         <div class="row">
             <div class="col-lg-12" style="margin-bottom: -1%;">
-                <h1>Video Categories</h1>
+                <h1>Uploaded Video Categories</h1>
             </div>
             </div><!--/.row-->
             <hr>
@@ -25,7 +25,7 @@
                             <h6 class="text-uppercase" style="font-size: 2rem"></h6>
                             
                         </div>
-                        <i style="width: 20em;" class="devicon-{{ strtolower($uploadedCategories->name) }}-plain colored"></i>
+                        <i style="padding-left: 20px" class="devicon-{{ strtolower($uploadedCategories->name) }}-plain colored"></i>
                         <h6 class="text-uppercase" style="font-size: 2rem">{{ $uploadedCategories->name }}</h6>
                         <span class="pull-right" style="margin-right: 1%; margin-top: -15%;"><a href="/category/edit/{{ $uploadedCategories->id }}"><button class="btn btn-primary btn-flat" style="width: 60px;">Edit</button></a></span>
                     </div>
@@ -33,11 +33,11 @@
                 @endforeach
             </div>
             @endforeach
-            @else
-            <h4 class="center-align padcast-page-header" style="margin-bottom:50px;">Oops sorry You haven't uploaded any category yet</h4>
-            @endif
             <div class="button-details">
                 {!! $uploadedCategory->render() !!}
             </div>
+            @else
+            <h4 class="center-align padcast-page-header" style="margin-bottom:50px;">You haven't uploaded any category yet, click <a href="/category/create">here</a> to upload a category</h4>
+            @endif
         </div>
         @endsection

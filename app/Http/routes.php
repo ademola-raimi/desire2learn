@@ -70,6 +70,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         'as'   => 'uploaded.video',
     ]);
 
+    Route::get('video/favourited', [
+        'uses' => 'DashboardController@favouritedVideos',
+        'as'   => 'favourited.video',
+    ]);
+
     Route::get('/category', [
         'uses' => 'DashboardController@showAllCategories',
         'as'   => 'all.categories',
