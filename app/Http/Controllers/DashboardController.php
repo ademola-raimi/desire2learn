@@ -52,14 +52,9 @@ class DashboardController extends Controller
         
         $favouritedVideos = [];
         foreach ($likes as $key => $value) {
-            //$video = Video::where('id', $likes->id)->get();
-            //dd($value->video()->get());
             array_push($favouritedVideos, $value->video());
         }  
-        // foreach ($favouritedVideos as $key => $value) {
-        //     dd($value->get());
-        // }
-        //dd($favouritedVideos);
+
         if (is_null($likes)) {
             $favouritedVideos = [];
 
@@ -69,7 +64,6 @@ class DashboardController extends Controller
         $favouritedVideos = $favouritedVideos;
 
         return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
-        
     }
 
     /**
