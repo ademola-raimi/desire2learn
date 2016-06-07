@@ -2,9 +2,11 @@
 
 namespace Desire2Learn\Http\Controllers;
 
+use DB;
 use Auth;
 use Alert;
 use Desire2Learn\User;
+use Desire2Learn\Like;
 use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
@@ -46,7 +48,12 @@ class DashboardController extends Controller
      */
     public function favouritedVideos()
     {
-        $likes = Auth::user()->likes()->where('like', true)->first();
+        $likes = Auth::user()->likes()->where('like', true)->get();
+        
+        $favouritedVideos = [];
+        foreach ($likes as $key => $value) {
+            array_push($favouritedVideos, $value->video());
+        }  
 
         if (is_null($likes)) {
             $favouritedVideos = [];
@@ -54,7 +61,7 @@ class DashboardController extends Controller
             return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
         }
 
-        $favouritedVideos = $likes->video()->paginate(3);
+        $favouritedVideos = $favouritedVideos;
 
         return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
     }
