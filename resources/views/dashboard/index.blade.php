@@ -14,7 +14,7 @@
             <div class="card card-inverse card-success">
                 <div class="card-block bg-success">
                     <div class="rotate">
-                        <i class="fa fa-eye fa-10x" style="padding: 50px; font-size: 5rem"></i>
+                        <i class="fa fa-cloud-upload fa-10x" style="padding: 50px; font-size: 5rem"></i>
                     </div>
                     <div class="user-stat" style="padding-left: 30px;">
                         <h6 class="text-uppercase">Uploaded categories</h6>
@@ -29,7 +29,7 @@
             <div class="card card-inverse card-success">
                 <div class="card-block bg-success">
                     <div class="rotate" >
-                        <i class="fa fa-thumbs-up fa-10x" style="padding: 50px; font-size: 5rem"></i>
+                        <i class="fa fa-star fa-10x" style="padding: 50px; font-size: 5rem"></i>
                     </div>
                     <div class="user-stat" style="padding-left: 40px;">
                         <h6 class="text-uppercase">Favourited Videos</h6>
@@ -43,14 +43,13 @@
             <div class="card card-inverse card-success">
                 <div class="card-block bg-success">
                     <div class="rotate">
-                        <i class="fa fa-file-video-o fa-10x" style="padding: 50px; font-size: 5rem"></i>
+                        <i class="fa fa-video-camera fa-10x" style="padding: 50px; font-size: 5rem"></i>
                     </div>
                     <div class="user-stat" style="padding-left: 40px;">
                         <h6 class="text-uppercase" >Uploaded Videos</h6>
                         <h1 class="display-1" style="padding-left: 30px;">{{ $uploadedVideos->count() }}</h1>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>

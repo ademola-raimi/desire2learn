@@ -286,4 +286,15 @@ class VideoCategoryTest extends TestCase
         $this->actingAs($user)->visit('/category/uploaded')
             ->see($categories->name);
     }
+
+    /**
+     * Test that super admin user can see their uploaded category
+     */
+    public function testThatUserHaveNotUploadedVideoCategory()
+    {
+        $user = $this->createUserWithSuperAdminRole();
+
+        $this->actingAs($user)->visit('/category/uploaded')
+            ->see('You haven\'t uploaded any category yet');
+    }
 }

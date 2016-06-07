@@ -9,6 +9,12 @@
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="row" style="margin-left: 1%;">
+        <div class="row">
+            <div class="col-lg-12" style="margin-top: -3%;">
+                <h1>Uploaded Videos</h1>
+            </div>
+        </div><!--/.row-->
+        <hr style="margin-top: 1%;">
         <div class="container">
             @if (count($uploadedVideos) > 0)
             @foreach ($uploadedVideos->chunk(3) as $chunk)
