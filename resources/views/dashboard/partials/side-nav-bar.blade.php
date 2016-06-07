@@ -19,8 +19,8 @@
             @endcan
             <li><a href="{{ route('uploaded.video') }}" class="user-icon"><i class="fa fa-video-camera" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Uploaded Videos</a>
             </li>
-            <!-- <li><a href="{{ route('favourited.video') }}" class="user-icon"><i class="fa fa-video-camera" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Favourited Videos</a>
-            </li> -->
+            <li><a href="{{ route('favourited.video') }}" class="user-icon"><i class="fa fa-star" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Favourited Videos</a>
+            </li>
             <li><a href="{{ route('create.video') }}" class="user-icon"><i class="fa fa-file-video-o" aria-hidden="true" style="margin: 0 0.5em 0 0;"></i>Upload video</a>
             </li>
             @can ( 'special-admin', Auth::user()->role_id )

@@ -48,20 +48,9 @@ class DashboardController extends Controller
      */
     public function favouritedVideos()
     {
-        $likes = Auth::user()->likes()->where('like', true)->get();
-        
-        $favouritedVideos = [];
-        foreach ($likes as $key => $value) {
-            array_push($favouritedVideos, $value->video());
-        }  
-
-        if (is_null($likes)) {
-            $favouritedVideos = [];
-
-            return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
-        }
-
-        $favouritedVideos = $favouritedVideos;
+        $favouritedVideos = Like::where('like', true)->with('video')
+            ->where('user_id', Auth::user()->id)
+            ->paginate(3);
 
         return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
     }
