@@ -252,7 +252,7 @@ class Video extends TestCase
 
         $video = $this->uploadVideo($user, $category);
 
-        $this->actingAs($user)->visit('/video/edit/'.$video->id)
+        $this->actingAs($user)->visit('video/'.$video->id.'/edit')
             ->select($category->id, 'category')
             ->type('Laravel', 'title')
             ->type('It is the language of the Html', 'description')
@@ -276,7 +276,7 @@ class Video extends TestCase
         ]);
 
         $video = $this->uploadVideo($user, $category);
-        $this->visit('/video/edit/'.$video->id)
+        $this->visit('video/'.$video->id.'/edit')
             ->seePageIs('/login');
     }
 
@@ -294,7 +294,7 @@ class Video extends TestCase
 
         $video = $this->uploadVideo($user, $category);
 
-        $this->actingAs($user)->visit('/video/edit/'.$video->id)
+        $this->actingAs($user)->visit('video/'.$video->id.'/edit')
             ->see($video->title);
     }
 
@@ -311,7 +311,7 @@ class Video extends TestCase
         ]);
         $video = $this->uploadVideo($user, $category);
 
-        $this->actingAs($user)->visit('video/edit/7')
+        $this->actingAs($user)->visit('video/7/edit')
          ->seePageIs('/dashboard');
     }
       
@@ -329,7 +329,7 @@ class Video extends TestCase
         ]);
         $video = $this->uploadVideo($user, $category);
 
-        $this->visit('/video/delete/'.$video->id)
+        $this->visit('video/'.$video->id.'/delete')
             ->seePageIs('/login');
     }
 
@@ -347,7 +347,7 @@ class Video extends TestCase
 
         $video    = $this->uploadVideo($user, $category);
 
-        $this->actingAs($user)->visit('/video/delete/'.$video->id);
+        $this->actingAs($user)->visit('video/'.$video->id.'/delete');
         $this->visit('/video/'.$video->id)
             ->seePageIs('/');
     }
@@ -366,7 +366,7 @@ class Video extends TestCase
 
         $video    = $this->uploadVideo($user, $category);
 
-        $this->actingAs($user)->visit('/video/delete/7')
+        $this->actingAs($user)->visit('/video/7/delete')
             ->seePageIs('/dashboard');
     }
 
@@ -482,7 +482,7 @@ class Video extends TestCase
             'views'        => 0,
         ]);
 
-        $this->actingAs($user)->visit('/dashboard/video/uploaded')
+        $this->actingAs($user)->visit('/dashboard/uploaded/videos')
             ->see($video->name);
     }
 
@@ -493,7 +493,7 @@ class Video extends TestCase
     {
         $user = factory('Desire2Learn\User')->create();
 
-        $this->actingAs($user)->visit('/dashboard/video/uploaded')
+        $this->actingAs($user)->visit('/dashboard/uploaded/videos')
             ->see('You haven\'t uploaded any video yet');
     }
 
@@ -566,7 +566,7 @@ class Video extends TestCase
             'views'        => 0,
         ]);
 
-        $this->visit('/all/videos')
+        $this->visit('/videos')
             ->see($video->title);
     }
 

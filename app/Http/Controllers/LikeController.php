@@ -29,7 +29,7 @@ class LikeController extends Controller
      * @param $videoId
      * @param $request
      */
-	public function postLikeVideo($videoId, Request $request)
+    public function postLikeVideo($videoId, Request $request)
     {
         if ($request->ajax()) {
             if ($request->get('isLike') === 'true') {

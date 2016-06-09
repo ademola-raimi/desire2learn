@@ -3,6 +3,7 @@
 namespace Desire2Learn\Http\Controllers\Auth;
 
 use Auth;
+use Hash;
 use Alert;
 use Validator;
 use Desire2Learn\User;
@@ -10,6 +11,9 @@ use Illuminate\Http\Request;
 use Desire2Learn\Http\Controllers\Controller;
 use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Desire2Learn\Http\Requests\LoginFormRequest;
+use Desire2Learn\Http\Requests\RegisterFormRequest;
+use Desire2Learn\Http\Requests\PostChangePasswordFormRequest;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -42,13 +46,8 @@ class AuthController extends Controller
      * @param  Request  $request
      * @return User
      */
-    public function postLogin(Request $request)
+    public function postLogin(LoginFormRequest $request)
     {
-        $this->validate($request, [
-            'email'    => 'required',
-            'password' => 'required'
-        ]);
-
         $authStatus = Auth::attempt($request->only(['email', 'password']), $request->has('remember'));
 
         if (!$authStatus) {
@@ -68,14 +67,8 @@ class AuthController extends Controller
      * @param  Request  $request
      * @return User
      */
-    protected function postRegister(Request $request)
+    protected function postRegister(RegisterFormRequest $request)
     {
-        $this->validate($request, [
-            'username' => 'required|max:255|unique:users,username',
-            'email'    => 'required|email|max:255|unique:users,email',
-            'password' => 'required|min:6|confirmed',
-        ]);
-
         User::create([
             'username'   => $request['username'],
             'last_name'  => $request['last_name'],
@@ -102,6 +95,39 @@ class AuthController extends Controller
         Auth::logout();
         
         alert()->success('You have successully log out from your account', 'Good bye!');
+
+        return redirect()->route('index');
+    }
+
+    /**
+     *  get change password page
+     */
+    public function getChangePassword()
+    {
+        $users = Auth::user();
+
+        return view('dashboard.profile.changepassword', compact('users'));
+    }
+
+    /**
+     *  Post change password request.
+     */
+    public function postChangePassword(PostChangePasswordFormRequest $request)
+    {
+        $user = Auth::user();
+
+        // Compare old password
+        if (!Hash::check($request->oldPassword, $user->password)) {
+            alert()->error('Old password incorrect', 'error');
+
+            return redirect()->back();
+        }
+
+        // Update current password
+        $user->password = Hash::make($request->newPassword);
+        $user->save();
+
+        alert()->success('Password successfully updated', 'success');
 
         return redirect()->route('index');
     }

@@ -1,15 +1,14 @@
 $(document).ready(function() {
     $('.comment-submit').on('click', function() {
 
-        var comment = $('#new-comment-field').val();
-        var avatar = $(this).data('avatar');
+        var comment      = $('#new-comment-field').val();
+        var avatar       = $(this).data('avatar');
         var commentCount = parseInt($(this).data('comment-count')) + 1;
-        var token = $(this).data('token');
-
-        var url = '/comment';
+        var token        = $(this).data('token');
         
         var user_id = $('#user_id').val();
         var videoId = $('#video_id').val();
+        var url     = '/video/'+videoId+'/comments';
 
         var data = {
             parameter: {
@@ -62,5 +61,4 @@ $(document).ready(function() {
 
         return false;
     });
-
 });

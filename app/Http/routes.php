@@ -5,7 +5,6 @@
 | Application Routes- index
 |--------------------------------------------------------------------------
 */
-
 Route::get('/', [
     'uses' => 'HomeController@index',
     'as'   => 'index',
@@ -16,9 +15,9 @@ Route::get('signup', [
     'as'   => 'register',
 ]);
 
-Route::post('signup/new', [
-	'uses' => 'Auth\AuthController@postRegister',
-	'as'   => 'create-new-user',
+Route::post('user/new', [
+	'uses'       => 'Auth\AuthController@postRegister',
+	'as'         => 'create-new-user',
     'middleware' => ['guest']
 ]);
 
@@ -27,7 +26,7 @@ Route::get('login', [
     'as'   => 'login',
 ]);
 
-Route::post('login/user', [
+Route::post('user/login', [
 	'uses' => 'Auth\AuthController@postLogin',
     'as'   => 'post-login',
     'middleware' => ['guest']
@@ -40,12 +39,12 @@ Route::get('logout', [
 
 Route::get('category/{id}/videos', [
     'uses' => 'CategoryController@showVideoCategories',
-    'as' => 'show-video-category'
+    'as'   => 'show-video-category'
 ]);
 
-Route::get('all/videos', [
+Route::get('videos', [
     'uses' => 'CategoryController@showAllVideos',
-    'as' => 'show-all-category'
+    'as'   => 'show-all-category'
 ]);
 
 /*
@@ -70,7 +69,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         'as'   => 'post.video',
     ]);
 
-    Route::get('video/uploaded', [
+    Route::get('uploaded/videos', [
         'uses' => 'DashboardController@uploadedVideos',
         'as'   => 'uploaded.video',
     ]);
@@ -80,7 +79,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         'as'   => 'favourited.video',
     ]);
 
-    Route::get('/category', [
+    Route::get('/categories', [
         'uses' => 'DashboardController@showAllCategories',
         'as'   => 'all.categories',
     ]);
@@ -104,20 +103,20 @@ Route::group(['prefix' => 'profile'], function () {
         'as'   => 'post-profile',
     ]);
 
-    Route::post('/avatar/setting', [
+    Route::post('settings/avatar', [
         'uses'       => 'ProfileController@postAvatarSetting',
         'as'         => 'post-avatar',
         'middleware' => ['auth'],
     ]);
 
     Route::get('changepassword', [
-        'uses'       => 'ProfileController@getChangePassword',
+        'uses'       => 'Auth\AuthController@getChangePassword',
         'as'         => 'changepassword',
         'middleware' => ['auth'],
     ]);
 
     Route::post('changepassword', [
-        'uses' => 'ProfileController@postChangePassword',
+        'uses' => 'Auth\AuthController@postChangePassword',
         'as'   => 'post-changepassword',
     ]);
 });
@@ -161,13 +160,13 @@ Route::post('/video/{id}/like', [
 | Comment  
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['prefix' => 'video', 'middleware' => ['auth']], function () {
 
-    Route::get('/comment', [
+    Route::get('{id}/comments', [
         'uses' => 'CommentController@fetchComment'
     ]);
 
-    Route::post('/comment', [
+    Route::post('{id}/comments/', [
         'uses' => 'CommentController@postComment',
         'as' => 'comment',
     ]);
@@ -180,17 +179,17 @@ Route::group(['middleware' => 'auth'], function () {
 */
 Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
 
-    Route::get('/edit/{id}', [
+    Route::get('{id}/edit', [
         'uses' => 'VideoController@getVideoEditForm',
         'as'   => 'edit-video'
     ]);
 
-    Route::post('/edit/{id}/update', [
+    Route::post('{id}/edit/', [
         'uses' => 'VideoController@update',
         'as'   => 'update-video'
     ]);
 
-    Route::get('/delete/{id}', [
+    Route::get('/{id}/delete', [
         'uses' => 'VideoController@destroy',
         'as'   => 'delete-video'
     ]);
@@ -218,12 +217,12 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
         'as'   => 'post.category',
     ]);
 
-    Route::get('/edit/{id}', [
+    Route::get('{id}/edit/', [
         'uses' => 'CategoryController@getCategoryEditForm',
         'as'   => 'edit-video'
     ]);
 
-    Route::post('/edit/{id}/update', [
+    Route::post('{id}/edit', [
         'uses' => 'CategoryController@update',
         'as'   => 'update-video'
     ]);
@@ -235,7 +234,7 @@ Route::group(['prefix' => 'category', 'middleware' => 'superadmin.user'], functi
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'superadmin.user'], function () {
-    Route::get('category/delete/{id}', [
+    Route::get('category/{id}/delete', [
         'uses' => 'CategoryController@destroy',
         'as'   => 'delete-category',
     ]);
@@ -245,8 +244,8 @@ Route::group(['middleware' => 'superadmin.user'], function () {
         'as'   => 'admin-form',
     ]);
 
-    Route::post('/dashboard/new/superadmin', [
-        'uses'       => 'DashboardController@createAdmin',
+    Route::post('/dashboard/new/superadmin/', [
+        'uses'       => 'DashboardController@createSuperAdmin',
         'as'         => 'post.superadmin',
     ]);
 });

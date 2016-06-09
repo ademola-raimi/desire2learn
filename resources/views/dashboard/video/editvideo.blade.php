@@ -12,7 +12,7 @@
         <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
             <h3>Edit Video</h3>
             <hr>
-            <form class="form" role="form" action="/video/edit/{{ $video->id }}/update" method="POST" >
+            <form class="form" role="form" action="/video/{{ $video->id }}/edit" method="POST" >
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title">Title</label>
