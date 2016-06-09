@@ -9,6 +9,8 @@ use Cloudder;
 use Desire2Learn\User;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
+use Desire2Learn\Http\Requests\PostAvatarSettingRequest;
+use Desire2Learn\Http\Requests\ProfileSettingsFormRequest;
 
 class ProfileController extends Controller
 {
@@ -31,15 +33,8 @@ class ProfileController extends Controller
      *
      * @return Response
      */
-    public function updateProfileSettings(Request $request)
+    public function updateProfileSettings(ProfileSettingsFormRequest $request)
     {
-        $this->validate($request, [
-            'username'   => 'required|max:255|unique:users,username,'. Auth::user()->id,
-            'first_name' => 'required|max:255',
-            'last_name'  => 'required|max:255',
-            'email'      => 'required|max:255|unique:users,email,'. Auth::user()->id,
-        ]);
-
         $updateUser = User::where('id', Auth::user()->id)->update([
         	'username'   => $request->username,
         	'first_name' => $request->first_name,
@@ -62,12 +57,8 @@ class ProfileController extends Controller
     /**
      *  Posts image update request.
      */
-    public function postAvatarSetting(Request $request)
+    public function postAvatarSetting(PostAvatarSettingRequest $request)
     {
-        $this->validate($request, [
-            'avatar' => 'required|image|max:10240',
-        ]);
-
         $img = $request->file('avatar');
         
         Cloudder::upload($img, null);
@@ -84,43 +75,5 @@ class ProfileController extends Controller
 
             return redirect()->route('edit-profile');
         }
-    }
-
-    /**
-     *  get change password page
-     */
-    public function getChangePassword()
-    {
-        $users = Auth::user();
-
-        return view('dashboard.profile.changepassword', compact('users'));
-    }
-
-    /**
-     *  Post change password request.
-     */
-    public function postChangePassword(Request $request)
-    {
-        $this->validate($request, [
-            'oldPassword' => 'required',
-            'newPassword' => 'required|min:6',
-        ]);
-
-        $user = Auth::user();
-
-        // Compare old password
-        if (!Hash::check($request->oldPassword, $user->password)) {
-            alert()->error('Old password incorrect', 'error');
-
-            return redirect()->back();
-        }
-
-        // Update current password
-        $user->password = Hash::make($request->newPassword);
-        $user->save();
-
-        alert()->success('Password successfully updated', 'success');
-
-        return redirect()->route('index');
     }
 }

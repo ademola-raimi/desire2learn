@@ -12,6 +12,7 @@ use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Desire2Learn\Http\Requests\LoginFormRequest;
 use Desire2Learn\Http\Requests\RegisterFormRequest;
+use Desire2Learn\Http\Requests\PostChangePasswordFormRequest;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -93,6 +94,39 @@ class AuthController extends Controller
         Auth::logout();
         
         alert()->success('You have successully log out from your account', 'Good bye!');
+
+        return redirect()->route('index');
+    }
+
+    /**
+     *  get change password page
+     */
+    public function getChangePassword()
+    {
+        $users = Auth::user();
+
+        return view('dashboard.profile.changepassword', compact('users'));
+    }
+
+    /**
+     *  Post change password request.
+     */
+    public function postChangePassword(PostChangePasswordFormRequest $request)
+    {
+        $user = Auth::user();
+
+        // Compare old password
+        if (!Hash::check($request->oldPassword, $user->password)) {
+            alert()->error('Old password incorrect', 'error');
+
+            return redirect()->back();
+        }
+
+        // Update current password
+        $user->password = Hash::make($request->newPassword);
+        $user->save();
+
+        alert()->success('Password successfully updated', 'success');
 
         return redirect()->route('index');
     }

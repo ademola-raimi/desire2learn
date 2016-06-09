@@ -5,7 +5,6 @@
 | Application Routes- index
 |--------------------------------------------------------------------------
 */
-
 Route::get('/', [
     'uses' => 'HomeController@index',
     'as'   => 'index',
@@ -111,13 +110,13 @@ Route::group(['prefix' => 'profile'], function () {
     ]);
 
     Route::get('changepassword', [
-        'uses'       => 'ProfileController@getChangePassword',
+        'uses'       => 'Auth\AuthController@getChangePassword',
         'as'         => 'changepassword',
         'middleware' => ['auth'],
     ]);
 
     Route::post('changepassword', [
-        'uses' => 'ProfileController@postChangePassword',
+        'uses' => 'Auth\AuthController@postChangePassword',
         'as'   => 'post-changepassword',
     ]);
 });
@@ -245,8 +244,8 @@ Route::group(['middleware' => 'superadmin.user'], function () {
         'as'   => 'admin-form',
     ]);
 
-    Route::post('/dashboard/new/superadmin', [
-        'uses'       => 'DashboardController@createAdmin',
+    Route::post('/dashboard/new/superadmin/', [
+        'uses'       => 'DashboardController@createSuperAdmin',
         'as'         => 'post.superadmin',
     ]);
 });

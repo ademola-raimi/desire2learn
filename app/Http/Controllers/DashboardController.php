@@ -11,6 +11,7 @@ use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
+use Desire2Learn\Http\Requests\SuperAdminFormRequest;
 
 class DashboardController extends Controller
 {
@@ -96,12 +97,8 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createSuperAdmin(Request $request)
+    public function createSuperAdmin(SuperAdminFormRequest $request)
     {
-        $this->validate($request, [
-            'email'    => 'required',
-        ]);
-
         $user = User::where('email', $request['email'])->first();
 
         if (is_null($user)) {

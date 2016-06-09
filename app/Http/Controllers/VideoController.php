@@ -11,6 +11,7 @@ use Desire2Learn\Comment;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
+use Desire2Learn\Http\Requests\VideoFormRequest;
 
 class VideoController extends Controller
 {
@@ -63,15 +64,8 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response, Video data
      */
-    public function validateVideoData(Request $request)
+    public function validateVideoData(VideoFormRequest $request)
     {
-    	$this->validate($request, [
-            'title'       => 'required',
-            'url'         => 'required|url',
-            'category'    => 'required',
-            'description' => 'required',
-        ]);
-
         if (strlen($request['url']) < 32) {
             alert()->error('Please provide a valid youtube url length', 'error');
             
