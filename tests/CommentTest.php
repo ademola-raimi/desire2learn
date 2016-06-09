@@ -43,7 +43,7 @@ class CommentTest extends TestCase
         $this->actingAs($user)
             ->call(
                 'POST',
-                '/comment',
+                'video/'.$video->id.'/comments',
                 [
                     'comment' => 'Swanky new comment',
                     'video_id'=> $video['id']

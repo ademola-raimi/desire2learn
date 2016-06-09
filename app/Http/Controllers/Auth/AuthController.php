@@ -3,6 +3,7 @@
 namespace Desire2Learn\Http\Controllers\Auth;
 
 use Auth;
+use Hash;
 use Alert;
 use Validator;
 use Desire2Learn\User;

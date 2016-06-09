@@ -184,7 +184,7 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
         'as'   => 'edit-video'
     ]);
 
-    Route::post('{id}/edit', [
+    Route::post('{id}/edit/', [
         'uses' => 'VideoController@update',
         'as'   => 'update-video'
     ]);

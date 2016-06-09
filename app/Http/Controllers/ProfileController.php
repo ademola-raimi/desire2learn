@@ -3,7 +3,6 @@
 namespace Desire2Learn\Http\Controllers;
 
 use Auth;
-use Hash;
 use Alert;
 use Cloudder;
 use Desire2Learn\User;
@@ -51,7 +50,7 @@ class ProfileController extends Controller
             alert()->error('Something went wrong', 'Error');
 
             return redirect()->route('edit-profile');
-        }    
+        }
     }
 
     /**

@@ -102,7 +102,7 @@ class VideoCategoryTest extends TestCase
             'user_id'     => $user->id,
         ]);
 
-        $this->actingAs($user)->visit('/category/edit/'.$category->id)
+        $this->actingAs($user)->visit('category/'.$category->id.'/edit')
            ->type('PHP', 'name')
            ->type('It is the language of the Html', 'description')
            ->press('Update Category')
@@ -122,7 +122,7 @@ class VideoCategoryTest extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $this->actingAs($user)->visit('/category/edit/'.$category->id)
+        $this->actingAs($user)->visit('category/'.$category->id.'/edit')
             ->see('EDIT CATEGORY');
     }
 
@@ -138,7 +138,7 @@ class VideoCategoryTest extends TestCase
             'user_id'     => $user->id,
         ]);
 
-        $this->actingAs($user)->visit('/category/edit/100')
+        $this->actingAs($user)->visit('/category/100/edit')
             ->seePageIs('/dashboard');
     }
 
@@ -155,7 +155,7 @@ class VideoCategoryTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->visit('/category/delete/'.$category->id)
+            ->visit('category/'.$category->id.'/delete')
             ->seePageIs('/dashboard');
     }
 
@@ -171,7 +171,7 @@ class VideoCategoryTest extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $this->actingAs($user)->visit('/video/delete/7')
+        $this->actingAs($user)->visit('/video/7/delete')
             ->seePageIs('/dashboard');
     }    
 
@@ -187,7 +187,7 @@ class VideoCategoryTest extends TestCase
             'user_id'     => $user->id,
         ]);
 
-        $this->actingAs($user)->visit('/dashboard/category')
+        $this->actingAs($user)->visit('dashboard/categories')
             ->see($categories->name);
     }
 
