@@ -11,17 +11,17 @@ class CommentTest extends TestCase
      */
     public function testGuestUserCannotComment()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->visit('/video/1')
-             ->see('Only logged in users can comment.');
+            ->see('Only logged in users can comment.');
     }
 
     /**
@@ -49,6 +49,7 @@ class CommentTest extends TestCase
                     'video_id'=> $video['id']
                 ]
             );
+
         $this->seeInDatabase('comments', ['comment' => 'Swanky new comment']);
         $this->seeInDatabase('comments', ['video_id' => $video['id']]);
         $this->seeInDatabase('comments', ['user_id' => $video['id']]);
@@ -63,14 +64,14 @@ class CommentTest extends TestCase
      */
     public function testFetchComment()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $comment = factory('Desire2Learn\Comment')->create();
 
@@ -84,14 +85,14 @@ class CommentTest extends TestCase
      */
     public function testCommentVideoRelationship()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $comment = factory('Desire2Learn\Comment')->create();
 
@@ -104,14 +105,14 @@ class CommentTest extends TestCase
      */
     public function testCommentUserRelationship()
     {
-        $user = factory('Desire2Learn\User')->create();
+        $user     = factory('Desire2Learn\User')->create();
         $category = factory('Desire2Learn\Category')->create([
             'user_id'     => $user->id,
             'name'        => 'Laravel',
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $comment = factory('Desire2Learn\Comment')->create();
 

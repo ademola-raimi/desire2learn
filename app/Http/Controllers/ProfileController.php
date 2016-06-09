@@ -103,7 +103,7 @@ class ProfileController extends Controller
     {
         $this->validate($request, [
             'oldPassword' => 'required',
-            'newPassword'    => 'required|min:6',
+            'newPassword' => 'required|min:6',
         ]);
 
         $user = Auth::user();

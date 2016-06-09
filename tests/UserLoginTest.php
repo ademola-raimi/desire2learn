@@ -25,13 +25,13 @@ class UserLoginTest extends TestCase
     public function testForSuccessfulLogin()
     {
         $user = factory('Desire2Learn\User')->create([
-            'username'       => 'Demo',
-            'email'          => 'demola@gmail.com',
-            'password'       => bcrypt('london'),
-            'first_name'    => 'Demola',
-            'last_name'    => 'Raimi',
-            'role_id'        => 1,
-            'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
+            'username'   => 'Demo',
+            'email'      => 'demola@gmail.com',
+            'password'   => bcrypt('london'),
+            'first_name' => 'Demola',
+            'last_name'  => 'Raimi',
+            'role_id'    => 1,
+            'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
         $this->actingAs($user)
@@ -49,13 +49,13 @@ class UserLoginTest extends TestCase
     public function testForSuccessfulLogout()
     {
         $user = factory('Desire2Learn\User')->create([
-            'username'       => 'Demo',
-            'email'          => 'demola@gmail.com',
-            'password'       => bcrypt('london'),
-            'first_name'    => 'Demola',
-            'last_name'    => 'Raimi',
-            'role_id'        => 1,
-            'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
+            'username'   => 'Demo',
+            'email'      => 'demola@gmail.com',
+            'password'   => bcrypt('london'),
+            'first_name' => 'Demola',
+            'last_name'  => 'Raimi',
+            'role_id'    => 1,
+            'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
         $this->actingAs($user)

@@ -180,7 +180,7 @@ class LikeController extends Controller
     private function countLike($videoId)
     {
         $video = Video::find($videoId);
-        $like = $video->likes->where('like', true);
+        $like  = $video->likes->where('like', true);
 
         return $like->count();
     }
@@ -194,7 +194,7 @@ class LikeController extends Controller
     private function countUnLike($videoId)
     {
         $video = Video::find($videoId);
-        $like = $video->likes->where('like', false);
+        $like  = $video->likes->where('like', false);
 
         return $like->count();
     }

@@ -31,4 +31,14 @@ class Category extends Model
     {
         return $this->belongsTo('Desire2Learn\User');
     }
+
+    /**
+     * Making sure id is converted to the category name through accessor
+     *
+     * @return string
+     */
+    public function getNameAttribute($value)
+    {
+        return strtolower($value);
+    }
 }

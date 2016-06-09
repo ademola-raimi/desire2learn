@@ -16,14 +16,14 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (! Auth::check())
                     <li>
-                        <a type="button" class="page-scroll btn btn-primary" style="margin-top:15%; color: #cccccc;" href="/">Home</a>
+                        <a type="button" class="page-scroll btn btn-primary btn-topnav" style="margin-top:15%;" href="/">Home</a>
                     </li>
                     
                     <li>
-                        <a type="button" class="page-scroll btn btn-primary" style="margin-top:13%; color: #cccccc;" href="{{ route('register') }}">Sign Up</a>
+                        <a type="button" class="page-scroll btn btn-primary btn-topnav" style="margin-top:13%;" href="{{ route('register') }}">Sign Up</a>
                     </li>
                     <li>
-                        <a type="button" class="page-scroll btn btn-primary" style="margin-top:15%; color: #cccccc;" href="{{ route('login') }}">Login</a>
+                        <a type="button" class="page-scroll btn btn-primary btn-topnav" style="margin-top:15%;" href="{{ route('login') }}">Login</a>
                     </li>
                     
                     @else

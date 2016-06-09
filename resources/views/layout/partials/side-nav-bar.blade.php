@@ -11,7 +11,7 @@
                         <div class="card-block bg-success" style="margin-bottom: 4%; background-color: #e5e5e5;">
                         </div>
                         <i style="width: 20em;" class="devicon-git-plain colored"></i>
-                        <a class="text-uppercase" href="{{ route('index') }}">All</a>
+                        <a class="text-uppercase" href="{{ route('show-all-category') }}">All</a>
                     </div>
                     @foreach ($categories as $category)
                     <div class="card card-inverse card-success" style="background-color: white; width: 80%; margin-left: 9%; border: 1px solid #e5e5e5">
