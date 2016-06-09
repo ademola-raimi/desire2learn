@@ -38,9 +38,14 @@ Route::get('logout', [
     'as'   => 'logout'
 ]);
 
-Route::get('category/{categoryId}/videos', [
+Route::get('category/{id}/videos', [
     'uses' => 'CategoryController@showVideoCategories',
     'as' => 'show-video-category'
+]);
+
+Route::get('all/videos', [
+    'uses' => 'CategoryController@showAllVideos',
+    'as' => 'show-all-category'
 ]);
 
 /*
@@ -190,8 +195,6 @@ Route::group(['prefix' => '/video', 'middleware' => 'auth'], function () {
         'as'   => 'delete-video'
     ]);
 });
-
-
 
 /*
 |--------------------------------------------------------------------------

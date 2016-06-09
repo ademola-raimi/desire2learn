@@ -223,7 +223,7 @@ class VideoCategoryTest extends TestCase
             'password'       => bcrypt(str_random(10)),
             'remember_token' => str_random(10),
             'role_id'        => 3,
-            'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
+            'avatar'         => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
         return $user;
@@ -276,7 +276,7 @@ class VideoCategoryTest extends TestCase
      */
     public function testThatUsersCanViewUploadedCategory()
     {
-        $user = $this->createUserWithSuperAdminRole();
+        $user       = $this->createUserWithSuperAdminRole();
         $categories = factory('Desire2Learn\Category')->create([
             'name'        => 'Javascript',
             'description' => 'It is the language of the web',

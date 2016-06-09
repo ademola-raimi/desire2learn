@@ -27,16 +27,31 @@ class CategoryController extends Controller
     /**
      * This method displays the video categories created by the user
      *
+     * @param $id
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function showVideoCategories($id)
+    {
+        $video      = Video::where('category', $id)->paginate(6);
+        $categories = Category::all();
+
+        return view('layout.video.categoryvideos', compact('video', 'categories'));
+    }
+
+    /**
+     * This method displays the video categories created by the user
+     *
      * @param $categoryId
      * 
      * @return \Illuminate\Http\Response
      */
-    public function showVideoCategories($categoryId)
+    public function showAllVideos()
     {
-        $video      = Video::where('category', $categoryId)->paginate(6);
+        $video      = Video::paginate(9);
         $categories = Category::all();
 
-        return view('layout.home', compact('video', 'categories'));
+        return view('layout.video.categoryvideos', compact('video', 'categories'));
     }
 
     /**

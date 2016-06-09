@@ -12,6 +12,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatUserDetailsWasUpdated()
     {
         $user = factory('Desire2Learn\User')->create();
+        
         $this->actingAs($user)
             ->visit('/profile/edit')
             ->type('damola', 'username')
@@ -25,6 +26,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatOnlyAuthenticatedUserCanUpdateTheirProfile()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->visit('/profile/edit')
             ->seePageIs('/login');
     }
@@ -35,6 +37,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatUserProfileWasNotUpdated()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->actingAs($user)
             ->visit('/profile/edit')
             ->type('', 'username')
@@ -50,6 +53,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatSomeFieldsAreMissing()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->actingAs($user)
             ->visit('/profile/edit')
             ->type('', 'username')
@@ -67,6 +71,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatImageFileWasNotSelected()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->actingAs($user)
             ->visit('/profile/edit')
             ->press('Upload')
@@ -79,6 +84,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatTheUserUploadProfilePicture()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->actingAs($user)
             ->visit('/profile/edit')
             ->attach(storage_path('dem.jpg'), 'avatar')
@@ -92,6 +98,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatPasswordChangeWasPageWasVisited()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->actingAs($user)
             ->visit('/profile/changepassword')
             ->see('Change Password');
@@ -103,6 +110,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatPasswordChangeWasUnsuccessfullDueToEmptyInput()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->actingAs($user)
             ->visit('/profile/changepassword')
             ->type('', 'oldPassword')
@@ -118,6 +126,7 @@ class ProfileUpdateTest extends TestCase
     public function testThatPasswordChangeWasUnsuccessfullDueToWrongInput()
     {
         $user = factory('Desire2Learn\User')->create();
+
         $this->actingAs($user)
             ->visit('/profile/changepassword')
             ->type('london', 'oldPassword')

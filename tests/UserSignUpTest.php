@@ -13,16 +13,18 @@ class UserSignUpTest extends TestCase
     public function testForSuccessfulSignUp()
     {
         Session::start();
+
         $user = factory('Desire2Learn\User')->create();
-        $response = $this->actingAs($user)
-        ->call('POST', 'signup/new', [
-            'username'   => 'Demo',
-            'email'      => 'demola@gmail.com',
-            'password'   => bcrypt('london'),
-            'first_name' => 'Demola',
-            'last_name'  => 'Raimi',
-            'role_id'    => 1,
-            'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
+
+        $this->actingAs($user)
+            ->call('POST', 'signup/new', [
+                'username'   => 'Demo',
+                'email'      => 'demola@gmail.com',
+                'password'   => bcrypt('london'),
+                'first_name' => 'Demola',
+                'last_name'  => 'Raimi',
+                'role_id'    => 1,
+                'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
         $this->actingAs($user)
@@ -43,30 +45,31 @@ class UserSignUpTest extends TestCase
     public function testThatUserAlreadyExists()
     {
         Session::start();
-        $user = factory('Desire2Learn\User')->create([
-            'username'       => 'Demo',
-            'email'          => 'demola@gmail.com',
-            'password'       => bcrypt('london'),
-            'first_name'     => 'Demola',
-            'last_name'      => 'Raimi',
-            'role_id'        => 1,
-            'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
+
+        factory('Desire2Learn\User')->create([
+            'username'   => 'Demo',
+            'email'      => 'demola@gmail.com',
+            'password'   => bcrypt('london'),
+            'first_name' => 'Demola',
+            'last_name'  => 'Raimi',
+            'role_id'    => 1,
+            'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
         $this->call('POST', 'signup', [
-            'username'       => 'Demo',
-            'email'          => 'demola@gmail.com',
-            'password'       => bcrypt('london'),
-            'first_name'     => 'Demola',
-            'last_name'      => 'Raimi',
-            'role_id'        => 1,
-            'avatar'    => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
+            'username'   => 'Demo',
+            'email'      => 'demola@gmail.com',
+            'password'   => bcrypt('london'),
+            'first_name' => 'Demola',
+            'last_name'  => 'Raimi',
+            'role_id'    => 1,
+            'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
 
         $this->visit('/signup')
-           ->type('demola@gmail.com', 'email')
-           ->type('Demo', 'username')
-           ->press('Register')
+            ->type('demola@gmail.com', 'email')
+            ->type('Demo', 'username')
+            ->press('Register')
             ->see('The username has already been taken.')
             ->see('The email has already been taken.');
         
@@ -102,6 +105,5 @@ class UserSignUpTest extends TestCase
 
         $this->visit('/facebook/callback')
             ->seePageIs('/');
-
     }
 }
