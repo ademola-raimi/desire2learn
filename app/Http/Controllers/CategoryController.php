@@ -10,6 +10,7 @@ use Desire2Learn\Video;
 use Desire2Learn\Category;
 use Illuminate\Http\Request;
 use Desire2Learn\Http\Requests;
+use Desire2Learn\Http\Requests\CategoryFormRequest;
 
 class CategoryController extends Controller
 {
@@ -61,13 +62,8 @@ class CategoryController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function postCategory(Request $request)
+    public function postCategory(CategoryFormRequest $request)
     {
-    	$this->validate($request, [
-            'name'        => 'required|unique:categories,name',
-            'description' => 'required',
-        ]);
-
         $categoryUpload = Category::create([
             'name'        => $request['name'],
             'user_id'     => auth()->user()->id,

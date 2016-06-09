@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Desire2Learn\Http\Controllers\Controller;
 use Desire2Learn\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Desire2Learn\Http\Requests\LoginFormRequest;
+use Desire2Learn\Http\Requests\RegisterFormRequest;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -42,13 +44,8 @@ class AuthController extends Controller
      * @param  Request  $request
      * @return User
      */
-    public function postLogin(Request $request)
+    public function postLogin(LoginFormRequest $request)
     {
-        $this->validate($request, [
-            'email'    => 'required',
-            'password' => 'required'
-        ]);
-
         $authStatus = Auth::attempt($request->only(['email', 'password']), $request->has('remember'));
 
         if (!$authStatus) {
@@ -68,14 +65,8 @@ class AuthController extends Controller
      * @param  Request  $request
      * @return User
      */
-    protected function postRegister(Request $request)
+    protected function postRegister(RegisterFormRequest $request)
     {
-        $this->validate($request, [
-            'username' => 'required|max:255|unique:users,username',
-            'email'    => 'required|email|max:255|unique:users,email',
-            'password' => 'required|min:6|confirmed',
-        ]);
-
         User::create([
             'username'   => $request['username'],
             'last_name'  => $request['last_name'],
