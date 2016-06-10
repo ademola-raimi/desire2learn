@@ -28,7 +28,7 @@
                                     <img class="video-iframe" src="http://img.youtube.com/vi/{{ $video->url }}/0.jpg">
                                 </a>
                                 <div class="card-block" >
-                                    <a class="card-title" href="{{ route('show_video', ['id' => $video->id]) }}">{{substr($video->title, 0, 35) }} {{ strlen($video->title) > 35 ? '...': ''}}</a>
+                                    <a class="card-title" href="{{ route('show_video', ['id' => $video->id]) }}">{{substr($video->title, 0, 30) }} {{ strlen($video->title) > 30 ? '.....': ''}}</a>
                                     <p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($video->created_at))->diffForHumans() }}</p>
                                 </div>
                             </div>

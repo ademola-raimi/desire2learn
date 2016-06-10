@@ -462,11 +462,17 @@ class Video extends TestCase
     public function testThatAUrlClickLinksToAVideo()
     {
         $user  = factory('Desire2Learn\User')->create();
-        $video = factory('Desire2Learn\Video')->create();
+        $category = factory('Desire2Learn\Category')->create([
+            'user_id'     => $user->id,
+            'name'        => 'Laravel',
+            'description' => 'Framework of the arisan',
+        ]);
+        
+        $video = $this->uploadVideo($user, $category);
 
         $this->visit('/')
             ->click($video->title)
-            ->seePageIs('/video/'.$video->id);
+            ->seePageIs('video/'.$video->id);
     }
     
     /**
@@ -482,8 +488,8 @@ class Video extends TestCase
             'views'        => 0,
         ]);
 
-        $this->actingAs($user)->visit('/dashboard/uploaded/videos')
-            ->see($video->name);
+        $this->actingAs($user)->visit('/dashboard/video/uploads')
+            ->see($video->title);
     }
 
     /**
@@ -493,7 +499,7 @@ class Video extends TestCase
     {
         $user = factory('Desire2Learn\User')->create();
 
-        $this->actingAs($user)->visit('/dashboard/uploaded/videos')
+        $this->actingAs($user)->visit('/dashboard/video/uploads')
             ->see('You haven\'t uploaded any video yet');
     }
 
@@ -510,7 +516,7 @@ class Video extends TestCase
             'views'        => 0,
         ]);
 
-        $this->actingAs($user)->visit('/dashboard/video/favourited')
+        $this->actingAs($user)->visit('/dashboard/video/favourites')
             ->see($video->name);
     }
 
@@ -521,7 +527,7 @@ class Video extends TestCase
     {
         $user = factory('Desire2Learn\User')->create();
 
-        $this->actingAs($user)->visit('/dashboard/video/favourited')
+        $this->actingAs($user)->visit('/dashboard/video/favourites')
             ->see('You don\'t have any favourited video yet');
     }
 
