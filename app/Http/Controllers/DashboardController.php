@@ -2,7 +2,6 @@
 
 namespace Desire2Learn\Http\Controllers;
 
-use DB;
 use Auth;
 use Alert;
 use Desire2Learn\User;
@@ -18,7 +17,7 @@ class DashboardController extends Controller
     private static $auth;
 
     /**
-     * Auth is injected in order to initialize the model
+     * Auth is injected for initialization
      * 
      */
     public function __construct(Auth $auth)
