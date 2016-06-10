@@ -69,14 +69,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         'as'   => 'post.video',
     ]);
 
-    Route::get('uploaded/videos', [
+    Route::get('video/uploads', [
         'uses' => 'DashboardController@uploadedVideos',
-        'as'   => 'uploaded.video',
+        'as'   => 'video.uploads',
     ]);
 
-    Route::get('video/favourited', [
+    Route::get('video/favourites', [
         'uses' => 'DashboardController@favouritedVideos',
-        'as'   => 'favourited.video',
+        'as'   => 'video.favourites',
     ]);
 
     Route::get('/categories', [
@@ -239,12 +239,12 @@ Route::group(['middleware' => 'superadmin.user'], function () {
         'as'   => 'delete-category',
     ]);
 
-    Route::get('/dashboard/new/superadmin', [
+    Route::get('/dashboard/admin/new', [
         'uses' => 'DashboardController@getSuperAdminForm',
         'as'   => 'admin-form',
     ]);
 
-    Route::post('/dashboard/new/superadmin/', [
+    Route::post('/dashboard/admin/new/', [
         'uses'       => 'DashboardController@createSuperAdmin',
         'as'         => 'post.superadmin',
     ]);
