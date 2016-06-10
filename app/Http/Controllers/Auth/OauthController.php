@@ -62,7 +62,7 @@ class OauthController extends controller
         if ($authUser) {
             return $authUser;
         }
-        
+
         return User::create([
             'username'       => $user->getNickname() ?: $user->getName(),
             'password'       => bcrypt(str_random(10)),

@@ -28,10 +28,8 @@
                                     <img class="video-iframe" src="http://img.youtube.com/vi/{{ $video->url }}/0.jpg">
                                 </a>
                                 <div class="card-block" >
-                                    <a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="{{ route('show_video', ['id' => $video->id]) }}">{{substr($video->title, 0, 35) }} {{ strlen($video->title) > 35 ? '...': ''}}</a>
+                                    <a class="card-title" href="{{ route('show_video', ['id' => $video->id]) }}">{{substr($video->title, 0, 35) }} {{ strlen($video->title) > 35 ? '...': ''}}</a>
                                     <p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($video->created_at))->diffForHumans() }}</p>
-                                    <span class="pull-right" style="margin-top: -10%; margin-right: -5%;"><a href="{{ route('delete-video', ['id' => $video->id]) }}" class="delete-video"><button class="btn btn-primary btn-flat" style="width: 60px;">Delete</button></a></span>
-                                    <span class="pull-right" style="margin-right: 5%; margin-top: -10%;"><a href="/video/edit/{{ $video->id }}"><button class="btn btn-primary btn-flat" style="width: 60px;">Edit</button></a></span>
                                 </div>
                             </div>
                         </div>
