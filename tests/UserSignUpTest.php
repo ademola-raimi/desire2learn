@@ -97,8 +97,6 @@ class UserSignUpTest extends TestCase
             ->shouldReceive('getAvatar')
             ->andReturn('https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200');
 
-        $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');
-
         $provider->shouldReceive('user')->andReturn($abstractUser);
 
         Socialite::shouldReceive('driver')->with('facebook')->andReturn($provider);
