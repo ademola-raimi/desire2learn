@@ -26,7 +26,7 @@
                     </div>
                     <i style="padding-left: 20px" class="devicon-{{ strtolower($uploadedCategories->name) }}-plain colored"></i>
                     <h6 class="text-uppercase" style="font-size: 2rem">{{ $uploadedCategories->name }}</h6>
-                    <span class="pull-right" style="margin-right: 1%; margin-top: -15%;"><a href="/category/{{ $uploadedCategories->id }}/edit"><button class="btn btn-primary btn-flat" style="width: 60px;">Edit</button></a></span>
+                    <span class="pull-right" style="margin-right: 5%; margin-top: -15%;"><a href="/category/{{ $uploadedCategories->id }}/edit"><button class="btn btn-primary btn-flat" style="width: 60px; background-color: #8899a6 ! important; border: none;">Edit</button></a></span>
                 </div>
             </div>
             @endforeach
