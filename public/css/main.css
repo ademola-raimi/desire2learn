@@ -122,9 +122,17 @@ a:hover {
 
 .btn-topnav {
   color: #ffffff ! important;
+  background-color: #8899a6 ! important;
+  border: none ! important;
+  margin-top:13% ! important;
+  max-width: 60px ! important;
 }
 
 a.btn-topnav:hover {
   color: #ff432e ! important;
+}
+
+.navbar-default .navbar-nav > li > a {
+  padding-right: 60px ! important;
 }
 
