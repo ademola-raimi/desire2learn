@@ -29,7 +29,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->select($category->id, 'category')
@@ -75,7 +75,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->type('framework of the artisan', 'description')
@@ -97,7 +97,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->type('Writing an integration test in Laravel', 'title')
@@ -119,7 +119,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
@@ -141,7 +141,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->type($category->id, 'category')
@@ -163,7 +163,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->type($category->id, 'category')
@@ -185,7 +185,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->type('https://www.youtube.com/watch?v=eUJUOxPpiQc', 'url')
@@ -207,7 +207,7 @@ class Video extends TestCase
             'description' => 'framework of the artisan',
         ]);
 
-        $video = $this->uploadVideo($user, $category);
+        $this->uploadVideo($user, $category);
 
         $this->actingAs($user)->visit('/dashboard/video/create')
             ->type($category->id, 'category')
