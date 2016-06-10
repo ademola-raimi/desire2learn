@@ -22,8 +22,8 @@
 						<i class="fa fa-github"></i> Sign In with Github
 					</a>
 					@else
-					<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary" style="border: none;">Dashboard</a>
-					<a href="{{ route('create.video') }}" class="page-scroll btn btn-primary" style="border: none;">Upload Video</a>
+					<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary" style="background-color: #8899a6; border: none;">Dashboard</a>
+					<a href="{{ route('create.video') }}" class="page-scroll btn btn-primary" style="background-color: #8899a6; border: none;">Upload Video</a>
 					@endif
 				</div>
 				

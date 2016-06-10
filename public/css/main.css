@@ -136,3 +136,6 @@ a.btn-topnav:hover {
   padding-right: 60px ! important;
 }
 
+a.btn-primary:hover {
+  color: #ff432e ! important;
+}

@@ -9,7 +9,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 6%;">
+        <div class="col-md-6 col-md-offset-3 card" style="margin-top: 2%;">
             <h3>Edit category</h3>
             <hr>
             <form class="form" role="form" action="/category/{{ $category->id }}/edit" method="POST" >
@@ -34,7 +34,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" style="background-color: #8899a6 ! important; border: none;">
                     <i class="fa fa-btn fa-user"></i> Update Category
                     </button>
                 </div>
