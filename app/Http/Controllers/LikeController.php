@@ -31,12 +31,10 @@ class LikeController extends Controller
      */
     public function postLikeVideo($videoId, Request $request)
     {
-        if ($request->ajax()) {
-            if ($request->get('isLike') === 'true') {
-                return $this->checkRowExists(auth()->user()->id, $videoId, true);
-            } else {
-                return $this->checkRowExists(auth()->user()->id, $videoId, false);
-            }
+        if ($request->get('isLike') === 'true') {
+            return $this->checkRowExists(auth()->user()->id, $videoId, true);
+        } else {
+            return $this->checkRowExists(auth()->user()->id, $videoId, false);
         }
     }
 

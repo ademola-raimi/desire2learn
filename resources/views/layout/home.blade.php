@@ -22,8 +22,8 @@
 						<i class="fa fa-github"></i> Sign In with Github
 					</a>
 					@else
-					<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary" style="border: none;">Dashboard</a>
-					<a href="{{ route('create.video') }}" class="page-scroll btn btn-primary" style="border: none;">Upload Video</a>
+					<a href="{{ route('dashboard.home') }}" class="page-scroll btn btn-primary" style="background-color: #8899a6; border: none;">Dashboard</a>
+					<a href="{{ route('create.video') }}" class="page-scroll btn btn-primary" style="background-color: #8899a6; border: none;">Upload Video</a>
 					@endif
 				</div>
 				
@@ -48,7 +48,7 @@
 										<img src="http://img.youtube.com/vi/{{ $videos->url }}/0.jpg">
 									</a>
 									<div class="card-block">
-										<a class="card-title" style="width: 250px; overflow: hidden; text-overflow: ellipsis; " href="/video/{{ $videos->id }}">{{substr($videos->title, 0, 30) }} {{ strlen($videos->title) > 30 ? '...': ''}}</a>
+										<a class="card-title" href="/video/{{ $videos->id }}">{{substr($videos->title, 0, 10) }} {{ strlen($videos->title) > 10 ? '.....': ''}}</a>
 										<p class="card-text">Creator: {{ $videos->user->username }}</p>
 										<p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($videos->created_at))->diffForHumans() }}</p>
 									</div>

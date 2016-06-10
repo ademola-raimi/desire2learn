@@ -2,7 +2,6 @@
 
 namespace Desire2Learn\Http\Controllers;
 
-use DB;
 use Auth;
 use Alert;
 use Desire2Learn\User;
@@ -15,6 +14,17 @@ use Desire2Learn\Http\Requests\SuperAdminFormRequest;
 
 class DashboardController extends Controller
 {
+    private static $auth;
+
+    /**
+     * Auth is injected for initialization
+     * 
+     */
+    public function __construct(Auth $auth)
+    {
+        self::$auth = $auth;
+    }
+
     /**
      * This method displays the dashboard index page of the user
      * displaying the number of reactions, uploaded videos and views the user has made
@@ -23,9 +33,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-    	$favouritedVideos = Auth::user()->likes()->where('like', true);
-    	$uploadedVideos   = Auth::user()->videos();
-    	$categories       = Auth::user()->categories();
+    	$favouritedVideos = self::$auth::user()->likes()->where('like', true);
+    	$uploadedVideos   = self::$auth::user()->videos();
+    	$categories       = self::$auth::user()->categories();
 
     	return view('dashboard.index', compact('favouritedVideos', 'uploadedVideos', 'categories'));
     }
@@ -37,7 +47,7 @@ class DashboardController extends Controller
      */
     public function uploadedVideos()
     {
-    	$uploadedVideos = Auth::user()->videos()->paginate(3);
+    	$uploadedVideos = self::$auth::user()->videos()->paginate(3);
 
     	return view('dashboard.video.uploadedvideo', compact('uploadedVideos'));
     }
@@ -50,7 +60,7 @@ class DashboardController extends Controller
     public function favouritedVideos()
     {
         $favouritedVideos = Like::where('like', true)->with('video')
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', self::$auth::user()->id)
             ->paginate(3);
 
         return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
@@ -75,7 +85,7 @@ class DashboardController extends Controller
      */
     public function uploadedCategory()
     {
-        $uploadedCategory = Auth::user()->categories()->paginate(9);
+        $uploadedCategory = self::$auth::user()->categories()->paginate(9);
 
         return view('dashboard.category.uploadedcategories', compact('uploadedCategory'));
     }

@@ -9,7 +9,7 @@ class UserLoginTest extends TestCase
     /**
      * Test that user cannot login successfully due to insupplied data
      */
-    public function testForunsuppliedLoginDetails()
+    public function testForUnsuppliedLoginDetails()
     {
         $this->visit('/login')
             ->type('', 'email')

@@ -71,7 +71,7 @@ ul.nav.nav-sidebar li a{
 }
 .sidebar ul.nav-sidebar li a:hover{
     background-color: #232323 !important;
-    color: #21DEEF;
+    color: #8899a6 ! important;
 }
 .sidebar ul.nav-sidebar li.active{
     background-color: #232323 !important;
@@ -87,7 +87,7 @@ ul.nav.nav-sidebar li a:focus {
     position: relative;
 }
 .menu,.menu1:hover{
-	color:#ff4c4c;
+	color:#8899a6;
 }
 .sidebar.top-navigation{
 	display:none;

@@ -65,7 +65,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" style="background-color: #8899a6 ! important; border: none;">
                     <i class="fa fa-btn fa-user"></i> Upload Video
                     </button>
                 </div>

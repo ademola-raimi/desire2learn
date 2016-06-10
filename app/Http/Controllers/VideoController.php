@@ -116,7 +116,7 @@ class VideoController extends Controller
 
         alert()->success('Video uploaded successfully', 'success');
 
-        return redirect()->route('uploaded.video'); 
+        return redirect()->route('video.uploads'); 
     }
 
     /**

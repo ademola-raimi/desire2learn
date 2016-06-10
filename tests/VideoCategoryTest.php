@@ -267,8 +267,8 @@ class VideoCategoryTest extends TestCase
     {
         $user = $this->createSpecialUser();
 
-        $this->actingAs($user)->visit('/dashboard/new/superadmin')
-            ->see('superadmin');
+        $this->actingAs($user)->visit('/dashboard/admin/new')
+            ->see('Super-Admin form');
     }
 
     /**

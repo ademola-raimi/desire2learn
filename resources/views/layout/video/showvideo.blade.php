@@ -102,7 +102,7 @@
                                             
                                             <textarea name="comment" id="new-comment-field" class="form-control" rows="4" type="text" style="margin-top: 2%; width: 60%" required="true"> </textarea>
                                         </div>
-                                        <button type="submit" data-token="{{ csrf_token() }}" data-comment-count="{{ $video->comments()->count() }}" data-avatar="{{ Auth::user()->getAvatar() }}" id="submit" class="btn btn-primary comment-submit" style="margin-left: 49.7%; margin-top: 1%;"><i class="fa fa-paper-plane-o"></i>
+                                        <button type="submit" data-token="{{ csrf_token() }}" data-comment-count="{{ $video->comments()->count() }}" data-avatar="{{ Auth::user()->getAvatar() }}" id="submit" class="btn btn-primary comment-submit" style="margin-left: 49.7%; margin-top: 1%; background-color: #8899a6; border: none;"><i class="fa fa-paper-plane-o"></i>
                                         </button>
                                     </form>
                                 </div>
