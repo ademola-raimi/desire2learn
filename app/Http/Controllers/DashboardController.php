@@ -60,7 +60,7 @@ class DashboardController extends Controller
     public function favouritedVideos()
     {
         $favouritedVideos = Like::where('like', true)->with('video')
-            ->where('user_id', self::$auth::user()->id)
+            ->where('user_id', Auth::user()->id)
             ->paginate(3);
 
         return view('dashboard.video.favouritedvideo', compact('favouritedVideos'));
