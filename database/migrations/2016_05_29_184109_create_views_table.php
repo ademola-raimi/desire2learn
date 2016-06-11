@@ -19,12 +19,14 @@ class CreateViewsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->foreign('video_id')
                 ->references('id')
-                ->on('videos');
+                ->on('videos')
+                ->onDelete('cascade');
         });
     }
 

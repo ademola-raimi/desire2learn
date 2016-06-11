@@ -24,12 +24,12 @@
                     <div class="card-deck-wrapper">
                         <div class="card-deck sidebar-inner">
                             <div class="card" >
-                                <a href="{{ route('show_video', ['id' => $video->id]) }}">
-                                    <img class="video-iframe" src="http://img.youtube.com/vi/{{ $video->url }}/0.jpg">
+                                <a href="{{ route('show_video', ['id' => $video->video->id]) }}">
+                                    <img class="video-iframe" src="http://img.youtube.com/vi/{{ $video->video->url }}/0.jpg">
                                 </a>
                                 <div class="card-block" >
-                                    <a class="card-title" href="{{ route('show_video', ['id' => $video->id]) }}">{{substr($video->title, 0, 30) }} {{ strlen($video->title) > 30 ? '.....': ''}}</a>
-                                    <p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($video->created_at))->diffForHumans() }}</p>
+                                    <a class="card-title" style="margin-bottom: 200px;" href="{{ route('show_video', ['id' => $video->video->id]) }}">{{substr($video->video->title, 0, 10) }} {{ strlen($video->video->title) > 10 ? '...': ''}}</a>
+                                    <p class="card-text">{{ Carbon\Carbon::createFromTimeStamp(strtotime($video->video->created_at))->diffForHumans() }}</p>
                                 </div>
                             </div>
                         </div>

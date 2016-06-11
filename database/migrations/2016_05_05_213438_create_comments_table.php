@@ -21,12 +21,13 @@ class CreateCommentsTable extends Migration
 
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
                 
             $table->foreign('video_id')
                 ->references('id')
-                ->on('videos');
-            
+                ->on('videos')
+                ->onDelete('cascade');
         });
     }
 
