@@ -126,7 +126,7 @@
                         <hr>
                         @foreach ( $relatedVideos as $relatedVideo )
                         <a href="{{ route('show_video', ['id' => $relatedVideo->id]) }}">
-                            <img class="video-iframe" src="http://img.youtube.com/vi/{{ $relatedVideo->url }}/0.jpg">
+                            <img class="video-iframe" src="http://img.youtube.com/vi/{{ $relatedVideo->url }}/0.jpg" style="margin-bottom: 10px;">
                         </a>
                         
                         <a class="card-title" href="{{ route('show_video', ['id' => $relatedVideo->id]) }}">{{ $relatedVideo->title }}</a>
