@@ -20,10 +20,10 @@
                     </li>
                     
                     <li>
-                        <a type="button" class="page-scroll btn btn-primary btn-topnav" href="{{ route('register') }}">Sign Up</a>
+                        <a type="button" class="page-scroll btn btn-primary btn-topnav" style="background-color: #00b0b6 ! important;" href="{{ route('register') }}">Sign Up</a>
                     </li>
                     <li>
-                        <a type="button" class="page-scroll btn btn-primary btn-topnav" href="{{ route('login') }}">Login</a>
+                        <a type="button" class="page-scroll btn btn-primary btn-topnav" style="background-color: #008db7 ! important;" href="{{ route('login') }}">Login</a>
                     </li>
                     
                     @else
