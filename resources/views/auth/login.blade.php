@@ -30,7 +30,7 @@
                 <div class="checkbox pull-right">
                     <label style="margin-left: -2%;"><input id="remember" name="remember" type="checkbox">Remember me</label>
                 </div>
-                <button type="submit" class="btn btn btn-primary" style="background-color: #8899a6; border: none;">Log In</button>
+                <button type="submit" class="btn btn btn-primary" style="background-color: #008db7; border: none;">Log In</button>
             </form>
             <div class="auth-or">
                 <hr class="hr-or">
