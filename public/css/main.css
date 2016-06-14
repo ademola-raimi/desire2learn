@@ -120,17 +120,20 @@ a:hover {
 }
 
 .btn-topnav {
-  color: #ffffff ! important;
+  color: #777 ! important;
   background-color: #8899a6 ! important;
-  border: none ! important;
-  margin-top:21px ! important;
+  margin-top: 10px ! important;
   width: 6px;
   height: 40px ! important;
   padding: 15px 15px ! important;
+  background: transparent ! important;
+  border: 1px #e5e5e5 solid ! important;
 }
 
 a.btn-topnav:hover {
-  color: #ff432e ! important;
+  background-color: #ff432e ! important;
+  color: #fff ! important;
+  border: 1px #e5e5e5 solid ! important;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -138,17 +141,30 @@ a.btn-topnav:hover {
 }
 
 a.btn-primary:hover {
-  color: #ff432e ! important;
+  color: #ff432e;
 }
 
 .nav-top {
   margin-right: -20px;
-  margin-top: 5px ! important;
+  margin-top: -6px ! important;
   line-height: 1.6em ! important;
   font-size: 16px ! important;
 }
 
 a.nav-top:hover {
   color: #ff432e ! important;
+}
+
+.text-uppercase {
+  color: #777;
+  margin-left: 10px;
+}
+
+a.text-uppercase:hover {
+  color: #ff432e;
+}
+
+a.mobile-btn-hov:hover {
+  color: #fff ! important;
 }
 

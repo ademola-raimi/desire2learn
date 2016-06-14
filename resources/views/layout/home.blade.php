@@ -6,19 +6,19 @@
 <div class="row" style="background-color: #f5f5f5;">
 	<div class="banner">
 		<div class="overlay">
-			<div class="container">
+			<!-- <div class="container"> -->
 				<div class="intro-text">
 					<h1>Welcome To <span>Desire2Learn</span></h1>
 					<p>Learning is not attained by chance, It must be sought for with ardor and attended with deligence <br> Dive in to get started</p>
 					
 					@if (! Auth::check())
-					<a href="{{ url('/facebook') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #3B5998; width: 20%; border: none;">
+					<a href="{{ url('/facebook') }}" class="page-scroll btn btn-primary mobile-btn-hov" style="background-color: #3B5998; width: 20%; border: none;">
 						<i class="fa fa-facebook"></i> Sign In With Facebook
 					</a>
-					<a href="{{ url('/twitter') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #55ACEE; width: 20%; border: none;">
+					<a href="{{ url('/twitter') }}" class="page-scroll btn btn-primary mobile-btn-hov" style="background-color: #55ACEE; width: 20%; border: none;">
 						<i class="fa fa-twitter"></i> Sign In with Twitter
 					</a>
-					<a href="{{ url('/github') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #444444; width: 20%; border: none">
+					<a href="{{ url('/github') }}" class="page-scroll btn btn-primary mobile-btn-hov" style="background-color: #444444; width: 20%; border: none">
 						<i class="fa fa-github"></i> Sign In with Github
 					</a>
 					@else
@@ -27,7 +27,7 @@
 					@endif
 				</div>
 				
-			</div>
+			<!-- </div> -->
 		</div>
 	</div>
 	<!-- End Header Section -->
@@ -72,14 +72,14 @@
 	<!-- End Body Section -->
 	<!-- Start Call to Action Section -->
 	<section class="call-to-action">
-		<div class="container">
+		<!-- <div class="container"> -->
 			<div class="row">
 				<div class="col-md-12 wow zoomIn" data-wow-duration="2s" data-wow-delay="300ms">
 					<p>Knowledge is our passport to the future, for tomorrow belongs to the people who prepare for it today</p>
 					<p>- Malcolm X -</p>
 				</div>
 			</div>
-		</div>
+		<!-- </div> -->
 	</section>
 	<!-- End Call to Action Section -->
 	<!-- Start Footer Section -->

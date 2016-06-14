@@ -8,7 +8,7 @@
                 <i class="fa fa-bars"></i>
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
-                <a class="navbar-brand text-default" style="margin-top: 8px;" href="/">Desire2Learn</a>
+                <a class="navbar-brand text-default" style="margin-top: 1px;" href="/">Desire2Learn</a>
             </div>
             <div class="navbar-collapse collapse">
                 
