@@ -6,7 +6,7 @@
     <div class="container" >
         <div class="row">
             <div class="col-md-6 col-md-offset-3 card" style="margin-top: 3%; margin-bottom: 3%; background-color: #fff;">
-                <h3 style="margin-top: 3%; margin-bottom: 3%;">Register with Us, or <a href="{{ route('login') }}">Log In</a></h3>
+                <h3 style="margin-top: 3%; margin-bottom: 3%;">Register with Us, or <a style="color: #ff432e;" href="{{ route('login') }}">Log In</a></h3>
                 <form class="form" role="form" method="POST" action="{{ route('create-new-user') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" style="background-color: #00b0b6; border: none;">
+                        <button type="submit" class="btn btn-primary" style="background-color: #8899a6; border: none;">
                         <i class="fa fa-btn fa-user"></i> Register
                         </button>
                     </div>

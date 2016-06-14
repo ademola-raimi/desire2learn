@@ -5,7 +5,7 @@
 <div class="row" style="background-color: #f5f5f5;">
     <div class="container" >
         <div class="col-md-6 col-md-offset-3 card" style="margin-top: 3%; margin-bottom: 3%; background-color: #fff;">
-            <h3 style="margin-top: 3%; margin-bottom: 3%;">Log In, or <a href="{{ route('register') }}">Sign Up</a></h3>
+            <h3 style="margin-top: 3%; margin-bottom: 3%;">Log In, or <a style="color: #ff432e;" href="{{ route('register') }}">Sign Up</a></h3>
             <form role="form" method="POST" action="{{ route('post-login') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -18,7 +18,6 @@
                     @endif
                 </div>
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <a class="pull-right" href="{{ url('/password/reset') }}">Forgot password?</a>
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                     @if ($errors->has('password'))
@@ -30,7 +29,7 @@
                 <div class="checkbox pull-right">
                     <label style="margin-left: -2%;"><input id="remember" name="remember" type="checkbox">Remember me</label>
                 </div>
-                <button type="submit" class="btn btn btn-primary" style="background-color: #008db7; border: none;">Log In</button>
+                <button type="submit" class="btn btn btn-primary" style="background-color: #8899a6; border: none;">Log In</button>
             </form>
             <div class="auth-or">
                 <hr class="hr-or">

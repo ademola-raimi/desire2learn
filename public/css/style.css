@@ -47,7 +47,7 @@ a {
 }
 
 a:hover {
-    color: #444;
+    color: #ff432e;
 }
 
 a, 
@@ -275,12 +275,6 @@ ul.social-list li a:hover i {
 	}
 }
 
-
-
-
-
-
-
 /* ----------------------------------------------------------------*/
 /* Start Navigation Section */
 /* ----------------------------------------------------------------*/
@@ -290,9 +284,9 @@ ul.social-list li a:hover i {
 
 .navbar {
 	margin-bottom: 0;
-    margin-top: -1%;
+    margin-top: 0%;
 	background: #f5f5f5;
-    border-bottom: 1px solid #595959 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
 	border: none;
 	border-radius: 0;
     -webkit-border-radius: 0;
@@ -1929,4 +1923,18 @@ textarea {
 .contact button {
     font-weight: 400;
     margin-top: 30px;
+}
+
+.card-title {
+    color: #ff432e ! important;
+}
+
+.form-control:focus {
+    border-color: #ff432e ! important;
+    outline: 0;
+}
+
+.form-control {
+    border-radius: 0;
+    border: 1px solid #e5e5e5 ! important;
 }
