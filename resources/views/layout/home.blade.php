@@ -6,7 +6,7 @@
 <div class="row" style="background-color: #f5f5f5;">
 	<div class="banner">
 		<div class="overlay">
-			<!-- <div class="container"> -->
+			<div class="container">
 				<div class="intro-text">
 					<h1>Welcome To <span>Desire2Learn</span></h1>
 					<p>Learning is not attained by chance, It must be sought for with ardor and attended with deligence <br> Dive in to get started</p>
@@ -27,7 +27,7 @@
 					@endif
 				</div>
 				
-			<!-- </div> -->
+			</div>
 		</div>
 	</div>
 	<!-- End Header Section -->
@@ -72,14 +72,14 @@
 	<!-- End Body Section -->
 	<!-- Start Call to Action Section -->
 	<section class="call-to-action">
-		<!-- <div class="container"> -->
+		<div class="container">
 			<div class="row">
 				<div class="col-md-12 wow zoomIn" data-wow-duration="2s" data-wow-delay="300ms">
 					<p>Knowledge is our passport to the future, for tomorrow belongs to the people who prepare for it today</p>
 					<p>- Malcolm X -</p>
 				</div>
 			</div>
-		<!-- </div> -->
+		</div>
 	</section>
 	<!-- End Call to Action Section -->
 	<!-- Start Footer Section -->
