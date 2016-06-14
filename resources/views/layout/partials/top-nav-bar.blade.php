@@ -8,28 +8,26 @@
                 <i class="fa fa-bars"></i>
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
-                <a class="navbar-brand text-default" href="/">Desire2Learn</a>
+                <a class="navbar-brand text-default" style="margin-top: 8px;" href="/">Desire2Learn</a>
             </div>
             <div class="navbar-collapse collapse">
                 
                 <!-- Start Navigation List -->
                 <ul class="nav navbar-nav navbar-right">
                     @if (! Auth::check())
-                    <li>
-                        <a type="button" class="page-scroll btn btn-primary btn-topnav" href="/">Home</a>
-                    </li>
                     
                     <li>
-                        <a type="button" class="page-scroll btn btn-primary btn-topnav" style="background-color: #00b0b6 ! important;" href="{{ route('register') }}">Sign Up</a>
+                        <a class="nav-top" href="{{ route('login') }}">Sign In</a>
                     </li>
+
                     <li>
-                        <a type="button" class="page-scroll btn btn-primary btn-topnav" style="background-color: #008db7 ! important;" href="{{ route('login') }}">Login</a>
+                        <a type="button" class="page-scroll btn btn-primary btn-topnav" href="{{ route('register') }}">Sign Up</a>
                     </li>
                     
                     @else
                     
                     <!-- End Navigation List -->
-                    <li id="dropdown" style="margin-top: 2%; color: #6b6b6b;">
+                    <li id="dropdown" style="margin-top: -1%; color: #6b6b6b;">
                         <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> {{ Auth::user()->username }} <img src="{{ Auth::user()->avatar }}" class="img-circle" height="50" width="50" style="border-radius:25px;" />
                             
                         </a>
