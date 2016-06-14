@@ -12,13 +12,13 @@
 					<p>Learning is not attained by chance, It must be sought for with ardor and attended with deligence <br> Dive in to get started</p>
 					
 					@if (! Auth::check())
-					<a href="{{ url('/facebook') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #3B5998; width: 20%; border: none;">
+					<a href="{{ url('/facebook') }}" class="page-scroll btn btn-primary mobile-btn-hov" style="background-color: #3B5998; width: 20%; border: none;">
 						<i class="fa fa-facebook"></i> Sign In With Facebook
 					</a>
-					<a href="{{ url('/twitter') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #55ACEE; width: 20%; border: none;">
+					<a href="{{ url('/twitter') }}" class="page-scroll btn btn-primary mobile-btn-hov" style="background-color: #55ACEE; width: 20%; border: none;">
 						<i class="fa fa-twitter"></i> Sign In with Twitter
 					</a>
-					<a href="{{ url('/github') }}" class="page-scroll btn btn-primary mobile-btn" style="background-color: #444444; width: 20%; border: none">
+					<a href="{{ url('/github') }}" class="page-scroll btn btn-primary mobile-btn-hov" style="background-color: #444444; width: 20%; border: none">
 						<i class="fa fa-github"></i> Sign In with Github
 					</a>
 					@else
