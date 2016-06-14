@@ -1938,3 +1938,12 @@ textarea {
     border-radius: 0;
     border: 1px solid #e5e5e5 ! important;
 }
+
+.button-details {
+    color: #ff432e ! important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #ff432e ! important;
+    border-color: #ff432e ! important;
+}
