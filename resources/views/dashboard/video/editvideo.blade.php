@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
                     <label for="url">Youtube URL</label>
-                    <input type="text" class="form-control" name="url" value="http://www.youtube.com/watch?v={{ $video->url }}">
+                    <input type="text" class="form-control" name="url" value="https://www.youtube.com/watch?v={{ $video->url }}">
                     @if ($errors->has('url'))
                     <span class="help-block">
                         <strong>{{ $errors->first('url') }}</strong>
@@ -50,10 +50,11 @@
                         <select class = "form-control" name="category">
                             <option value="" > Video category</option>
                             @foreach($categories as $category)
-                            
-                            <option value="{{ $category->id }}">
-                                {{ $category->name }}
-                            </option>
+                                @if ($category->id == $video->category)
+                                    <option selected value="{{ $category->id }}">{{ $category->name }}</option>
+                                @else
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endif
                             @endforeach
                         </select>
                         
