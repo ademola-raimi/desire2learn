@@ -37,7 +37,6 @@ class VideoController extends Controller
     private function getYouTubeIdFromURL($url)
     {
         $videoId = substr($url, 32, 11);
-
         return $this->checkyoutubeUrlExist($videoId);
     }
 
@@ -81,7 +80,6 @@ class VideoController extends Controller
         }
 
         $url = $this->getYouTubeIdFromURL($request['url']);
-
         if ($url) {
             return $this->createVideo($request);
         }
@@ -205,22 +203,35 @@ class VideoController extends Controller
             'description' => 'required',
         ]);
 
-        $videos = Video::where('id', $request->id)->update([
-            'title'       => $request->title,
-            'url'         => $this->getYouTubeIdFromURL($request['url']),
-            'category'    => $request->category,
-            'description' => $request->description,
-        ]);
-        
-        if ($videos) {
-            alert()->success('Video updated succesfully', 'success');
-
-            return redirect()->route('dashboard.home'); 
-        } else {
-            alert()->error('Something went wrong', 'error');
+        if (strlen($request['url']) < 32) {
+            alert()->error('Please provide a valid youtube url length', 'error');
 
             return redirect()->back();
         }
+
+        $url = $this->getYouTubeIdFromURL($request['url']);
+        if ($url) {
+            $videos = Video::where('id', $request->id)->update([
+                'title'       => $request->title,
+                'url'         => substr($request['url'], 32, 11),
+                'category'    => $request->category,
+                'description' => $request->description,
+            ]);
+
+            if ($videos) {
+                alert()->success('Video updated succesfully', 'success');
+
+                return redirect()->route('dashboard.home');
+            } else {
+                alert()->error('Something went wrong', 'error');
+
+                return redirect()->back();
+            }
+        }
+
+        alert()->error('Invalid youtube url', 'error');
+
+        return redirect()->back();
     }
 
     /**
